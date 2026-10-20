@@ -1,0 +1,1846 @@
+/* --- 1. Variables Globales y Paleta Sanitaria / Salud Pública --- */
+:root {
+    /* Identidad Médica Primaria */
+    --color-primario: #0284c7;
+    /* Azul Clínico / Salud Pública */
+    --color-primario-oscuro: #0369a1;
+    /* Azul Hospitalario Profundo */
+    --color-primario-claro: #e0f2fe;
+    /* Celeste Clínico Muy Suave */
+    --color-primario-subtle: #f0f9ff;
+    /* Blanco con tinte de salud */
+
+    /* Compatibilidad con variables originales del proyecto */
+    --color-azul-oscuro: #0284c7;
+    --color-azul-claro: #e0f2fe;
+    --color-blanco: #ffffff;
+    --color-texto: #1e293b;
+    /* Gris pizarra oscuro de alta legibilidad */
+    --color-texto-secundario: #64748b;
+    /* Gris médico informativo */
+    --color-texto-muted: #94a3b8;
+    /* Gris tenue para leyendas y códigos */
+    --color-sombra: rgba(15, 23, 42, 0.06);
+    /* Sombra limpia y suave */
+
+    /* Estados Clínicos y Epidemiológicos */
+    --salud-verde: #0d9488;
+    /* Verde Sanitario / Esquema Óptimo */
+    --salud-verde-claro: #ccfbf1;
+    --salud-verde-texto: #0f766e;
+
+    --salud-azul: #2563eb;
+    /* Azul Asistencial / Dosis Aplicada */
+    --salud-azul-claro: #dbeafe;
+    --salud-azul-texto: #1d4ed8;
+
+    --salud-rojo: #e11d48;
+    /* Alerta Médica / Stock Crítico / Caducidad */
+    --salud-rojo-claro: #ffe4e6;
+    --salud-rojo-texto: #be123c;
+
+    --salud-ambar: #d97706;
+    /* Precaución Sanitaria / Cadena de Frío */
+    --salud-ambar-claro: #fef3c7;
+    --salud-ambar-texto: #b45309;
+
+    --salud-morado: #7c3aed;
+    /* Logística / Brigadas de Inmunización */
+    --salud-morado-claro: #ede9fe;
+    --salud-morado-texto: #6d28d9;
+
+    /* Superficies y Bordes Clínicos */
+    --bg-app: #f8fafc;
+    /* Fondo general limpio y estéril */
+    --bg-card: #ffffff;
+    /* Blanco puro de consultorio */
+    --bg-card-hover: #f1f5f9;
+    --border-color: #e2e8f0;
+    /* Borde sutil estéril */
+    --border-color-focus: #38bdf8;
+
+    /* Sombras y Elevaciones Médicas */
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(2, 132, 199, 0.06), 0 4px 6px -4px rgba(2, 132, 199, 0.04);
+    --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.05), 0 10px 24px -6px rgba(2, 132, 199, 0.05);
+
+    /* Tipografías y Radios */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', Consolas, Menlo, monospace;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 18px;
+
+    /* Transiciones */
+    --trans-fast: 0.15s ease-in-out;
+    --trans-smooth: 0.25s ease-in-out;
+}
+
+/* --- 2. Reset y Configuración General --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+    scroll-behavior: smooth;
+    color-scheme: light;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-app);
+    color: var(--color-texto);
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar Estilizada y Limpia */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Clases Utilitarias */
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+.text-primary {
+    color: var(--color-primario) !important;
+}
+
+.text-success {
+    color: var(--salud-verde-texto) !important;
+}
+
+.text-danger {
+    color: var(--salud-rojo-texto) !important;
+}
+
+.text-warning {
+    color: var(--salud-ambar-texto) !important;
+}
+
+.text-muted {
+    color: var(--color-texto-muted) !important;
+}
+
+/* --- 3. Layout de la Plataforma de Salud --- */
+.health-layout {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* --- 4. Barra Lateral Médica (Clinical Sidebar) --- */
+.health-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: #ffffff;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 22px 16px;
+    z-index: 100;
+    box-shadow: 2px 0 10px rgba(15, 23, 42, 0.02);
+}
+
+/* Identidad Médica en la Cabecera */
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.brand-cross-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, #0284c7, #0ea5e9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    flex-shrink: 0;
+}
+
+.brand-cross-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.brand-text-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    letter-spacing: -0.01em;
+}
+
+.brand-subtitle {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--color-primario);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Badge de Estado Sanitario */
+.health-status-badge {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--salud-verde-claro);
+    color: var(--salud-verde-texto);
+    padding: 7px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--salud-verde);
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+    animation: health-pulse 2s infinite;
+}
+
+/* Navegación Médica */
+.health-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 0;
+}
+
+.nav-group-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-texto-muted);
+    text-transform: uppercase;
+    margin: 16px 10px 8px;
+}
+
+.health-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.health-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    color: var(--color-texto-secundario);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    transition: all var(--trans-fast);
+}
+
+.health-nav-link:hover {
+    color: var(--color-primario);
+    background: var(--color-primario-subtle);
+}
+
+.health-nav-link svg {
+    width: 19px;
+    height: 19px;
+    color: var(--color-texto-muted);
+    transition: color var(--trans-fast);
+}
+
+.health-nav-link:hover svg {
+    color: var(--color-primario);
+}
+
+.health-nav-item.active .health-nav-link {
+    background: var(--color-primario-claro);
+    color: var(--color-primario-oscuro);
+    font-weight: 600;
+}
+
+.health-nav-item.active .health-nav-link svg {
+    color: var(--color-primario);
+}
+
+.nav-tag-badge {
+    margin-left: auto;
+}
+
+.tag-alert {
+    background: var(--salud-rojo-claro);
+    color: var(--salud-rojo-texto);
+}
+
+.tag-info {
+    background: var(--salud-azul-claro);
+    color: var(--salud-azul-texto);
+}
+
+.tag-success {
+    background: var(--salud-verde-claro);
+    color: var(--salud-verde-texto);
+}
+
+/* Tarjeta del Profesional de Salud (Footer Sidebar) */
+.sidebar-center-perfil {
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.center-perfil-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: var(--bg-app);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.center-avatar-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--color-primario-claro);
+    color: var(--color-primario-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border: 2px solid #ffffff;
+    box-shadow: var(--shadow-sm);
+}
+
+.center-info-text {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.center-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* --- 5. Área de Trabajo Principal (Main Viewport) --- */
+.health-main-viewport {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 24px 32px;
+    gap: 24px;
+}
+
+/* Cabecera Médica Superior */
+.health-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 18px 24px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.health-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    color: var(--color-texto-muted);
+    margin-bottom: 4px;
+}
+
+.health-main-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    letter-spacing: -0.02em;
+}
+
+.header-right-tools {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.shift-time-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-primario-subtle);
+    border: 1px solid var(--color-primario-claro);
+    padding: 8px 14px;
+    border-radius: var(--radius-md);
+}
+
+.shift-time-indicator svg {
+    color: var(--color-primario);
+}
+
+.shift-meta-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.shift-label {
+    font-size: 0.65rem;
+    color: var(--color-texto-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.shift-clock {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-primario-oscuro);
+}
+
+.header-btn-group {
+    display: flex;
+    gap: 8px;
+}
+
+/* Botones con Estética Médica */
+.btn-health {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 16px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--trans-fast);
+    border: 1px solid transparent;
+    text-decoration: none;
+}
+
+.btn-health svg {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-health-primary {
+    background: var(--color-primario);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+}
+
+.btn-health-primary:hover {
+    background: var(--color-primario-oscuro);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-health-outline {
+    background: #ffffff;
+    color: var(--color-primario);
+    border-color: var(--color-primario-claro);
+}
+
+.btn-health-outline:hover {
+    background: var(--color-primario-subtle);
+    border-color: var(--color-primario);
+}
+
+.btn-health-danger {
+    background: var(--salud-rojo-claro);
+    color: var(--salud-rojo-texto);
+    border-color: rgba(225, 29, 72, 0.2);
+}
+
+.btn-health-danger:hover {
+    background: var(--salud-rojo);
+    color: #ffffff;
+}
+
+/* --- 6. Tarjetas de Indicadores Sanitarios (KPI Cards) --- */
+.health-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.kpi-health-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: transform var(--trans-smooth), box-shadow var(--trans-smooth);
+}
+
+.kpi-health-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.kpi-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.kpi-category-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+}
+
+.kpi-badge-blue {
+    background: var(--color-primario-claro);
+    color: var(--color-primario-oscuro);
+}
+
+.kpi-badge-red {
+    background: var(--salud-rojo-claro);
+    color: var(--salud-rojo-texto);
+}
+
+.kpi-badge-green {
+    background: var(--salud-verde-claro);
+    color: var(--salud-verde-texto);
+}
+
+.kpi-badge-purple {
+    background: var(--salud-morado-claro);
+    color: var(--salud-morado-texto);
+}
+
+.kpi-card-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-texto-secundario);
+}
+
+.kpi-icon-pill {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.kpi-icon-pill svg {
+    width: 20px;
+    height: 20px;
+}
+
+.icon-blue {
+    background: var(--color-primario-claro);
+    color: var(--color-primario);
+}
+
+.icon-red {
+    background: var(--salud-rojo-claro);
+    color: var(--salud-rojo);
+}
+
+.icon-green {
+    background: var(--salud-verde-claro);
+    color: var(--salud-verde);
+}
+
+.icon-purple {
+    background: var(--salud-morado-claro);
+    color: var(--salud-morado);
+}
+
+.kpi-metric-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.kpi-metric-number {
+    font-family: var(--font-mono);
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    line-height: 1;
+}
+
+
+/* Barras de Progreso Médicas Suaves */
+.kpi-health-progress {
+    width: 100%;
+    height: 6px;
+    background: #f1f5f9;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.kpi-progress-bar {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.8s ease;
+}
+
+.bar-blue {
+    background: linear-gradient(90deg, #38bdf8, #0284c7);
+}
+
+.bar-green {
+    background: linear-gradient(90deg, #34d399, #059669);
+}
+
+.bar-purple {
+    background: linear-gradient(90deg, #a78bfa, #7c3aed);
+}
+
+.kpi-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.74rem;
+    color: var(--color-texto-secundario);
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
+}
+
+.trend-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+    font-size: 0.72rem;
+}
+
+.trend-up {
+    color: var(--salud-verde-texto);
+}
+
+.trend-alert {
+    color: var(--salud-rojo-texto);
+}
+
+/* --- 7. Rejilla Central Sanitaria (Mapa Epidemiológico + Panel Frío/Stock) --- */
+.health-dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.75fr 1fr;
+    gap: 20px;
+}
+
+/* Tarjetas Principales de Panel */
+.health-panel {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+}
+
+.health-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 16px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.panel-title-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.panel-title-with-icon svg {
+    color: var(--color-primario);
+}
+
+.panel-heading {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.panel-subheading {
+    font-size: 0.76rem;
+    color: var(--color-texto-secundario);
+}
+
+/* Panel Geográfico Epidemiológico */
+.geo-filter-pills {
+    display: flex;
+    background: #f1f5f9;
+    border-radius: var(--radius-md);
+    padding: 3px;
+    gap: 2px;
+}
+
+.geo-filter-btn {
+    border: none;
+    background: transparent;
+    padding: 4px 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-texto-secundario);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--trans-fast);
+}
+
+.geo-filter-btn.active,
+.geo-filter-btn:hover {
+    background: #ffffff;
+    color: var(--color-primario);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Mapa Sanitario Vectorial Estilizado */
+.health-map-container {
+    height: 310px;
+    background: radial-gradient(circle at 40% 40%, #ffffff 0%, #f0f9ff 65%, #e0f2fe 100%);
+    border: 1px solid #7dd3fc;
+    border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.health-map-grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(2, 132, 199, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(2, 132, 199, 0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+}
+
+/* Escenario Cartográfico de Guárico con la imagen oficial */
+.guarico-map-stage {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    height: 100%;
+    max-height: 290px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.guarico-img-base {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 14px rgba(2, 132, 199, 0.18));
+    user-select: none;
+    pointer-events: none;
+}
+
+.guarico-overlay-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.muni-roscio-polygon {
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all var(--trans-smooth);
+    filter: drop-shadow(0 3px 8px rgba(2, 132, 199, 0.35));
+}
+
+.muni-roscio-polygon:hover {
+    fill-opacity: 0.95;
+    filter: drop-shadow(0 6px 14px rgba(2, 132, 199, 0.55));
+}
+
+.san-juan-pin-group {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.pulse-ring {
+    transform-origin: 102px 62px;
+    animation: pulseRing 2.2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.pulse-ring.delay-ring {
+    animation-delay: 0.7s;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(0.6);
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(1.9);
+        opacity: 0;
+    }
+}
+
+.pin-guarico-sanjuan-exact {
+    top: 19%;
+    left: 20.5%;
+    z-index: 8;
+}
+
+/* Sección de desglose de parroquias de Juan Germán Roscio */
+.roscio-parroquias-section {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.roscio-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.roscio-header-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.parroquias-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.parroquia-subcard {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all var(--trans-fast);
+}
+
+.parroquia-subcard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: #93c5fd;
+}
+
+.parroquia-subcard.main-capital {
+    border-color: #7dd3fc;
+    background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.08);
+}
+
+.parroquia-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.parroquia-name-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.parroquia-badge-cap {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #0284c7;
+    background: #e0f2fe;
+    padding: 1px 6px;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.parroquia-badge-sub {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-texto-muted);
+    background: #f1f5f9;
+    padding: 1px 6px;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.parroquia-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.parroquia-metrics-row {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 0.72rem;
+    color: var(--color-texto-secundario);
+    margin-top: 4px;
+}
+
+.parroquia-metrics-row strong {
+    color: var(--color-texto);
+}
+
+@media (max-width: 900px) {
+    .parroquias-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Pines de Centros de Salud en Mapa */
+.map-clinic-pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 5;
+    transition: transform var(--trans-fast);
+}
+
+.clinic-pin-circle {
+    width: 28px;
+    height: 28px;
+    background: #ffffff;
+    border: 2px solid var(--color-primario);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(2, 132, 199, 0.2);
+    color: var(--color-primario);
+}
+
+.clinic-pin-circle.pin-optimal {
+    border-color: var(--salud-verde);
+    color: var(--salud-verde);
+}
+
+.clinic-pin-circle.pin-alert {
+    border-color: var(--salud-rojo);
+    color: var(--salud-rojo);
+}
+
+.clinic-pin-circle.pin-warning {
+    border-color: var(--salud-ambar);
+    color: var(--salud-ambar);
+}
+
+.map-clinic-pin:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+}
+
+.pin-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1e293b;
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--trans-fast);
+    box-shadow: var(--shadow-md);
+    z-index: 10;
+}
+
+.map-clinic-pin:hover .pin-tooltip {
+    opacity: 1;
+}
+
+.map-legend-bar {
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    display: flex;
+    gap: 12px;
+    font-size: 0.68rem;
+    color: var(--color-texto-secundario);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot-optimal {
+    background: var(--salud-verde);
+}
+
+.dot-warning {
+    background: var(--salud-ambar);
+}
+
+.dot-danger {
+    background: var(--salud-rojo);
+}
+
+/* Lista de Municipios y Avance de Vacunación */
+.municipality-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.muni-health-item {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    transition: all var(--trans-fast);
+}
+
+.muni-health-item:hover {
+    border-color: #cbd5e1;
+    background: var(--bg-app);
+}
+
+.muni-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.muni-item-title {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+.muni-item-capital {
+    font-size: 0.75rem;
+    color: var(--color-texto-muted);
+    margin-left: 6px;
+}
+
+.badge-health-pill {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.badge-optimal {
+    background: var(--salud-verde-claro);
+    color: var(--salud-verde-texto);
+}
+
+.badge-warning {
+    background: var(--salud-ambar-claro);
+    color: var(--salud-ambar-texto);
+}
+
+.badge-danger {
+    background: var(--salud-rojo-claro);
+    color: var(--salud-rojo-texto);
+}
+
+.badge-stable {
+    background: var(--salud-azul-claro);
+    color: var(--salud-azul-texto);
+}
+
+.muni-progress-track {
+    width: 100%;
+    height: 6px;
+    background: #f1f5f9;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.muni-progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.6s ease;
+}
+
+.fill-green {
+    background: var(--salud-verde);
+}
+
+.fill-amber {
+    background: var(--salud-ambar);
+}
+
+.fill-red {
+    background: var(--salud-rojo);
+}
+
+.fill-blue {
+    background: var(--color-primario);
+}
+
+.muni-meta-row {
+    display: flex;
+    gap: 16px;
+    font-size: 0.72rem;
+    color: var(--color-texto-secundario);
+}
+
+.muni-meta-row strong {
+    color: var(--color-texto);
+}
+
+/* --- 8. Panel Lateral Derecho: Cadena de Frío y Lotes de Vacunas --- */
+.cold-chain-monitor-box {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+.cold-chain-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.cold-chain-header svg {
+    width: 14px;
+    height: 14px;
+}
+
+.thermo-sensors-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.thermo-sensor-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 8px 6px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.sensor-location {
+    font-size: 0.66rem;
+    color: var(--color-texto-secundario);
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sensor-degrees {
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--salud-verde-texto);
+}
+
+.sensor-degrees.warning-temp {
+    color: var(--salud-ambar-texto);
+}
+
+.sensor-status-caption {
+    font-size: 0.62rem;
+    color: var(--color-texto-muted);
+}
+
+/* Feed de Alertas de Biológicos y Caducidad */
+.vaccine-batch-alerts-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 16px;
+}
+
+.feed-title-bar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-texto-secundario);
+    margin-bottom: 2px;
+}
+
+.batch-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--salud-rojo);
+    transition: transform var(--trans-fast);
+}
+
+.batch-card.warning-left {
+    border-left-color: var(--salud-ambar);
+}
+
+.batch-card:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.batch-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+}
+
+.batch-vaccine-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.batch-code-pill {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    background: #f1f5f9;
+    color: var(--color-texto-secundario);
+    padding: 1px 6px;
+    border-radius: var(--radius-sm);
+}
+
+.batch-expiry-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+}
+
+.expiry-red {
+    background: var(--salud-rojo-claro);
+    color: var(--salud-rojo-texto);
+}
+
+.expiry-amber {
+    background: var(--salud-ambar-claro);
+    color: var(--salud-ambar-texto);
+}
+
+.batch-details-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.74rem;
+    color: var(--color-texto-secundario);
+    margin-bottom: 10px;
+}
+
+.batch-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.batch-action-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-batch-micro {
+    flex: 1;
+    padding: 5px 8px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all var(--trans-fast);
+    text-align: center;
+}
+
+.btn-batch-red {
+    background: var(--salud-rojo-claro);
+    color: var(--salud-rojo-texto);
+    border-color: rgba(225, 29, 72, 0.2);
+}
+
+.btn-batch-red:hover {
+    background: var(--salud-rojo);
+    color: #ffffff;
+}
+
+.btn-batch-amber {
+    background: var(--salud-ambar-claro);
+    color: var(--salud-ambar-texto);
+    border-color: rgba(217, 119, 6, 0.2);
+}
+
+.btn-batch-amber:hover {
+    background: var(--salud-ambar);
+    color: #ffffff;
+}
+
+.btn-batch-gray {
+    background: #f1f5f9;
+    color: var(--color-texto-secundario);
+    border-color: var(--border-color);
+}
+
+.btn-batch-gray:hover {
+    background: #e2e8f0;
+    color: var(--color-texto);
+}
+
+/* --- 9. Tabla Clínica de Registros de Inmunización --- */
+.health-table-panel {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    box-shadow: var(--shadow-card);
+}
+
+.table-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.health-table-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-top: 14px;
+}
+
+.health-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.health-table thead tr {
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.health-table th {
+    padding: 12px 14px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-texto-secundario);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.health-table tbody tr {
+    border-bottom: 1px solid #f1f5f9;
+    transition: background var(--trans-fast);
+}
+
+.health-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.health-table td {
+    padding: 12px 14px;
+    font-size: 0.82rem;
+    color: var(--color-texto);
+}
+
+.patient-cell {
+    display: flex;
+    flex-direction: column;
+}
+
+.patient-name {
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+.patient-id {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-primario);
+}
+
+.age-group-tag {
+    font-size: 0.72rem;
+    padding: 2px 7px;
+    border-radius: 12px;
+    background: #f1f5f9;
+    color: var(--color-texto-secundario);
+    font-weight: 500;
+}
+
+.tag-pediatric {
+    background: var(--salud-verde-claro);
+    color: var(--salud-verde-texto);
+}
+
+.tag-senior {
+    background: var(--salud-morado-claro);
+    color: var(--salud-morado-texto);
+}
+
+.vaccine-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.vaccine-brand {
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+.vaccine-dose-scheme {
+    font-size: 0.72rem;
+    color: var(--color-texto-secundario);
+}
+
+.health-status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+.chip-verified {
+    background: var(--salud-verde-claro);
+    color: var(--salud-verde-texto);
+}
+
+.chip-transit {
+    background: var(--salud-ambar-claro);
+    color: var(--salud-ambar-texto);
+}
+
+.btn-table-action {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--color-texto-secundario);
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--trans-fast);
+}
+
+.btn-table-action:hover {
+    background: var(--color-primario-claro);
+    color: var(--color-primario-oscuro);
+    border-color: var(--color-primario);
+}
+
+/* Footer de la Tabla */
+.health-table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    font-size: 0.76rem;
+    color: var(--color-texto-secundario);
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.pagination-btn {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--color-texto-secundario);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.74rem;
+    cursor: pointer;
+    transition: all var(--trans-fast);
+}
+
+.pagination-btn.active,
+.pagination-btn:hover:not(:disabled) {
+    background: var(--color-primario);
+    color: #ffffff;
+    border-color: var(--color-primario);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* --- 10. Footer General del Sistema Sanitario --- */
+.health-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.72rem;
+    color: var(--color-texto-secundario);
+}
+
+.footer-health-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-health-brand svg {
+    color: var(--color-primario);
+}
+
+.footer-meta-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* --- 11. Animaciones Médicas --- */
+@keyframes health-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(13, 148, 136, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(13, 148, 136, 0);
+    }
+}
+
+/* --- 12. Adaptabilidad Responsiva --- */
+@media (max-width: 1400px) {
+    .health-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1080px) {
+    .health-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .health-layout {
+        flex-direction: column;
+    }
+
+    .health-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .health-nav-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .sidebar-doctor-profile {
+        display: none;
+    }
+
+    .health-main-viewport {
+        padding: 16px;
+    }
+
+    .health-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+}
+
+@media (max-width: 640px) {
+    .health-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .thermo-sensors-row {
+        grid-template-columns: 1fr;
+    }
+
+    .table-filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .health-search-box {
+        width: 100%;
+    }
+
+    .health-footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
+
+/* --- 13. Retrocompatibilidad para Formularios de Acceso --- */
+.container {
+    max-width: 480px;
+    margin: 40px auto;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 36px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.login-box h2 {
+    text-align: center;
+    color: var(--color-primario-oscuro);
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--color-texto);
+    font-size: 0.85rem;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 10px 14px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    color: var(--color-texto);
+    transition: border-color var(--trans-fast);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: var(--color-primario);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.input-group button {
+    width: 100%;
+    padding: 12px;
+    background: var(--color-primario);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--trans-fast);
+}
+
+.input-group button:hover {
+    background: var(--color-primario-oscuro);
+}
+
+/* ==========================================================================
+   DIRECTORIO DE PERSONAL Y BRIGADAS MÉDICAS (VACUNADORES)
+   ========================================================================== */
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.staff-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all var(--trans-fast);
+}
+
+.staff-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: #cbd5e1;
+}
+
+.staff-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.staff-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-primario-claro);
+    color: var(--color-primario-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    border: 2px solid #ffffff;
+    box-shadow: var(--shadow-sm);
+}
+
+.staff-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.staff-role {
+    font-size: 0.74rem;
+    color: var(--color-primario);
+    font-weight: 500;
+}
+
+.staff-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--color-texto-secundario);
+    background: var(--bg-app);
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    margin-bottom: 14px;
+}
+
+.staff-info-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.staff-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+}
