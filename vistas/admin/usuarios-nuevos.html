@@ -8,7 +8,7 @@
     <meta name="description"
         content="Alta de usuarios tipo 2 (Control de Vacunación) del SIV-Guárico: registro de personal y asignación de sede física receptora de lotes.">
 
-    <title>SIV-GUÁRICO // Crear Usuario</title>
+    <title>SIV-GUÁRICO // Alta de Centro</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +64,7 @@
                                     <line x1="19" y1="8" x2="19" y2="14"></line>
                                     <line x1="22" y1="11" x2="16" y2="11"></line>
                                 </svg>
-                                <span>Crear Usuario</span>
+                                <span>Alta de Centro</span>
                             </a>
                         </li>
                         <li class="health-nav-item">
@@ -75,8 +75,8 @@
                                     <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                                 </svg>
-                                <span>Usuarios Activos</span>
-                                <span class="nav-tag-badge tag-info">24</span>
+                                <span>Centros Activos</span>
+                                <span class="nav-tag-badge tag-info">5</span>
                             </a>
                         </li>
                     </ul>
@@ -109,53 +109,35 @@
                             </a>
                         </li>
                     </ul>
+                </nav>
 
-                    <span class="nav-group-label">Módulos Operativos</span>
-                    <ul class="health-nav-list">
-                        <li class="health-nav-item">
-                            <a href="../centro.html" class="health-nav-link" id="nav-sala-situacional">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                    <path d="m9 12 2 2 4-4"></path>
-                                </svg>
-                                <span>Sala Situacional</span>
-                            </a>
-                        </li>
-                        <li class="health-nav-item">
-                            <a href="../inventario.html" class="health-nav-link" id="nav-inventario">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="m7.5 4.27 9 5.15"></path>
-                                    <path
-                                        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z">
-                                    </path>
-                                    <path d="m3.3 7 8.7 5 8.7-5"></path>
-                                    <path d="M12 22V12"></path>
-                                </svg>
-                                <span>Inventario</span>
-                            </a>
-                        </li>
-                        <li class="health-nav-item">
-                            <a href="../personal.html" class="health-nav-link" id="nav-personal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <div class="sidebar-footer-block">
+                    <div class="sidebar-session-card">
+                        <div class="sidebar-session-avatar is-shared">AG</div>
+                        <div class="sidebar-session-text">
+                            <span class="sidebar-session-name">Administrador General</span>
+                            <span class="sidebar-session-sub">Supervisión de la red</span>
+                            <span class="sidebar-shared-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="9" cy="7" r="4"></circle>
                                     <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
                                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                                 </svg>
-                                <span>Personal</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <div class="sidebar-center-perfil">
-                    <div class="center-perfil-card">
-                        <div class="center-avatar-circle">EC</div>
-                        <div class="center-info-text">
-                            <span class="center-name">Dra. Elena Cordero</span>
-                            <span class="center-role">Administrador General</span>
+                                Cuenta compartida
+                            </span>
                         </div>
                     </div>
+                    <button type="button" class="sidebar-logout" data-siv-logout="../login.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Cerrar sesión</span>
+                    </button>
                 </div>
             </div>
         </aside>
@@ -172,9 +154,13 @@
                         <span>/</span>
                         <span>Administración General</span>
                         <span>/</span>
-                        <span class="text-primary">Crear Usuario</span>
+                        <span class="text-primary">Alta de Centro</span>
                     </div>
-                    <h1 class="health-main-heading">Alta de Usuario de Control de Vacunación</h1>
+                    <h1 class="health-main-heading">Alta de Centro de Salud (cuenta tipo 2)</h1>
+                    <p class="health-header-subtext">
+                        Se crea una única cuenta por centro de salud. El primer perfil será el del Jefe del Centro
+                        (compartida por el personal mediante perfiles personales).
+                    </p>
                 </div>
 
                 <div class="header-right-tools">
@@ -185,7 +171,7 @@
                                 <circle cx="9" cy="7" r="4"></circle>
                                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                             </svg>
-                            <span>Ver usuarios activos</span>
+                            <span>Ver centros</span>
                         </a>
                     </div>
                 </div>
@@ -200,14 +186,12 @@
                     <div class="health-panel-header">
                         <div class="panel-title-with-icon">
                             <svg class="icon-22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <line x1="19" y1="8" x2="19" y2="14"></line>
-                                <line x1="22" y1="11" x2="16" y2="11"></line>
+                                <path d="M3 21h18M5 21V7l7-4 7 4v14"></path>
+                                <path d="M9 21v-6h6v6"></path>
                             </svg>
                             <div>
-                                <h2 class="panel-heading">Ficha de Registro del Usuario</h2>
-                                <p class="panel-subheading">Los campos marcados con asterisco son obligatorios</p>
+                                <h2 class="panel-heading">Datos de la Cuenta del Centro</h2>
+                                <p class="panel-subheading">Una cuenta por centro de salud. Se crean perfiles personales tras el alta.</p>
                             </div>
                         </div>
                         <span class="role-chip role-chip-vacunacion">ROL ASIGNADO: TIPO 2</span>
@@ -215,92 +199,22 @@
 
                     <form id="form-usuario" novalidate>
 
-                        <!-- --- Identificación --- -->
+                        <!-- --- Datos del Centro --- -->
                         <div class="admin-fieldset-title">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
+                                <path d="M3 21h18M5 21V7l7-4 7 4v14"></path>
+                                <path d="M9 21v-6h6v6"></path>
                             </svg>
-                            Datos de Identificación
+                            Centro de Salud
                         </div>
 
                         <div class="admin-form-grid">
                             <div class="admin-form-field">
-                                <label for="usr-nombres">Nombres y apellidos <span class="required-mark">*</span></label>
-                                <input class="admin-input" type="text" id="usr-nombres" name="nombres"
-                                    placeholder="Ej.: María Fernanda Rojas" required>
-                            </div>
-
-                            <div class="admin-form-field">
-                                <label for="usr-cedula">Cédula de identidad <span class="required-mark">*</span></label>
-                                <input class="admin-input" type="text" id="usr-cedula" name="cedula"
-                                    placeholder="V-00.000.000" required>
-                                <span class="admin-hint">Debe coincidir con el documento de identidad vigente.</span>
-                            </div>
-
-                            <div class="admin-form-field">
-                                <label for="usr-correo">Correo institucional <span class="required-mark">*</span></label>
-                                <input class="admin-input" type="email" id="usr-correo" name="correo"
-                                    placeholder="nombre.apellido@sivguarico.ve" required>
-                            </div>
-
-                            <div class="admin-form-field">
-                                <label for="usr-telefono">Teléfono de contacto</label>
-                                <input class="admin-input" type="text" id="usr-telefono" name="telefono"
-                                    placeholder="+58 412-0000000">
-                            </div>
-                        </div>
-
-                        <!-- --- Credenciales --- -->
-                        <div class="admin-fieldset-title">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
-                            Credenciales de Acceso
-                        </div>
-
-                        <div class="admin-form-grid">
-                            <div class="admin-form-field">
-                                <label for="usr-clave">Contraseña temporal <span class="required-mark">*</span></label>
-                                <input class="admin-input" type="text" id="usr-clave" name="clave"
-                                    placeholder="Mínimo 8 caracteres" required>
-                                <span class="admin-hint">El usuario deberá cambiarla en su primer ingreso.</span>
-                            </div>
-
-                            <div class="admin-form-field">
-                                <label for="usr-estado">Estado inicial de la cuenta</label>
-                                <select class="admin-select" id="usr-estado" name="estado">
-                                    <option value="activo">Activo — acceso habilitado de inmediato</option>
-                                    <option value="inactivo">Inactivo — requiere activación del administrador</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- --- Asignación territorial --- -->
-                        <div class="admin-fieldset-title">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            Asignación de Sede y Territorialidad
-                        </div>
-
-                        <div class="admin-form-grid">
-                            <div class="admin-form-field">
-                                <label for="usr-sede">Sede física receptora de lotes <span class="required-mark">*</span></label>
-                                <select class="admin-select" id="usr-sede" name="sede" required>
-                                    <option value="">Seleccione la sede...</option>
-                                    <option>Hospital Dr. Israel Ranuárez Balza — San Juan de los Morros</option>
-                                    <option>Ambulatorio Tipo II Calabozo Centro</option>
-                                    <option>CDI Simón Bolívar — Valle de la Pascua</option>
-                                    <option>Puesto de Salud Tucupido</option>
-                                    <option>CDI Tulio Pineda — Zaraza</option>
-                                </select>
-                                <span class="admin-hint">Sede desde la que el usuario recibirá lotes de vacunación.</span>
+                                <label for="usr-centro">Centro de salud <span class="required-mark">*</span></label>
+                                <input class="admin-input" type="text" id="usr-centro" name="centro"
+                                    placeholder="Ej.: Ambulatorio Tipo II Calabozo Centro" required>
+                                <span class="admin-hint">Sede única que recibirá los lotes y operará la cuenta.</span>
                             </div>
 
                             <div class="admin-form-field">
@@ -311,79 +225,101 @@
                                     <option>Leonardo Infante</option>
                                     <option>Pedro Zaraza</option>
                                     <option>José Félix Ribas</option>
+                                    <option>José Tadeo Monagas</option>
                                 </select>
-                            </div>
-
-                            <div class="admin-form-field">
-                                <label for="usr-profesion">Profesión / cargo</label>
-                                <select class="admin-select" id="usr-profesion" name="profesion">
-                                    <option>Enfermera(o) Responsable de Vacunación</option>
-                                    <option>Enfermera(o) de inmunización</option>
-                                    <option>Coordinador(a) de Sede</option>
-                                    <option>Médico(a) responsable de control</option>
-                                    <option>Graduado(a) de Salud</option>
-                                </select>
-                            </div>
-
-                            <div class="admin-form-field">
-                                <label for="usr-fecha">Fecha de inicio de funciones</label>
-                                <input class="admin-input" type="date" id="usr-fecha" name="fecha" value="2026-10-21">
                             </div>
                         </div>
 
-                        <!-- --- Alcance operativo --- -->
+                        <!-- --- Credenciales de la cuenta del centro --- -->
                         <div class="admin-fieldset-title">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                <path d="m9 12 2 2 4-4"></path>
+                                <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                             </svg>
-                            Alcance Operativo Asignado
+                            Cuenta del Centro (una por sede)
                         </div>
 
-                        <div class="admin-check-grid">
-                            <label class="admin-check-item">
-                                <input type="checkbox" name="permiso" value="registro-pacientes" checked>
-                                <span>Registro de pacientes
-                                    <small>Alta y edición de fichas de pacientes</small>
-                                </span>
-                            </label>
-                            <label class="admin-check-item">
-                                <input type="checkbox" name="permiso" value="aplicacion-vacunas" checked>
-                                <span>Aplicación de vacunas
-                                    <small>Registro de dosis administradas y lote empleado</small>
-                                </span>
-                            </label>
-                            <label class="admin-check-item">
-                                <input type="checkbox" name="permiso" value="control-inventario">
-                                <span>Control de inventario
-                                    <small>Recepción y custodia de lotes en la sede</small>
-                                </span>
-                            </label>
-                            <label class="admin-check-item">
-                                <input type="checkbox" name="permiso" value="cadena-frio" checked>
-                                <span>Cadena de frío
-                                    <small>Registro de temperaturas y termómetros</small>
-                                </span>
-                            </label>
-                            <label class="admin-check-item">
-                                <input type="checkbox" name="permiso" value="reportes">
-                                <span>Reportes operativos
-                                    <small>Consolidado de cobertura de su adscripción</small>
-                                </span>
-                            </label>
-                            <label class="admin-check-item">
-                                <input type="checkbox" name="permiso" value="personal">
-                                <span>Gestión de brigadas
-                                    <small>Registro y asignación de personal de apoyo</small>
-                                </span>
-                            </label>
+                        <div class="admin-form-grid">
+                            <div class="admin-form-field">
+                                <label for="usr-correo">Correo de la cuenta <span class="required-mark">*</span></label>
+                                <input class="admin-input" type="email" id="usr-correo" name="correo"
+                                    placeholder="centro.salud@sivguarico.ve" required>
+                                <span class="admin-hint">Es la cuenta compartida que identifica al centro.</span>
+                            </div>
+
+                            <div class="admin-form-field">
+                                <label for="usr-clave">Contraseña de la cuenta <span class="required-mark">*</span></label>
+                                <input class="admin-input" type="text" id="usr-clave" name="clave"
+                                    placeholder="Mínimo 8 caracteres" required>
+                                <span class="admin-hint">El jefe del centro la usará para el primer acceso.</span>
+                            </div>
                         </div>
 
-                        <div class="admin-form-field full" style="margin-top:16px;">
-                            <label for="usr-observacion">Observaciones de la asignación</label>
-                            <textarea class="admin-textarea" id="usr-observacion" name="observacion"
-                                placeholder="Observaciones sobre el alcance, restricciones o notas de la sede..."></textarea>
+                        <!-- --- Perfil base: jefe del centro --- -->
+                        <div class="admin-fieldset-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            Perfil Base: Jefe del Centro
+                        </div>
+
+                        <div class="admin-form-grid">
+                            <div class="admin-form-field">
+                                <label for="usr-jefe-nombre">Nombre y apellido del jefe <span
+                                        class="required-mark">*</span></label>
+                                <input class="admin-input" type="text" id="usr-jefe-nombre" name="jefeNombre"
+                                    placeholder="Ej.: Dra. Yajaira Colmenares" required>
+                            </div>
+
+                            <div class="admin-form-field">
+                                <label for="usr-jefe-cedula">Cédula del jefe</label>
+                                <input class="admin-input" type="text" id="usr-jefe-cedula" name="jefeCedula"
+                                    placeholder="V-00.000.000">
+                            </div>
+
+                            <div class="admin-form-field">
+                                <label for="usr-jefe-correo">Correo personal del jefe <span
+                                        class="required-mark">*</span></label>
+                                <input class="admin-input" type="email" id="usr-jefe-correo" name="jefeCorreo"
+                                    placeholder="nombre.apellido@sivguarico.ve" required>
+                                <span class="admin-hint">Con este correo el jefe se identifica dentro de la cuenta.</span>
+                            </div>
+
+                            <div class="admin-form-field">
+                                <label for="usr-jefe-clave">Contraseña personal del jefe <span
+                                        class="required-mark">*</span></label>
+                                <input class="admin-input" type="text" id="usr-jefe-clave" name="jefeClave"
+                                    placeholder="Mínimo 8 caracteres" required>
+                            </div>
+                        </div>
+
+                        <div class="admin-form-grid">
+                            <div class="admin-form-field">
+                                <label for="usr-fecha">Fecha de alta</label>
+                                <input class="admin-input" type="date" id="usr-fecha" name="fecha" value="2026-10-22">
+                            </div>
+
+                            <div class="admin-form-field">
+                                <label for="usr-observacion">Observaciones del alta</label>
+                                <input class="admin-input" type="text" id="usr-observacion" name="observacion"
+                                    placeholder="Notas sobre la sede o el perfil base...">
+                            </div>
+                        </div>
+
+                        <div class="profile-notice" style="margin-top:4px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 16v-4"></path>
+                                <path d="M12 8h.01"></path>
+                            </svg>
+                            <span>
+                                El jefe del centro podrá crear los perfiles del personal desde
+                                <strong>Perfiles del Centro</strong>. Los trabajadores no pueden crear perfiles.
+                            </span>
                         </div>
 
                         <div class="admin-form-actions">
@@ -393,7 +329,7 @@
                                     <polyline points="17 21 17 13 7 13 7 21"></polyline>
                                     <polyline points="7 3 7 8 15 8"></polyline>
                                 </svg>
-                                <span>Guardar y habilitar cuenta</span>
+                                <span>Crear cuenta y perfil base</span>
                             </button>
 
                             <button type="reset" class="btn-health btn-health-outline">Limpiar formulario</button>
@@ -415,8 +351,8 @@
                                 <path d="m9 12 2 2 4-4"></path>
                             </svg>
                             <div>
-                                <h2 class="panel-heading">Perfil Tipo 2</h2>
-                                <p class="panel-subheading">Control de Vacunación</p>
+                                <h2 class="panel-heading">Cuenta Tipo 2</h2>
+                                <p class="panel-subheading">Una cuenta por centro de salud</p>
                             </div>
                         </div>
                     </div>
@@ -430,11 +366,11 @@
                             <span>Responsabilidades del Rol</span>
                         </div>
                         <ul style="list-style:none; display:flex; flex-direction:column; gap:9px; font-size:0.78rem; color:var(--color-texto-secundario);">
-                            <li>• Registro de vacunas y pacientes en su sede de adscripción.</li>
-                            <li>• Recepción, custodia y reporte de los lotes de biológicos recibidos.</li>
-                            <li>• Control de la cadena de frío y registro de temperaturas.</li>
-                            <li>• Consolidado de cobertura y novedades de su territorio.</li>
-                            <li>• Reporte de brigadas móviles y personal de apoyo.</li>
+                            <li>• La cuenta identifica al centro, no a una persona.</li>
+                            <li>• El jefe del centro administra los perfiles del personal.</li>
+                            <li>• Cada perfil entra con su correo y contraseña propios.</li>
+                            <li>• Registro de vacunas y pacientes de su sede.</li>
+                            <li>• Recepción, custodia y reporte de lotes de biológicos.</li>
                         </ul>
                     </div>
 
@@ -453,15 +389,15 @@
 
                     <div class="kpi-health-card" style="box-shadow:none;">
                         <div class="kpi-metric-row">
-                            <span class="kpi-metric-number">18</span>
-                            <span class="kpi-metric-unit">de 25 sedes habilitadas</span>
+                            <span class="kpi-metric-number">5</span>
+                            <span class="kpi-metric-unit">de 25 centros habilitados</span>
                         </div>
                         <div class="kpi-health-progress">
-                            <div class="kpi-progress-bar bar-blue" style="width: 72%;"></div>
+                            <div class="kpi-progress-bar bar-blue" style="width: 20%;"></div>
                         </div>
                         <div class="kpi-card-footer">
-                            <span class="text-muted">7 sedes disponibles</span>
-                            <span class="badge-health-pill badge-stable">72% ocupado</span>
+                            <span class="text-muted">20 cupos disponibles</span>
+                            <span class="badge-health-pill badge-stable">20% ocupado</span>
                         </div>
                     </div>
 
@@ -478,38 +414,16 @@
                         </div>
                     </div>
 
-                    <div class="health-table-container" style="margin-top:0;">
-                        <table class="health-table" id="tabla-altas">
-                            <thead>
-                                <tr>
-                                    <th>USUARIO</th>
-                                    <th>SEDE</th>
-                                    <th class="text-right">ESTADO</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody-altas">
-                                <tr>
-                                    <td>
-                                        <div class="patient-cell">
-                                            <span class="patient-name">Lic. Maritza Colmenares</span>
-                                            <span class="patient-id">USR-CAL-041</span>
-                                        </div>
-                                    </td>
-                                    <td>Ambulatorio Calabozo Centro</td>
-                                    <td class="text-right"><span class="badge-health-pill badge-optimal">Activo</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="patient-cell">
-                                            <span class="patient-name">Enf. Rómulo Betancourt</span>
-                                            <span class="patient-id">USR-TUC-017</span>
-                                        </div>
-                                    </td>
-                                    <td>Puesto de Salud Tucupido</td>
-                                    <td class="text-right"><span class="badge-health-pill badge-optimal">Activo</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="altas-sesion-list" id="lista-altas">
+                        <article class="alta-sesion-item">
+                            <div class="profile-identity-avatar">CS</div>
+                            <div class="alta-sesion-text">
+                                <span class="profile-identity-name">Ambulatorio Tipo II Calabozo Centro</span>
+                                <span class="profile-identity-mail">control.vacunacion@sivguarico.ve</span>
+                                <span class="alta-sesion-meta">Jefe: Dra. Yajaira Colmenares · 12/03/2026</span>
+                            </div>
+                            <span class="badge-health-pill badge-optimal">Activo</span>
+                        </article>
                     </div>
                 </aside>
             </div>
@@ -522,7 +436,7 @@
                     <span>MINISTERIO DEL PODER POPULAR PARA LA SALUD // SUBREGIÓN GUÁRICO</span>
                 </div>
                 <div class="footer-meta-info">
-                    <span>ALTA DE USUARIOS TIPO 2</span>
+                    <span>MÓDULO DE ADMINISTRACIÓN GENERAL</span>
                     <span>•</span>
                     <span class="font-mono">VERSIÓN 2.5 SALUD</span>
                 </div>
@@ -532,9 +446,21 @@
     </div>
 
     <script src="../js/ui.js"></script>
+    <script src="../js/perfiles.js"></script>
+    <script>
+        (function () {
+            'use strict';
+            if (window.SIV && typeof SIV.marcarNavegacionActiva === 'function') {
+                SIV.marcarNavegacionActiva('.health-nav-link');
+            }
+            if (window.SIV && typeof SIV.enlazarCierreSesion === 'function') {
+                SIV.enlazarCierreSesion();
+            }
+        })();
+    </script>
     <script>
         /* ==============================================================
-           ALTA DE USUARIO TIPO 2 (SOLO INTERFAZ)
+           ALTA DE CENTRO DE SALUD (TIPO 2) — SOLO INTERFAZ
            El alta definitiva y la validación contra la base de datos
            corresponden a la capa de Controladores (C) del MVC.
            ============================================================== */
@@ -542,67 +468,109 @@
             'use strict';
 
             var formulario = document.getElementById('form-usuario');
-            var cuerpoTabla = document.getElementById('tbody-altas');
-            var contador = { valor: 42 };
+            var listaAltas = document.getElementById('lista-altas');
+
+            function crear(etiqueta, clase, texto) {
+                var elemento = document.createElement(etiqueta);
+                if (clase) { elemento.className = clase; }
+                if (texto !== undefined && texto !== null) { elemento.textContent = texto; }
+                return elemento;
+            }
+
+            /* --- Tarjeta de confirmación en el resumen de altas --- */
+            function agregarAlta(centro, jefe) {
+                if (!listaAltas) { return; }
+
+                var item = crear('article', 'alta-sesion-item');
+                item.appendChild(crear('div', 'profile-identity-avatar', 'CS'));
+
+                var texto = crear('div', 'alta-sesion-text');
+                texto.appendChild(crear('span', 'profile-identity-name', centro.centro));
+                texto.appendChild(crear('span', 'profile-identity-mail', centro.correoCuenta));
+                texto.appendChild(crear('span', 'alta-sesion-meta',
+                    'Jefe: ' + jefe.nombre + ' · ' + centro.creado));
+                item.appendChild(texto);
+
+                item.appendChild(crear('span', 'badge-health-pill badge-optimal', 'Activo'));
+
+                listaAltas.insertBefore(item, listaAltas.firstChild);
+            }
 
             formulario.addEventListener('submit', function (evento) {
                 evento.preventDefault();
 
-                var nombres = document.getElementById('usr-nombres');
-                var cedula = document.getElementById('usr-cedula');
-                var correo = document.getElementById('usr-correo');
-                var clave = document.getElementById('usr-clave');
-                var sede = document.getElementById('usr-sede');
+                var centro = document.getElementById('usr-centro').value;
+                var municipio = document.getElementById('usr-municipio').value;
+                var correo = document.getElementById('usr-correo').value;
+                var clave = document.getElementById('usr-clave').value;
+                var fecha = document.getElementById('usr-fecha').value;
+
+                var jefeNombre = document.getElementById('usr-jefe-nombre').value;
+                var jefeCedula = document.getElementById('usr-jefe-cedula').value;
+                var jefeCorreo = document.getElementById('usr-jefe-correo').value;
+                var jefeClave = document.getElementById('usr-jefe-clave').value;
+
+                /* La fecha del formulario viene como AAAA-MM-DD (ISO); el
+                   almacén y la interfaz usan DD/MM/AAAA. */
+                var fechaAlta = fecha ? fecha.split('-').reverse().join('/') : '';
 
                 var faltantes = [];
-                if (!nombres.value.trim()) { faltantes.push('nombres y apellidos'); }
-                if (!cedula.value.trim()) { faltantes.push('cédula de identidad'); }
-                if (!correo.value.trim()) { faltantes.push('correo institucional'); }
-                if (clave.value.trim().length < 8) { faltantes.push('contraseña temporal de 8 caracteres o más'); }
-                if (!sede.value) { faltantes.push('sede física receptora'); }
+                if (!centro.trim()) { faltantes.push('centro de salud'); }
+                if (!correo.trim()) { faltantes.push('correo de la cuenta'); }
+                if (!clave.trim()) { faltantes.push('contraseña de la cuenta'); }
+                if (!jefeNombre.trim()) { faltantes.push('nombre del jefe'); }
+                if (!jefeCorreo.trim()) { faltantes.push('correo personal del jefe'); }
+                if (!jefeClave.trim()) { faltantes.push('contraseña personal del jefe'); }
 
-                if (faltantes.length > 0) {
-                    SIV.toast('Complete los campos obligatorios: ' + faltantes.join(', ') + '.', 'error', 5200, 'Formulario incompleto');
+                if (faltantes.length) {
+                    SIV.toast('Complete los campos obligatorios: ' + faltantes.join(', ') + '.', 'error');
                     return;
                 }
 
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.value.trim())) {
-                    SIV.toast('El correo institucional no tiene un formato válido.', 'error');
+                if (clave.trim().length < 8) {
+                    SIV.toast('La contraseña de la cuenta del centro debe tener 8 caracteres o más.', 'error');
                     return;
                 }
 
-                /* --- Alta simulada en la tabla de la sesión --- */
-                contador.valor += 1;
-                var idUsuario = 'USR-NUE-' + contador.valor;
-                var iniciales = nombres.value.trim().split(' ').slice(0, 2).map(function (p) {
-                    return p.charAt(0).toUpperCase();
-                }).join('');
+                if (jefeClave.trim().length < 8) {
+                    SIV.toast('La contraseña personal del jefe debe tener 8 caracteres o más.', 'error');
+                    return;
+                }
 
-                var fila = document.createElement('tr');
-                fila.innerHTML =
-                    '<td><div class="patient-cell">' +
-                    '<span class="patient-name">' + iniciales + '. ' + escapar(nombres.value.trim()) + '</span>' +
-                    '<span class="patient-id">' + idUsuario + '</span>' +
-                    '</div></td>' +
-                    '<td>' + escapar(sede.value) + '</td>' +
-                    '<td class="text-right"><span class="badge-health-pill badge-optimal">Activo</span></td>';
-                cuerpoTabla.insertBefore(fila, cuerpoTabla.firstChild);
+                var resultado = SIV.centros.crearCentro({
+                    centro: centro,
+                    municipio: municipio,
+                    correoCuenta: correo,
+                    claveCuenta: clave,
+                    nombreJefe: jefeNombre,
+                    cedulaJefe: jefeCedula,
+                    correoJefe: jefeCorreo,
+                    claveJefe: jefeClave,
+                    creado: fechaAlta
+                });
 
-                SIV.toast(
-                    'Cuenta ' + idUsuario + ' creada y habilitada para ' + nombres.value.trim() +
-                    '. Se envió la credencial temporal al correo institucional.',
-                    'success',
-                    5000,
-                    'Usuario registrado'
-                );
+                if (!resultado.ok) {
+                    SIV.toast(resultado.error, 'error', 5000, 'No se pudo crear la cuenta');
+                    return;
+                }
+
+                resultado.centro.correoCuenta = String(correo).trim().toLowerCase();
+                if (fecha) { resultado.centro.creado = fecha.split('-').reverse().join('/'); }
+
+                agregarAlta(resultado.centro, resultado.centro.perfiles[0]);
+
+                SIV.toast('Cuenta del centro y perfil del jefe creados correctamente.', 'success', 4500,
+                    'Alta registrada');
 
                 formulario.reset();
+                document.getElementById('usr-centro').focus();
             });
 
-            function escapar(texto) {
-                return String(texto)
-                    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-                    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+            if (typeof SIV.marcarNavegacionActiva === 'function') {
+                SIV.marcarNavegacionActiva('.health-nav-link');
+            }
+            if (typeof SIV.enlazarCierreSesion === 'function') {
+                SIV.enlazarCierreSesion();
             }
         })();
     </script>

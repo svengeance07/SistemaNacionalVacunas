@@ -2488,18 +2488,31 @@ body {
     width: 14px;
     height: 14px;
     transition: transform var(--trans-fast);
+    transform: rotate(180deg);
 }
 
+/* Plegada: la flecha apunta hacia abajo (invita a desplegar). */
 .demo-cred-toggle.is-collapsed svg {
-    transform: rotate(180deg);
+    transform: rotate(0deg);
 }
 
 .demo-cred-list {
     display: flex;
     flex-direction: column;
+    max-height: 58vh;
+    overflow-y: auto;
 }
 
 .demo-cred-list.is-collapsed {
+    display: none;
+}
+
+/* Plegada: sólo se ve la barra de título, sin borde inferior ni pista. */
+.demo-credentials.is-collapsed .demo-cred-header {
+    border-bottom: none;
+}
+
+.demo-credentials.is-collapsed .demo-cred-hint {
     display: none;
 }
 
@@ -2554,6 +2567,42 @@ body {
     background: #f8fafc;
     font-size: 0.66rem;
     color: var(--color-texto-muted);
+}
+
+/* Subgrupo con los perfiles personales de la cuenta de centro (tipo 2) */
+.demo-cred-subgroup {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-app);
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.demo-cred-subgroup-title {
+    padding: 7px 14px 5px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-texto-muted);
+}
+
+.demo-cred-item.is-sub {
+    padding: 8px 14px 8px 22px;
+    background: transparent;
+}
+
+.demo-cred-item.is-sub .demo-cred-role {
+    font-size: 0.68rem;
+}
+
+.demo-cred-sub-tag {
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: var(--salud-morado-claro);
+    color: var(--salud-morado-texto);
 }
 
 /* ==========================================================================
@@ -3183,5 +3232,709 @@ body {
     .table-filter-bar > .admin-select {
         flex: 0 0 auto;
         width: 100%;
+    }
+}
+
+/* ==========================================================================
+   19. PIE DE LA BARRA LATERAL: SESIÓN ACTIVA Y CIERRE DE SESIÓN
+   --------------------------------------------------------------------------
+   Bloque único al pie de la barra lateral. Muestra quién está operando
+   (perfil personal en tipo 2 / rol compartido en tipo 1) y el botón de
+   cierre de sesión.
+   ========================================================================== */
+
+.sidebar-footer-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-color);
+}
+
+.sidebar-session-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: var(--bg-app);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.sidebar-session-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    background: var(--color-primario-claro);
+    color: var(--color-primario-oscuro);
+    border: 2px solid #ffffff;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.sidebar-session-avatar.is-shared {
+    background: var(--salud-morado-claro);
+    color: var(--salud-morado-texto);
+}
+
+.sidebar-session-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.sidebar-session-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidebar-session-sub {
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--color-texto-muted);
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidebar-shared-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    align-self: flex-start;
+    margin-top: 2px;
+    padding: 3px 7px;
+    border-radius: var(--radius-sm);
+    background: var(--salud-morado-claro);
+    color: var(--salud-morado-texto);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.sidebar-shared-badge svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+}
+
+.sidebar-logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 9px 12px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--salud-rojo-texto);
+    font-family: inherit;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--trans-fast), border-color var(--trans-fast), color var(--trans-fast);
+}
+
+.sidebar-logout:hover {
+    background: var(--salud-rojo-claro);
+    border-color: var(--salud-rojo);
+    color: var(--salud-rojo);
+}
+
+.sidebar-logout svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+/* Los botones de la cabecera nunca parten su etiqueta en dos líneas:
+   el grupo completo baja de renglón cuando no cabe. */
+.header-btn-group .btn-health {
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   20. SELECCIÓN DE PERFIL PERSONAL (SEGUNDO PASO DEL ACCESO, TIPO 2)
+   --------------------------------------------------------------------------
+   Equivalente al selector de perfiles de Netflix: tras validar la cuenta
+   del centro de salud se elige el perfil personal y se validan el correo
+   y la contraseña propios de esa persona.
+   ========================================================================== */
+
+.auth-step {
+    display: none;
+}
+
+.auth-step.is-visible {
+    display: block;
+    animation: siv-aparece 0.28s ease-out;
+}
+
+@keyframes siv-aparece {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-step-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    margin-bottom: 2px;
+}
+
+.auth-step-subtitle {
+    font-size: 0.78rem;
+    color: var(--color-texto-muted);
+    margin-bottom: 14px;
+}
+
+.auth-step-center {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding: 9px 11px;
+    background: var(--color-primario-subtle);
+    border: 1px solid var(--color-primario-claro);
+    border-radius: var(--radius-md);
+    font-size: 0.74rem;
+    color: var(--color-primario-oscuro);
+    font-weight: 500;
+}
+
+.auth-step-center svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+.profile-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 10px 12px;
+    background: #ffffff;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    text-align: center;
+    font-family: inherit;
+    transition: border-color var(--trans-fast), background var(--trans-fast), transform var(--trans-fast),
+        box-shadow var(--trans-fast);
+}
+
+.profile-card:hover {
+    border-color: var(--color-primario);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.profile-card.is-selected {
+    border-color: var(--color-primario);
+    background: var(--color-primario-subtle);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+}
+
+.profile-card-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.02rem;
+    letter-spacing: 0.02em;
+    background: var(--color-primario-claro);
+    color: var(--color-primario-oscuro);
+    border: 2px solid #ffffff;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.profile-card.is-jefe .profile-card-avatar {
+    background: var(--salud-morado-claro);
+    color: var(--salud-morado-texto);
+}
+
+.profile-card-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    line-height: 1.25;
+}
+
+.profile-card-cargo {
+    font-size: 0.66rem;
+    color: var(--color-texto-muted);
+    line-height: 1.3;
+}
+
+.profile-card-tag {
+    margin-top: 2px;
+    padding: 2px 7px;
+    border-radius: var(--radius-sm);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: var(--bg-card-hover);
+    color: var(--color-texto-secundario);
+}
+
+.profile-card-tag.tag-jefe {
+    background: var(--salud-morado-claro);
+    color: var(--salud-morado-texto);
+}
+
+.profile-credentials-panel {
+    margin-top: 16px;
+    padding: 14px;
+    background: var(--bg-app);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+}
+
+.profile-credentials-panel .auth-field {
+    margin-bottom: 12px;
+}
+
+.profile-credentials-panel .auth-field:last-of-type {
+    margin-bottom: 14px;
+}
+
+.profile-picker-empty {
+    padding: 18px 14px;
+    text-align: center;
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-app);
+    font-size: 0.78rem;
+    color: var(--color-texto-muted);
+}
+
+.auth-step-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.auth-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 11px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--color-texto-secundario);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--trans-fast), border-color var(--trans-fast);
+}
+
+.auth-back-btn:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--color-primario);
+    color: var(--color-primario-oscuro);
+}
+
+.auth-back-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* ==========================================================================
+   21. GESTIÓN DE PERFILES DEL CENTRO DE SALUD (TIPO 2)
+   ========================================================================== */
+
+.profile-manage-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 15px;
+    background: var(--color-primario-subtle);
+    border: 1px solid var(--color-primario-claro);
+    border-radius: var(--radius-lg);
+    margin-bottom: 18px;
+}
+
+.profile-manage-banner-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-md);
+    background: var(--color-primario-claro);
+    color: var(--color-primario-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.profile-manage-banner-icon svg {
+    width: 19px;
+    height: 19px;
+}
+
+.profile-manage-banner-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.profile-manage-banner-title {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.profile-manage-banner-sub {
+    font-size: 0.73rem;
+    color: var(--color-texto-muted);
+}
+
+.profile-role-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--bg-card-hover);
+    color: var(--color-texto-secundario);
+    white-space: nowrap;
+}
+
+.profile-role-chip.is-jefe {
+    background: var(--salud-morado-claro);
+    color: var(--salud-morado-texto);
+}
+
+.profile-identity-cell {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+}
+
+.profile-identity-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-primario-claro);
+    color: var(--color-primario-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+}
+
+.profile-identity-avatar.is-jefe {
+    background: var(--salud-morado-claro);
+    color: var(--salud-morado-texto);
+}
+
+.profile-identity-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.profile-identity-name {
+    font-size: 0.79rem;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+.profile-identity-mail {
+    font-size: 0.68rem;
+    color: var(--color-texto-muted);
+    font-family: var(--font-mono);
+}
+
+.profile-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    background: var(--salud-ambar-claro);
+    border: 1px solid #fcd34d;
+    color: var(--salud-ambar-texto);
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+.profile-notice svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* Nota al pie del paso 2: recuerda quién administra los perfiles. */
+.auth-step-note {
+    display: block;
+    font-size: 0.68rem;
+    line-height: 1.45;
+    color: var(--color-texto-muted);
+    text-align: center;
+}
+
+/* Los contenedores con display propio ignoran el atributo `hidden` del
+   navegador; esta regla restablece su comportamiento. */
+.health-panel[hidden],
+.profile-notice[hidden],
+.profile-manage-banner[hidden] {
+    display: none;
+}
+
+/* ==========================================================================
+   22. PANEL DE ADMINISTRACIÓN GENERAL SEGMENTADO (TIPO 1)
+   --------------------------------------------------------------------------
+   El panel se lee por secciones apiladas de ancho completo para que la
+   información respire y se desplace hacia abajo, en lugar de saturar
+   las columnas laterales.
+   ========================================================================== */
+
+.admin-dashboard-sections {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* Cada sección es un ítem de grilla. Sin `min-width: 0`, el ancho mínimo
+   de la tabla (8 columnas con `nowrap`) ensancha la pista y desborda la
+   vista en pantallas medianas. */
+.admin-dashboard-sections > * {
+    min-width: 0;
+}
+
+.admin-dashboard-sections .health-table-container {
+    max-width: 100%;
+}
+
+.admin-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.admin-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-section-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    background: var(--color-primario-claro);
+    color: var(--color-primario-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.admin-section-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.admin-section-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    line-height: 1.25;
+}
+
+.admin-section-desc {
+    font-size: 0.72rem;
+    color: var(--color-texto-muted);
+    line-height: 1.3;
+}
+
+.admin-lot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.admin-lot-card {
+    padding: 15px;
+    background: var(--bg-app);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.admin-lot-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.admin-lot-card-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    line-height: 1.3;
+}
+
+.admin-lot-card-sub {
+    font-size: 0.69rem;
+    color: var(--color-texto-muted);
+    margin-top: 2px;
+}
+
+.admin-lot-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.admin-lot-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.admin-lot-meta-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-texto-muted);
+}
+
+.admin-lot-meta-value {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    font-family: var(--font-mono);
+}
+
+.admin-network-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.admin-network-name {
+    font-size: 0.79rem;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+.admin-network-sub {
+    font-size: 0.68rem;
+    color: var(--color-texto-muted);
+}
+
+.admin-network-profiles {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--color-primario-oscuro);
+    font-family: var(--font-mono);
+}
+
+/* Altas de la sesión: lista compacta para el panel lateral estrecho */
+.altas-sesion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alta-sesion-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--bg-app);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.alta-sesion-item .profile-identity-avatar {
+    flex-shrink: 0;
+}
+
+.alta-sesion-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.alta-sesion-text .profile-identity-name,
+.alta-sesion-text .profile-identity-mail {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.alta-sesion-meta {
+    font-size: 0.68rem;
+    color: var(--color-texto-muted);
+    line-height: 1.35;
+}
+
+.alta-sesion-item .badge-health-pill {
+    flex-shrink: 0;
+}
+
+@media (max-width: 560px) {
+    .admin-lot-meta {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

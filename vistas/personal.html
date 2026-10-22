@@ -19,7 +19,8 @@
 
         <!-- BARRA LATERAL MÉDICA -->
         <aside class="health-sidebar" id="health-sidebar">
-            <div>
+            <div class="health-sidebar-inner">
+
                 <div class="sidebar-brand">
                     <div class="brand-cross-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -29,12 +30,13 @@
                     </div>
                     <div class="brand-text-block">
                         <span class="brand-title">PUYASO-GUÁRICO</span>
-                        <span class="brand-subtitle">Sistema en desarrollo</span>
+                        <span class="brand-subtitle">Control de Vacunación</span>
                     </div>
                 </div>
 
+                <nav class="health-nav" aria-label="Navegación principal">
 
-                <nav class="health-nav">
+                    <span class="nav-group-label">Operación del Centro</span>
                     <ul class="health-nav-list">
                         <li class="health-nav-item">
                             <a href="centro.html" class="health-nav-link" id="nav-dashboard">
@@ -51,9 +53,7 @@
                             <a href="inventario.html" class="health-nav-link" id="nav-inventario">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="m7.5 4.27 9 5.15"></path>
-                                    <path
-                                        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z">
-                                    </path>
+                                    <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path>
                                     <path d="m3.3 7 8.7 5 8.7-5"></path>
                                     <path d="M12 22V12"></path>
                                 </svg>
@@ -72,7 +72,41 @@
                             </a>
                         </li>
                     </ul>
+
+                    <span class="nav-group-label">Cuenta del Centro</span>
+                    <ul class="health-nav-list">
+                        <li class="health-nav-item">
+                            <a href="perfiles.html" class="health-nav-link" id="nav-perfiles">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span>Perfiles del Centro</span>
+                            </a>
+                        </li>
+                    </ul>
                 </nav>
+
+                <div class="sidebar-footer-block">
+                    <div class="sidebar-session-card">
+                        <div class="sidebar-session-avatar" id="sesion-avatar">CV</div>
+                        <div class="sidebar-session-text">
+                            <span class="sidebar-session-name" id="sesion-nombre">Control de Vacunación</span>
+                            <span class="sidebar-session-sub" id="sesion-cargo">Cuenta del centro</span>
+                        </div>
+                    </div>
+                    <button type="button" class="sidebar-logout" data-siv-logout="login.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Cerrar sesión</span>
+                    </button>
+                </div>
             </div>
         </aside>
 
@@ -81,6 +115,13 @@
 
             <header class="health-header">
                 <div class="header-left-col">
+                    <div class="health-breadcrumbs">
+                        <span>SIV-GUÁRICO</span>
+                        <span>/</span>
+                        <span>Control de Vacunación</span>
+                        <span>/</span>
+                        <span class="text-primary">Personal</span>
+                    </div>
                     <h1 class="health-main-heading">Directorio de Enfermería y Brigadas en Terreno</h1>
                 </div>
 
@@ -158,7 +199,7 @@
                 </div>
 
                 <div class="staff-grid" id="staff-grid">
-                    <!-- Tarjeta 1 -->
+                    <!-- Perfil del personal en ejercicio -->
                     <div class="staff-card">
                         <div>
                             <div class="staff-header">
@@ -170,83 +211,126 @@
                             </div>
                             <div class="staff-info-list">
                                 <div class="staff-info-item">
-                                    <span>Direccion:</span>
+                                    <span>Dirección:</span>
                                     <strong>Juan Germán Roscio</strong>
                                 </div>
                                 <div class="staff-info-item">
-                                    <span>Dosis Aplicadas este mes:</span>
+                                    <span>Dosis aplicadas este mes:</span>
                                     <strong class="text-primary">142 dosis</strong>
                                 </div>
                                 <div class="staff-info-item">
                                     <span>Pacientes atendidos:</span>
-                                    <button class="btn-health btn-health-sm">Ver aqui</button>
+                                    <button class="btn-health btn-health-sm" type="button">Ver aquí</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                        <!-- Tarjeta 1 -->
-                        <div class="staff-card">
-                            <div>
-                                <div class="staff-header">
-                                    <div class="staff-avatar">MR</div>
-                                    <div>
-                                        <div class="staff-name">Lic. Marlene Requena</div>
-                                        <div class="staff-role">Supervisora de Inmunización</div>
-                                    </div>
-                                </div>
-                                <div class="staff-info-list">
-                                    <div class="staff-info-item">
-                                        <span>Direccion:</span>
-                                        <strong>Juan Germán Roscio</strong>
-                                    </div>
-                                    <div class="staff-info-item">
-                                        <span>Dosis Aplicadas este mes:</span>
-                                        <strong class="text-primary">142 dosis</strong>
-                                    </div>
-                                    <div class="staff-info-item">
-                                        <span>Pacientes atendidos:</span>
-                                        <button class="btn-health btn-health-sm">Ver aqui</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                            <!-- Tarjeta 1 -->
-                            <div class="staff-card">
+                    <div class="staff-card">
+                        <div>
+                            <div class="staff-header">
+                                <div class="staff-avatar">JS</div>
                                 <div>
-                                    <div class="staff-header">
-                                        <div class="staff-avatar">MR</div>
-                                        <div>
-                                            <div class="staff-name">Lic. Marlene Requena</div>
-                                            <div class="staff-role">Supervisora de Inmunización</div>
-                                        </div>
-                                    </div>
-                                    <div class="staff-info-list">
-                                        <div class="staff-info-item">
-                                            <span>Direccion:</span>
-                                            <strong>Juan Germán Roscio</strong>
-                                        </div>
-                                        <div class="staff-info-item">
-                                            <span>Dosis Aplicadas este mes:</span>
-                                            <strong class="text-primary">142 dosis</strong>
-                                        </div>
-                                        <div class="staff-info-item">
-                                            <span>Pacientes atendidos:</span>
-                                            <button class="btn-health btn-health-sm">Ver aqui</button>
-                                        </div>
-                                    </div>
+                                    <div class="staff-name">Enf. Jonathan Silva</div>
+                                    <div class="staff-role">Vacunador de Brigada</div>
                                 </div>
+                            </div>
+                            <div class="staff-info-list">
+                                <div class="staff-info-item">
+                                    <span>Dirección:</span>
+                                    <strong>Francisco de Miranda</strong>
+                                </div>
+                                <div class="staff-info-item">
+                                    <span>Dosis aplicadas este mes:</span>
+                                    <strong class="text-primary">98 dosis</strong>
+                                </div>
+                                <div class="staff-info-item">
+                                    <span>Pacientes atendidos:</span>
+                                    <button class="btn-health btn-health-sm" type="button">Ver aquí</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="health-table-footer">
-                        <span>Directorio oficial del Colegio de Profesionales de la Enfermería de Guárico</span>
-                        <a href="centro.html" class="text-primary font-semibold">&larr; Volver al Panel General</a>
+                    <div class="staff-card">
+                        <div>
+                            <div class="staff-header">
+                                <div class="staff-avatar">YP</div>
+                                <div>
+                                    <div class="staff-name">Lic. Yaritza Pantoja</div>
+                                    <div class="staff-role">Enfermera de Sala PAI</div>
+                                </div>
+                            </div>
+                            <div class="staff-info-list">
+                                <div class="staff-info-item">
+                                    <span>Dirección:</span>
+                                    <strong>Leonardo Infante</strong>
+                                </div>
+                                <div class="staff-info-item">
+                                    <span>Dosis aplicadas este mes:</span>
+                                    <strong class="text-primary">117 dosis</strong>
+                                </div>
+                                <div class="staff-info-item">
+                                    <span>Pacientes atendidos:</span>
+                                    <button class="btn-health btn-health-sm" type="button">Ver aquí</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <div class="health-table-footer">
+                    <span>Directorio oficial del Colegio de Profesionales de la Enfermería de Guárico</span>
+                    <a href="centro.html" class="text-primary font-semibold">&larr; Volver al Panel General</a>
+                </div>
             </section>
+
+            <footer class="health-footer">
+                <div class="footer-health-brand">
+                    <svg class="icon-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 4v16m-8-8h16"></path>
+                    </svg>
+                    <span>MINISTERIO DEL PODER POPULAR PARA LA SALUD // SUBREGIÓN GUÁRICO</span>
+                </div>
+                <div class="footer-meta-info">
+                    <span>SALA SITUACIONAL PAI</span>
+                    <span>•</span>
+                    <span>PROTOCOLO CLÍNICO SEGURO</span>
+                    <span>•</span>
+                    <span class="font-mono">VERSIÓN 2.5 SALUD</span>
+                </div>
+            </footer>
 
         </main>
     </div>
+    <script src="js/ui.js"></script>
+    <script src="js/perfiles.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            if (window.SIV && typeof SIV.marcarNavegacionActiva === 'function') {
+                SIV.marcarNavegacionActiva('.health-nav-link');
+            }
+            if (window.SIV && typeof SIV.enlazarCierreSesion === 'function') {
+                SIV.enlazarCierreSesion();
+            }
+
+            var sesion = window.SIV && SIV.centros ? SIV.centros.sesion() : null;
+            if (!sesion) { return; }
+
+            var avatar = document.getElementById('sesion-avatar');
+            var nombre = document.getElementById('sesion-nombre');
+            var cargo = document.getElementById('sesion-cargo');
+
+            if (avatar) { avatar.textContent = sesion.iniciales || 'CV'; }
+            if (nombre) { nombre.textContent = sesion.nombre || 'Perfil del centro'; }
+            if (cargo) {
+                cargo.textContent = (sesion.esJefe ? 'Jefe del centro' : 'Trabajador') +
+                    ' · ' + (sesion.centro || '');
+            }
+        })();
+    </script>
 </body>
 
 </html>

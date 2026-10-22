@@ -24,8 +24,8 @@
     <div class="health-layout">
 
         <aside class="health-sidebar" id="health-sidebar">
+            <div class="health-sidebar-inner">
 
-            <div>
                 <div class="sidebar-brand">
                     <div class="brand-cross-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -35,12 +35,13 @@
                     </div>
                     <div class="brand-text-block">
                         <span class="brand-title">PUYASO-GUÁRICO</span>
-                        <span class="brand-subtitle">Sistema en desarrollo</span>
+                        <span class="brand-subtitle">Control de Vacunación</span>
                     </div>
                 </div>
 
                 <nav class="health-nav" aria-label="Navegación principal">
 
+                    <span class="nav-group-label">Operación del Centro</span>
                     <ul class="health-nav-list">
                         <li class="health-nav-item active">
                             <a href="centro.html" class="health-nav-link" id="nav-dashboard">
@@ -53,10 +54,8 @@
                                 <span>Panel General</span>
                             </a>
                         </li>
-                        <!-- Enlace: Inventario de vacunas (con alerta de 4 lotes) -->
                         <li class="health-nav-item">
                             <a href="inventario.html" class="health-nav-link" id="nav-inventario">
-                                <!-- Icono: caja / paquete -->
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="m7.5 4.27 9 5.15"></path>
                                     <path
@@ -68,10 +67,8 @@
                                 <span>Inventario</span>
                             </a>
                         </li>
-                        <!-- Enlace: Personal y brigadas de vacunación -->
                         <li class="health-nav-item">
                             <a href="personal.html" class="health-nav-link" id="nav-vacunadores">
-                                <!-- Icono: grupo de personas -->
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="9" cy="7" r="4"></circle>
@@ -82,7 +79,41 @@
                             </a>
                         </li>
                     </ul>
+
+                    <span class="nav-group-label">Cuenta del Centro</span>
+                    <ul class="health-nav-list">
+                        <li class="health-nav-item">
+                            <a href="perfiles.html" class="health-nav-link" id="nav-perfiles">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span>Perfiles del Centro</span>
+                            </a>
+                        </li>
+                    </ul>
                 </nav>
+
+                <div class="sidebar-footer-block">
+                    <div class="sidebar-session-card">
+                        <div class="sidebar-session-avatar" id="sesion-avatar">CV</div>
+                        <div class="sidebar-session-text">
+                            <span class="sidebar-session-name" id="sesion-nombre">Control de Vacunación</span>
+                            <span class="sidebar-session-sub" id="sesion-cargo">Cuenta del centro</span>
+                        </div>
+                    </div>
+                    <button type="button" class="sidebar-logout" data-siv-logout="login.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Cerrar sesión</span>
+                    </button>
+                </div>
             </div>
         </aside>
 
@@ -91,6 +122,13 @@
             <header class="health-header">
 
                 <div class="header-left-col">
+                    <div class="health-breadcrumbs">
+                        <span>SIV-GUÁRICO</span>
+                        <span>/</span>
+                        <span>Control de Vacunación</span>
+                        <span>/</span>
+                        <span class="text-primary">Panel General</span>
+                    </div>
                     <h1 class="health-main-heading">Centro de Control de Inmunización y Epidemiología</h1>
                 </div>
 
@@ -130,7 +168,8 @@
                     <div class="kpi-metric-row">
                         <span class="kpi-metric-number">150</span>
                         <span class="kpi-metric-unit">dosis administradas</span>
-
+                        <a href="personal.html" class="kpi-footer-link">Ver personal &rarr;</a>
+                    </div>
                 </article>
 
                 <!-- ---------- KPI 2: ALERTAS DE LOTES Y CADUCIDAD (rojo) ---------- -->
@@ -624,277 +663,275 @@
                 </a>
             </aside>
 
-    </div>
+            <!-- ==============================================================
+                         4. TABLA CLÍNICA: ÚLTIMAS DOSIS APLICADAS
+                         - .health-table-container permite scroll horizontal en
+                           pantallas angostas sin romper el diseño.
+                         - La columna ACCIONES se alinea a la derecha con .text-right.
+                         ============================================================== -->
+            <section class="health-table-panel" id="ultimos-registros">
 
-    <!-- ==============================================================
-                 4. TABLA CLÍNICA: ÚLTIMAS DOSIS APLICADAS
-                 - .health-table-container permite scroll horizontal en
-                   pantallas angostas sin romper el diseño.
-                 - La columna ACCIONES se alinea a la derecha con .text-right.
-                 ============================================================== -->
-    <section class="health-table-panel" id="ultimos-registros">
+                <!-- Cabecera de la tabla: título + buscador + exportar -->
+                <div class="health-panel-header">
+                    <div class="panel-title-with-icon">
+                        <!-- Icono: documento -->
+                        <svg class="icon-22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                        <div>
+                            <h2 class="panel-heading">Registro Sanitario de Inmunizaciones en Tiempo Real</h2>
+                            <p class="panel-subheading">Historial de administración de vacunas en la red asistencial de
+                                Guárico</p>
+                        </div>
+                    </div>
 
-        <!-- Cabecera de la tabla: título + buscador + exportar -->
-        <div class="health-panel-header">
-            <div class="panel-title-with-icon">
-                <!-- Icono: documento -->
-                <svg class="icon-22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                </svg>
-                <div>
-                    <h2 class="panel-heading">Registro Sanitario de Inmunizaciones en Tiempo Real</h2>
-                    <p class="panel-subheading">Historial de administración de vacunas en la red asistencial de
-                        Guárico</p>
+                    <div class="table-filter-bar">
+                        <!-- Buscador: el borde se ilumina al enfocar (:focus-within) -->
+                        <div class="health-search-box">
+                            <!-- Icono: lupa -->
+                            <svg class="icon-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <input type="text" placeholder="Buscar por Paciente, Cédula o Vacuna..." id="search-patients"
+                                aria-label="Buscar paciente">
+                        </div>
+                        <!-- Botón exportar planilla -->
+                        <button class="btn-health btn-health-outline" id="btn-export-records" type="button">
+                            <!-- Icono: descarga -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span>Exportar Planilla</span>
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="table-filter-bar">
-                <!-- Buscador: el borde se ilumina al enfocar (:focus-within) -->
-                <div class="health-search-box">
-                    <!-- Icono: lupa -->
-                    <svg class="icon-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                    <input type="text" placeholder="Buscar por Paciente, Cédula o Vacuna..." id="search-patients"
-                        aria-label="Buscar paciente">
+                <!-- Contenedor con scroll horizontal -->
+                <div class="health-table-container">
+                    <table class="health-table" id="tabla-pacientes">
+                        <!-- Encabezados de columna -->
+                        <thead>
+                            <tr>
+                                <th>ESTADO</th>
+                                <th>HORA REGISTRO</th>
+                                <th>ID FICHA</th>
+                                <th>PACIENTE / IDENTIFICACIÓN</th>
+                                <th>GRUPO ETARIO</th>
+                                <th>BIOLÓGICO Y DOSIS</th>
+                                <th>LOTE</th>
+                                <th>CENTRO DE SALUD</th>
+                                <th>ENFERMERO(A) RESPONSABLE</th>
+                                <th class="text-right">ACCIONES</th>
+                            </tr>
+                        </thead>
+
+                        <!-- Filas de datos.
+                                     Clases clave por celda:
+                                       .health-status-chip + chip-verified / chip-transit -> estado
+                                       .patient-cell (nombre + cédula apilados)
+                                       .age-group-tag + tag-pediatric / tag-senior -> grupo etario
+                                       .vaccine-col (vacuna + esquema apilados)
+                                       .btn-table-action -> botón cuadrado de imprimir -->
+                        <tbody>
+                            <!-- Registro 1 -->
+                            <tr>
+                                <td><span class="health-status-chip chip-verified">● Verificado</span></td>
+                                <td class="font-mono text-primary">18:23:45</td>
+                                <td class="font-mono text-muted">#VAC-GUA-98421</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">Carlos A. Rondón Mendoza</span>
+                                        <span class="patient-id">V-28.452.190</span>
+                                    </div>
+                                </td>
+                                <td><span class="age-group-tag">22 años (Adulto)</span></td>
+                                <td>
+                                    <div class="vaccine-col">
+                                        <span class="vaccine-brand">Fiebre Amarilla</span>
+                                        <span class="vaccine-dose-scheme">Dosis Única (0.5ml)</span>
+                                    </div>
+                                </td>
+                                <td><span class="font-mono text-primary">FA-2026-X8</span></td>
+                                <td>Hospital Dr. Israel Ranuárez Balza</td>
+                                <td>Lic. Marlene Requena</td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Imprimir Carnet de Vacunación">
+                                        <!-- Icono: impresora -->
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                            <path
+                                                d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
+                                            </path>
+                                            <rect x="6" y="14" width="12" height="8"></rect>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Registro 2 (paciente pediátrico -> .tag-pediatric) -->
+                            <tr>
+                                <td><span class="health-status-chip chip-verified">● Verificado</span></td>
+                                <td class="font-mono text-primary">18:21:10</td>
+                                <td class="font-mono text-muted">#VAC-GUA-98420</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">Sofía Valentina Meza C.</span>
+                                        <span class="patient-id">V-34.908.112 (Menor)</span>
+                                    </div>
+                                </td>
+                                <td><span class="age-group-tag tag-pediatric">4 meses (Lactante)</span></td>
+                                <td>
+                                    <div class="vaccine-col">
+                                        <span class="vaccine-brand">Pentavalente Acelular</span>
+                                        <span class="vaccine-dose-scheme">2da Dosis Refuerzo</span>
+                                    </div>
+                                </td>
+                                <td><span class="font-mono text-primary">PV-2025-09</span></td>
+                                <td>Ambulatorio Tipo II Calabozo</td>
+                                <td>Enf. Jonathan Silva</td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Imprimir Carnet">
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                            <path
+                                                d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
+                                            </path>
+                                            <rect x="6" y="14" width="12" height="8"></rect>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Registro 3 (adulto mayor -> .tag-senior) -->
+                            <tr>
+                                <td><span class="health-status-chip chip-verified">● Verificado</span></td>
+                                <td class="font-mono text-primary">18:17:34</td>
+                                <td class="font-mono text-muted">#VAC-GUA-98419</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">Guillermo D. Castillo</span>
+                                        <span class="patient-id">V-14.882.301</span>
+                                    </div>
+                                </td>
+                                <td><span class="age-group-tag tag-senior">68 años (Tercera Edad)</span></td>
+                                <td>
+                                    <div class="vaccine-col">
+                                        <span class="vaccine-brand">Influenza Estacional</span>
+                                        <span class="vaccine-dose-scheme">Dosis Anual Adulto</span>
+                                    </div>
+                                </td>
+                                <td><span class="font-mono text-primary">INF-2026-G1</span></td>
+                                <td>CDI Simón Bolívar (V. de la Pascua)</td>
+                                <td>Lic. Yaritza Pantoja</td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Imprimir Carnet">
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                            <path
+                                                d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
+                                            </path>
+                                            <rect x="6" y="14" width="12" height="8"></rect>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Registro 4 -->
+                            <tr>
+                                <td><span class="health-status-chip chip-verified">● Verificado</span></td>
+                                <td class="font-mono text-primary">18:14:52</td>
+                                <td class="font-mono text-muted">#VAC-GUA-98418</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">Mariángel J. Gómez Altuve</span>
+                                        <span class="patient-id">V-31.205.674</span>
+                                    </div>
+                                </td>
+                                <td><span class="age-group-tag">19 años (Joven)</span></td>
+                                <td>
+                                    <div class="vaccine-col">
+                                        <span class="vaccine-brand">Toxoide Tetánico Diftérico</span>
+                                        <span class="vaccine-dose-scheme">1er Refuerzo</span>
+                                    </div>
+                                </td>
+                                <td><span class="font-mono text-primary">TT-2025-88</span></td>
+                                <td>Puesto de Salud Tucupido</td>
+                                <td>Enf. Carlos Guache</td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Imprimir Carnet">
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                            <path
+                                                d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
+                                            </path>
+                                            <rect x="6" y="14" width="12" height="8"></rect>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Registro 5 (pendiente de sincronizar -> .chip-transit, hora en ámbar) -->
+                            <tr>
+                                <td><span class="health-status-chip chip-transit">● En Sincronización</span></td>
+                                <td class="font-mono text-warning">18:10:05</td>
+                                <td class="font-mono text-muted">#VAC-GUA-98417</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">José Arnaldo Ledezma</span>
+                                        <span class="patient-id">V-24.119.504</span>
+                                    </div>
+                                </td>
+                                <td><span class="age-group-tag">34 años (Adulto)</span></td>
+                                <td>
+                                    <div class="vaccine-col">
+                                        <span class="vaccine-brand">Hepatitis B Adulto</span>
+                                        <span class="vaccine-dose-scheme">3ra Dosis (Fin Esquema)</span>
+                                    </div>
+                                </td>
+                                <td><span class="font-mono text-primary">HB-2026-118</span></td>
+                                <td>Brigada Fluvial San José de Unare</td>
+                                <td>Lic. Ramón Arveláez</td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Imprimir Carnet">
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                            <path
+                                                d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
+                                            </path>
+                                            <rect x="6" y="14" width="12" height="8"></rect>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <!-- Botón exportar planilla -->
-                <button class="btn-health btn-health-outline" id="btn-export-records" type="button">
-                    <!-- Icono: descarga -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    <span>Exportar Planilla</span>
-                </button>
-            </div>
-        </div>
 
-        <!-- Contenedor con scroll horizontal -->
-        <div class="health-table-container">
-            <table class="health-table" id="tabla-pacientes">
-                <!-- Encabezados de columna -->
-                <thead>
-                    <tr>
-                        <th>ESTADO</th>
-                        <th>HORA REGISTRO</th>
-                        <th>ID FICHA</th>
-                        <th>PACIENTE / IDENTIFICACIÓN</th>
-                        <th>GRUPO ETARIO</th>
-                        <th>BIOLÓGICO Y DOSIS</th>
-                        <th>LOTE</th>
-                        <th>CENTRO DE SALUD</th>
-                        <th>ENFERMERO(A) RESPONSABLE</th>
-                        <th class="text-right">ACCIONES</th>
-                    </tr>
-                </thead>
-
-                <!-- Filas de datos.
-                             Clases clave por celda:
-                               .health-status-chip + chip-verified / chip-transit -> estado
-                               .patient-cell (nombre + cédula apilados)
-                               .age-group-tag + tag-pediatric / tag-senior -> grupo etario
-                               .vaccine-col (vacuna + esquema apilados)
-                               .btn-table-action -> botón cuadrado de imprimir -->
-                <tbody>
-                    <!-- Registro 1 -->
-                    <tr>
-                        <td><span class="health-status-chip chip-verified">● Verificado</span></td>
-                        <td class="font-mono text-primary">18:23:45</td>
-                        <td class="font-mono text-muted">#VAC-GUA-98421</td>
-                        <td>
-                            <div class="patient-cell">
-                                <span class="patient-name">Carlos A. Rondón Mendoza</span>
-                                <span class="patient-id">V-28.452.190</span>
-                            </div>
-                        </td>
-                        <td><span class="age-group-tag">22 años (Adulto)</span></td>
-                        <td>
-                            <div class="vaccine-col">
-                                <span class="vaccine-brand">Fiebre Amarilla</span>
-                                <span class="vaccine-dose-scheme">Dosis Única (0.5ml)</span>
-                            </div>
-                        </td>
-                        <td><span class="font-mono text-primary">FA-2026-X8</span></td>
-                        <td>Hospital Dr. Israel Ranuárez Balza</td>
-                        <td>Lic. Marlene Requena</td>
-                        <td class="text-right">
-                            <button class="btn-table-action" type="button" title="Imprimir Carnet de Vacunación">
-                                <!-- Icono: impresora -->
-                                <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
-                                    <path
-                                        d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
-                                    </path>
-                                    <rect x="6" y="14" width="12" height="8"></rect>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-
-                    <!-- Registro 2 (paciente pediátrico -> .tag-pediatric) -->
-                    <tr>
-                        <td><span class="health-status-chip chip-verified">● Verificado</span></td>
-                        <td class="font-mono text-primary">18:21:10</td>
-                        <td class="font-mono text-muted">#VAC-GUA-98420</td>
-                        <td>
-                            <div class="patient-cell">
-                                <span class="patient-name">Sofía Valentina Meza C.</span>
-                                <span class="patient-id">V-34.908.112 (Menor)</span>
-                            </div>
-                        </td>
-                        <td><span class="age-group-tag tag-pediatric">4 meses (Lactante)</span></td>
-                        <td>
-                            <div class="vaccine-col">
-                                <span class="vaccine-brand">Pentavalente Acelular</span>
-                                <span class="vaccine-dose-scheme">2da Dosis Refuerzo</span>
-                            </div>
-                        </td>
-                        <td><span class="font-mono text-primary">PV-2025-09</span></td>
-                        <td>Ambulatorio Tipo II Calabozo</td>
-                        <td>Enf. Jonathan Silva</td>
-                        <td class="text-right">
-                            <button class="btn-table-action" type="button" title="Imprimir Carnet">
-                                <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
-                                    <path
-                                        d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
-                                    </path>
-                                    <rect x="6" y="14" width="12" height="8"></rect>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-
-                    <!-- Registro 3 (adulto mayor -> .tag-senior) -->
-                    <tr>
-                        <td><span class="health-status-chip chip-verified">● Verificado</span></td>
-                        <td class="font-mono text-primary">18:17:34</td>
-                        <td class="font-mono text-muted">#VAC-GUA-98419</td>
-                        <td>
-                            <div class="patient-cell">
-                                <span class="patient-name">Guillermo D. Castillo</span>
-                                <span class="patient-id">V-14.882.301</span>
-                            </div>
-                        </td>
-                        <td><span class="age-group-tag tag-senior">68 años (Tercera Edad)</span></td>
-                        <td>
-                            <div class="vaccine-col">
-                                <span class="vaccine-brand">Influenza Estacional</span>
-                                <span class="vaccine-dose-scheme">Dosis Anual Adulto</span>
-                            </div>
-                        </td>
-                        <td><span class="font-mono text-primary">INF-2026-G1</span></td>
-                        <td>CDI Simón Bolívar (V. de la Pascua)</td>
-                        <td>Lic. Yaritza Pantoja</td>
-                        <td class="text-right">
-                            <button class="btn-table-action" type="button" title="Imprimir Carnet">
-                                <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
-                                    <path
-                                        d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
-                                    </path>
-                                    <rect x="6" y="14" width="12" height="8"></rect>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-
-                    <!-- Registro 4 -->
-                    <tr>
-                        <td><span class="health-status-chip chip-verified">● Verificado</span></td>
-                        <td class="font-mono text-primary">18:14:52</td>
-                        <td class="font-mono text-muted">#VAC-GUA-98418</td>
-                        <td>
-                            <div class="patient-cell">
-                                <span class="patient-name">Mariángel J. Gómez Altuve</span>
-                                <span class="patient-id">V-31.205.674</span>
-                            </div>
-                        </td>
-                        <td><span class="age-group-tag">19 años (Joven)</span></td>
-                        <td>
-                            <div class="vaccine-col">
-                                <span class="vaccine-brand">Toxoide Tetánico Diftérico</span>
-                                <span class="vaccine-dose-scheme">1er Refuerzo</span>
-                            </div>
-                        </td>
-                        <td><span class="font-mono text-primary">TT-2025-88</span></td>
-                        <td>Puesto de Salud Tucupido</td>
-                        <td>Enf. Carlos Guache</td>
-                        <td class="text-right">
-                            <button class="btn-table-action" type="button" title="Imprimir Carnet">
-                                <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
-                                    <path
-                                        d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
-                                    </path>
-                                    <rect x="6" y="14" width="12" height="8"></rect>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-
-                    <!-- Registro 5 (pendiente de sincronizar -> .chip-transit, hora en ámbar) -->
-                    <tr>
-                        <td><span class="health-status-chip chip-transit">● En Sincronización</span></td>
-                        <td class="font-mono text-warning">18:10:05</td>
-                        <td class="font-mono text-muted">#VAC-GUA-98417</td>
-                        <td>
-                            <div class="patient-cell">
-                                <span class="patient-name">José Arnaldo Ledezma</span>
-                                <span class="patient-id">V-24.119.504</span>
-                            </div>
-                        </td>
-                        <td><span class="age-group-tag">34 años (Adulto)</span></td>
-                        <td>
-                            <div class="vaccine-col">
-                                <span class="vaccine-brand">Hepatitis B Adulto</span>
-                                <span class="vaccine-dose-scheme">3ra Dosis (Fin Esquema)</span>
-                            </div>
-                        </td>
-                        <td><span class="font-mono text-primary">HB-2026-118</span></td>
-                        <td>Brigada Fluvial San José de Unare</td>
-                        <td>Lic. Ramón Arveláez</td>
-                        <td class="text-right">
-                            <button class="btn-table-action" type="button" title="Imprimir Carnet">
-                                <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
-                                    <path
-                                        d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
-                                    </path>
-                                    <rect x="6" y="14" width="12" height="8"></rect>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Pie de tabla: contador de registros + paginación -->
-        <div class="health-table-footer">
-            <span>Mostrando <strong>5</strong> de <strong>2,845</strong> pacientes atendidos hoy en
-                Guárico</span>
-            <!-- Paginación: .active = página actual; disabled = sin página previa -->
-            <div class="pagination-controls">
-                <button class="pagination-btn" type="button" disabled>&laquo; Anterior</button>
-                <button class="pagination-btn active" type="button">1</button>
-                <button class="pagination-btn" type="button">2</button>
-                <button class="pagination-btn" type="button">3</button>
-                <button class="pagination-btn" type="button">Siguiente &raquo;</button>
-            </div>
-        </div>
-    </section>
+                <!-- Pie de tabla: contador de registros + paginación -->
+                <div class="health-table-footer">
+                    <span>Mostrando <strong>5</strong> de <strong>2,845</strong> pacientes atendidos hoy en
+                        Guárico</span>
+                    <!-- Paginación: .active = página actual; disabled = sin página previa -->
+                    <div class="pagination-controls">
+                        <button class="pagination-btn" type="button" disabled>&laquo; Anterior</button>
+                        <button class="pagination-btn active" type="button">1</button>
+                        <button class="pagination-btn" type="button">2</button>
+                        <button class="pagination-btn" type="button">3</button>
+                        <button class="pagination-btn" type="button">Siguiente &raquo;</button>
+                    </div>
+                </div>
+            </section>
 
     <!-- ==============================================================
                  5. PIE DE PÁGINA INSTITUCIONAL (.health-footer)
@@ -919,6 +956,40 @@
 
     </main>
     </div>
+    <script src="js/ui.js"></script>
+    <script src="js/perfiles.js"></script>
+    <script>
+        /* ==================================================================
+           CONTEXTO DE LA SESIÓN (SOLO INTERFAZ)
+           El tipo 2 opera con un perfil personal dentro de la cuenta del
+           centro de salud. Si no hay sesión iniciada se muestra un estado
+           neutro para permitir la navegación directa de la vista.
+           ================================================================== */
+        (function () {
+            'use strict';
+
+            if (window.SIV && typeof SIV.marcarNavegacionActiva === 'function') {
+                SIV.marcarNavegacionActiva('.health-nav-link');
+            }
+            if (window.SIV && typeof SIV.enlazarCierreSesion === 'function') {
+                SIV.enlazarCierreSesion();
+            }
+
+            var sesion = window.SIV && SIV.centros ? SIV.centros.sesion() : null;
+            if (!sesion) { return; }
+
+            var avatar = document.getElementById('sesion-avatar');
+            var nombre = document.getElementById('sesion-nombre');
+            var cargo = document.getElementById('sesion-cargo');
+
+            if (avatar) { avatar.textContent = sesion.iniciales || 'CV'; }
+            if (nombre) { nombre.textContent = sesion.nombre || 'Perfil del centro'; }
+            if (cargo) {
+                cargo.textContent = (sesion.esJefe ? 'Jefe del centro' : 'Trabajador') +
+                    ' · ' + (sesion.centro || '');
+            }
+        })();
+    </script>
 </body>
 
 </html>

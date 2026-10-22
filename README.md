@@ -17,7 +17,8 @@ Plataforma asistencial y de control epidemiológico para la gestión del **Progr
 | Capa M (Modelos / BD) | ❌ No implementada — datos simulados en el HTML |
 | Capa C (Controladores / backend) | ❌ No implementada — la lógica vive inline en la UI |
 | Capa V (Vistas) | ✅ En construcción activa |
-| Autenticación | ⚠️ Simulada en el cliente (credenciales hardcodeadas en `vistas/login.html`) |
+| Autenticación | ⚠️ Simulada en el cliente (`PERFILES` en `vistas/login.html` + `SIV.centros` en `vistas/js/perfiles.js`) |
+| Persistencia de centros/perfiles | ⚠️ `localStorage` (simulación temporal de la capa C) |
 
 ---
 
@@ -29,10 +30,11 @@ El proyecto está diseñado bajo el patrón arquitectónico **M.V.C.**:
 * **Vistas (V)**: *Capa de Presentación / Frontend* (**en desarrollo actual**). Compuesta por interfaces HTML5 semánticas, hojas de estilo CSS clínicas desacopladas y JavaScript **exclusivamente de presentación**.
 * **Controladores (C)**: *Capa de Backend / Enrutamiento* (desacoplada; procesará las peticiones HTTP entre los modelos y las vistas).
 
-> **Regla de oro:** el JavaScript que existe hoy (`vistas/js/ui.js` y los `<script>` inline de cada vista)
-> **NO contiene lógica de negocio ni habla con la base de datos**. Es UI pura: notificaciones, filtros,
-> validaciones de formulario en el navegador y redirecciones. Cuando llegue el backend, esta lógica
-> se traslada a la capa **C** y las vistas solo consumirán endpoints.
+> **Regla de oro:** el JavaScript que existe hoy (`vistas/js/ui.js`, `vistas/js/perfiles.js` y los
+> `<script>` inline de cada vista) **NO contiene lógica de negocio ni habla con la base de datos**.
+> Es UI pura: notificaciones, filtros, validaciones de formulario en el navegador y redirecciones.
+> `perfiles.js` es un **almacén simulado** de centros/perfiles en `localStorage` que existe solo
+> para poder recorrer el flujo sin backend; al llegar la capa **C** se sustituye por endpoints.
 
 ---
 
@@ -43,8 +45,8 @@ El sistema contempla **3 perfiles de usuario**, seleccionados en la pantalla de 
 
 | Tipo | Perfil | Nombre del perfil | Responsabilidad | Módulo de entrada |
 |---|---|---|---|---|
-| **1** | Administración General | `Administrador General` | Sede física administradora: crea usuarios tipo 2, audita acciones y entrega lotes de vacunas | `vistas/admin/index.html` |
-| **2** | Control de Vacunación | `Control de Vacunación` | Registro de vacunas, pacientes e inventario en su sede; **recibe lotes** de la sede física tipo 1 | `vistas/centro.html` |
+| **1** | Administración General | `Administrador General` | Sede física administradora: da de alta **centros de salud** (cuenta tipo 2), audita acciones y entrega lotes de vacunas | `vistas/admin/index.html` |
+| **2** | Control de Vacunación | `Control de Vacunación` | **Una cuenta por centro de salud**, compartida por su personal mediante **perfiles personales**; registra vacunas, pacientes e inventario y recibe lotes del tipo 1 | `vistas/centro.html` |
 | **3** | Control de Salud | `Control de Salud` | Vigilancia epidemiológica y control de cobertura | *Pendiente de definir (ver `PLAN.md`)* |
 
 ### Credenciales de demostración (hardcodeadas)
@@ -57,6 +59,32 @@ Vive en el objeto `PERFILES` de `vistas/login.html` y se muestra en la tarjeta f
 | 1 | `admin.general@sivguarico.ve` | `AdminGeneral2026!` |
 | 2 | `control.vacunacion@sivguarico.ve` | `ControlVacunacion2026!` |
 | 3 | `control.salud@sivguarico.ve` | `ControlSalud2026!` |
+
+### Modelo de cuenta del tipo 2 (una cuenta por centro)
+
+- El **tipo 1** da de alta el centro en `vistas/admin/usuarios-nuevos.html` con dos juegos de
+  credenciales: la **cuenta del centro** (correo + contraseña institucional) y el **perfil base
+  del jefe del centro**.
+- Al iniciar sesión, el tipo 2 pasa por **dos pasos**: primero se valida la cuenta del centro y
+  luego cada persona elige su **perfil** e ingresa con su **correo y contraseña personales**
+  (como los perfiles de un servicio de streaming, pero con credenciales en vez de PIN).
+- El **jefe del centro** administra los perfiles en `vistas/perfiles.html`: crea, habilita y
+  deshabilita. Los **trabajadores no pueden crear perfiles** (ven la vista en solo lectura).
+- Mientras no exista la capa C, estos datos viven en `localStorage` a través de
+  `vistas/js/perfiles.js` (`SIV.centros`).
+
+**Perfiles de la cuenta demo del centro** (`control.vacunacion@sivguarico.ve` /
+`ControlVacunacion2026!`):
+
+| Perfil | Rol | Correo personal | Contraseña |
+|---|---|---|---|
+| Dra. Yajaira Colmenares | Jefe del centro | `jefe.calabozo@sivguarico.ve` | `JefeCentro2026!` |
+| Lic. Marlene Requena | Trabajadora | `marlene.requena@sivguarico.ve` | `Vacunacion2026!` |
+| Enf. Jonathan Silva | Trabajador | `jonathan.silva@sivguarico.ve` | `Inmunizacion2026!` |
+
+> La tarjeta de credenciales de la esquina inferior derecha del login está **plegada por
+> defecto**; al desplegarla, un clic en cualquier credencial autocompleta el formulario
+> (y en los perfiles del tipo 2 también selecciona el perfil correspondiente).
 
 > Al fallar el inicio de sesión se muestra una **notificación flotante en la esquina superior derecha**
 > (`SIV.toast`) que se descarta sola tras ~4,5 s.
@@ -78,11 +106,12 @@ SistemaNacionalVacunas/
 │   ├── centro.html              # [TIPO 2] Sala Situacional / Panel General de Inmunización
 │   ├── inventario.html          # [TIPO 2] Catálogo de Biológicos y Cadena de Frío
 │   ├── personal.html            # [TIPO 2] Directorio de Personal de Enfermería y Brigadas
+│   ├── perfiles.html            # [TIPO 2] Perfiles personales del centro (jefe del centro)
 │   │
 │   ├── admin/                   # Módulos del ADMINISTRADOR GENERAL (tipo 1)
 │   │   ├── index.html           # Panel de Supervisión Institucional
-│   │   ├── usuarios-nuevos.html # Alta de usuario tipo 2 (Control de Vacunación)
-│   │   ├── usuarios-activos.html# Registro de usuarios activos de la plataforma
+│   │   ├── usuarios-nuevos.html # Alta de centro de salud (cuenta tipo 2 + perfil base del jefe)
+│   │   ├── usuarios-activos.html# Registro de centros y cuentas activas
 │   │   ├── auditoria.html       # Bitácora de cambios/acciones sobre los registros
 │   │   └── lotes-entrega.html   # Registro de entrega de lotes de vacunación
 │   │
@@ -90,7 +119,8 @@ SistemaNacionalVacunas/
 │   │   └── centro.css           # Hoja de estilos clínica ÚNICA (paleta, tipografía, grid, responsivo)
 │   │
 │   ├── js/
-│   │   └── ui.js                # Utilidades de UI compartidas (SIV.toast, etc.) — sin lógica de negocio
+│   │   ├── ui.js                # Utilidades de UI compartidas (SIV.toast, sesión) — sin lógica de negocio
+│   │   └── perfiles.js          # Almacén SIMULADO de centros/perfiles (localStorage) — sustituye a la capa C
 │   │
 │   └── img/
 │       └── mapa_guarico.png     # Silueta cartográfica oficial del estado Guárico
@@ -110,13 +140,15 @@ index.html
           │                 └── lotes-entrega.html
           ├── TIPO 2 ──► vistas/centro.html
           │                 ├── inventario.html
-          │                 └── personal.html
+          │                 ├── personal.html
+          │                 └── perfiles.html   (el jefe crea; el trabajador solo consulta)
           └── TIPO 3 ──► (pendiente de definir)
 ```
 
-La barra lateral del administrador (`vistas/admin/*.html`) incluye además enlaces a los
-**Módulos Operativos** (`../centro.html`, `../inventario.html`, `../personal.html`) para que
-el tipo 1 supervise la operación de la red.
+> **Regla de navegación:** cada tipo de usuario tiene **una sola barra lateral**. El tipo 1 no
+> muestra enlaces a las vistas del tipo 2; la supervisión de la red se hace desde la tabla del
+> panel, que ofrece los accesos de gestión sin cambiar de menú. Todas las barras cierran con el
+> bloque de sesión y el botón **Cerrar sesión**.
 
 ---
 
@@ -126,7 +158,10 @@ el tipo 1 supervise la operación de la red.
    - Panel izquierdo institucional con la identidad del programa (PUYASO-GUÁRICO).
    - **Triple switch** de tipo de usuario (1 / 2 / 3) con tarjeta del perfil seleccionado.
    - Campos: correo institucional + contraseña, con mostrar/ocultar clave.
-   - Credenciales de prueba en tarjeta fija de la **esquina inferior derecha** (plegable, clic para autocompletar).
+   - **Tipo 2 en dos pasos**: validación de la cuenta del centro → selección de perfil personal
+     (`#paso-2`) → correo y contraseña propios del perfil.
+   - Credenciales de prueba en tarjeta fija de la **esquina inferior derecha**, plegada por
+     defecto; al desplegarla, un clic autocompleta el formulario.
    - Error de acceso → notificación flotante superior derecha con auto-cierre.
 
 ### 1. Sala Situacional (`vistas/centro.html`) — *Tipo 2*
@@ -134,6 +169,7 @@ el tipo 1 supervise la operación de la red.
    - Mapa y distribución sanitaria por municipios (Roscio, Miranda, Infante, Zaraza, Ribas).
    - Monitoreo de cadena de frío (+3.8 °C, +7.8 °C) y lotes con riesgo de caducidad.
    - Tabla de pacientes inmunizados con buscador en tiempo real.
+   - Barra lateral con los grupos *Operación del Centro* / *Cuenta del Centro* y sesión activa.
 
 ### 2. Inventario de Biológicos (`vistas/inventario.html`) — *Tipo 2*
    - Catálogo de vacunas (Fiebre Amarilla, Pentavalente, BCG, Polio Oral, VPH, Toxoide).
@@ -145,28 +181,36 @@ el tipo 1 supervise la operación de la red.
    - Asignación territorial por ambulatorio, termos PQS y registro de dosis administradas.
    - Buscador por nombre, cargo o municipio.
 
-### 4. Panel de Supervisión Institucional (`vistas/admin/index.html`) — *Tipo 1*
-   - KPIs de supervisión: cuentas activas, lotes entregados, acciones auditadas, sedes bajo vigilancia.
-   - Tabla de **actividad reciente de la red** (creación / modificación / eliminación por usuario).
-   - Panel lateral con el **estado de la logística de lotes** (origen → destino, termografías).
+### 4. Perfiles del Centro (`vistas/perfiles.html`) — *Tipo 2*
+   - Tabla de perfiles personales de la cuenta del centro (avatar, cargo, rol, alta, estado).
+   - El **jefe del centro** crea perfiles (nombre, cargo, correo y contraseña personales) y
+     habilita/deshabilita a los existentes.
+   - Un **trabajador** ve la misma tabla y un aviso de solo lectura, sin formulario de alta.
 
-### 5. Alta de Usuario Tipo 2 (`vistas/admin/usuarios-nuevos.html`) — *Tipo 1*
-   - Formulario en 4 bloques: identificación, credenciales, asignación territorial y alcance operativo.
-   - Selección obligatoria de la **sede física receptora de lotes** (de la que el usuario es responsable).
-   - Casillas de permisos por módulo + tabla de altas de la sesión.
+### 5. Panel de Supervisión Institucional (`vistas/admin/index.html`) — *Tipo 1*
+   - KPIs de supervisión: cuentas y centros, lotes entregados, acciones auditadas, sedes vigiladas.
+   - Panel segmentado en bloques verticales: **Red Asistencial bajo supervisión**, **Actividad
+     reciente de la red** y **Logística de lotes**.
+   - Tabla de la red con centro, municipio, cuenta tipo 2, cantidad de perfiles, último acceso y estado.
 
-### 6. Registro de Usuarios Activos (`vistas/admin/usuarios-activos.html`) — *Tipo 1*
-   - KPIs por tipo de usuario y cuentas con clave expirada.
-   - Tabla con ID de cuenta, correo, rol, sede, municipio, último acceso y estado.
-   - Filtros combinables: buscador de texto, rol y estado.
+### 6. Alta de Centro de Salud (`vistas/admin/usuarios-nuevos.html`) — *Tipo 1*
+   - Formulario en bloques: datos del centro, **cuenta del centro** (correo + contraseña) y
+     **perfil base del jefe** (nombre, cargo, correo y contraseña personales).
+   - Selección del municipio de adscripción y fecha de alta.
+   - Al enviar, crea el centro en `SIV.centros` y añade la tarjeta a *Altas de la Sesión*.
 
-### 7. Bitácora de Acciones (`vistas/admin/auditoria.html`) — *Tipo 1*
+### 7. Registro de Centros y Cuentas Activas (`vistas/admin/usuarios-activos.html`) — *Tipo 1*
+   - KPIs de cuentas y centros habilitados, centros de salud, cuentas tipo 3 y claves expiradas.
+   - Tabla con centro/cuenta, tipo, responsable y cantidad de perfiles, municipio, último acceso y estado.
+   - Filtros combinables: buscador de texto, tipo de cuenta y estado.
+
+### 8. Bitácora de Acciones (`vistas/admin/auditoria.html`) — *Tipo 1*
    - KPIs de creations / modificaciones / eliminaciones y trazabilidad del actor.
    - Tabla con fecha-hora, actor, rol, **tipo de acción**, entidad, registro, IP y resultado.
    - Filtros por tipo de acción (todas / creación / modificación / eliminación).
    - Línea de tiempo de los eventos más recientes.
 
-### 8. Entrega de Lotes (`vistas/admin/lotes-entrega.html`) — *Tipo 1*
+### 9. Entrega de Lotes (`vistas/admin/lotes-entrega.html`) — *Tipo 1*
    - KPIs de despacho, dosis transferidas, entregas sin confirmar e incidencias de cadena de frío.
    - Formulario de despacho (**sede física tipo 1 → sede tipo 2**) con condición de traslado.
    - Tabla histórica con flujo de origen → destino y estado de recepción.
@@ -203,6 +247,9 @@ en secciones numeradas. **Reutilice las clases existentes; no genere duplicados.
 | Layout | `.health-layout`, `.health-sidebar`, `.health-sidebar-inner`, `.health-main-viewport` |
 | Navegación | `.health-nav`, `.health-nav-list`, `.health-nav-item`, `.health-nav-link`, `.nav-group-label`, `.nav-tag-badge` |
 | Marca / Perfil | `.sidebar-brand`, `.brand-cross-icon`, `.brand-text-block`, `.center-perfil-card`, `.center-avatar-circle` |
+| Sesión / Salida | `.health-sidebar-inner`, `.sidebar-footer-block`, `.sidebar-session-card`, `.sidebar-session-avatar`, `.sidebar-session-name`, `.sidebar-shared-badge`, `.sidebar-logout` |
+| Perfiles del centro | `.profile-identity-cell`, `.profile-identity-avatar`, `.profile-identity-name`, `.profile-identity-mail`, `.profile-role-chip`, `.profile-manage-banner`, `.profile-notice`, `.alta-sesion-item` |
+| Acceso en dos pasos | `.auth-step`, `.auth-step-center`, `.auth-step-note`, `.profile-picker-grid`, `.profile-card`, `.profile-credentials-panel` |
 | Cabecera | `.health-header`, `.health-breadcrumbs`, `.health-main-heading`, `.header-right-tools`, `.shift-time-indicator` |
 | Botones | `.btn-health` + `.btn-health-primary` / `-outline` / `-danger` / `-block` |
 | KPI | `.health-kpi-grid`, `.kpi-health-card`, `.kpi-category-badge`, `.kpi-badge-{blue,green,red,purple,amber}`, `.kpi-metric-number`, `.kpi-health-progress`, `.kpi-progress-bar`, `.bar-{blue,green,purple}` |
@@ -243,6 +290,17 @@ en secciones numeradas. **Reutilice las clases existentes; no genere duplicados.
     columna y todos sus controles ocupan el ancho completo. Los estilos en línea
     (`style="min-width:…"`) están prohibidos: los anchos de referencia van por identificador
     en la sección **18.1** del CSS.
+11. **Un menú por tipo de usuario.** La barra lateral del tipo 1 **no** incluye enlaces a las
+    vistas del tipo 2 (ni viceversa). Cada tipo conserva su propio grupo de navegación; los
+    accesos de supervisión se resuelven con botones dentro del contenido, no cambiando el menú.
+12. **Sesión visible y cerrable.** Toda barra lateral termina en `.sidebar-footer-block`
+    (sesión activa) y un botón `[data-siv-logout]`. En el tipo 1 se muestra el rol compartido
+    («Administrador General» + «Cuenta compartida»), nunca un nombre personal. Las vistas cargan
+    `js/ui.js` y llaman a `SIV.enlazarCierreSesion()`.
+13. **Perfiles del tipo 2.** Una cuenta por centro de salud; cada persona usa un perfil con
+    correo y contraseña propios. Solo el **jefe** crea perfiles. Las vistas del tipo 2 leen la
+    sesión con `SIV.centros.sesion()` y, si no existe, muestran un estado neutro que permite
+    navegar la interfaz (nunca un error).
 
 ---
 
@@ -254,7 +312,7 @@ en secciones numeradas. **Reutilice las clases existentes; no genere duplicados.
 * Los botones "de acción" que aún no tienen backend deben **responder con una notificación**
   (`SIV.toast(..., 'info')`) explicando que la función estará disponible al conectar la capa C.
 * Los formularios de la fase actual validan en el cliente y, al enviar, agregan la fila a la
-  tabla en memoria y muestran una notificación de éxito.
+  tabla o al almacén simulado (`SIV.centros`) y muestran una notificación de éxito.
 
 ---
 
@@ -263,6 +321,9 @@ en secciones numeradas. **Reutilice las clases existentes; no genere duplicados.
 - [ ] La vista usa **solo** clases ya existentes en `vistas/css/centro.css` (o añade las nuevas al final, en su sección).
 - [ ] La vista tiene `<head>` con `charset`, `viewport`, fuentes, `css/centro.css` y título descriptivo.
 - [ ] La vista tiene barra lateral (si aplica), `.health-header` con `.health-breadcrumbs` y `.health-footer`.
+- [ ] Cada tipo de usuario conserva **una sola** barra lateral (sin enlaces cruzados tipo 1 ↔ tipo 2).
+- [ ] La barra lateral termina en `.sidebar-footer-block` con la sesión y un `[data-siv-logout]`.
+- [ ] Las vistas del tipo 2 cargan `js/perfiles.js` y leen la sesión con `SIV.centros.sesion()`.
 - [ ] Los enlaces del menú lateral apuntan a archivos que **existen** y usan rutas relativas correctas.
 - [ ] Las rutas de `css/centro.css` y `js/ui.js` son correctas respecto a la profundidad de la carpeta.
 - [ ] No se introduce lógica de negocio ni llamadas a base de datos en el JavaScript del cliente.
@@ -279,3 +340,4 @@ en secciones numeradas. **Reutilice las clases existentes; no genere duplicados.
 * **Mapa cartográfico:** `vistas/img/mapa_guarico.png`
 * **Estilos clínicos:** `vistas/css/centro.css`
 * **Utilidades de interfaz:** `vistas/js/ui.js`
+* **Almacén simulado de centros/perfiles:** `vistas/js/perfiles.js`

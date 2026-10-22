@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Gestión de perfiles personales de la cuenta del centro de salud en el SIV-Guárico: alta, consulta y control de acceso del personal.">
+
+    <title>SIV-GUÁRICO // Perfiles del Centro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/centro.css">
+</head>
+
+<body>
+
+    <div class="health-layout">
+
+        <aside class="health-sidebar" id="health-sidebar">
+            <div class="health-sidebar-inner">
+
+                <div class="sidebar-brand">
+                    <div class="brand-cross-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 4v16m-8-8h16"></path>
+                        </svg>
+                    </div>
+                    <div class="brand-text-block">
+                        <span class="brand-title">PUYASO-GUÁRICO</span>
+                        <span class="brand-subtitle">Control de Vacunación</span>
+                    </div>
+                </div>
+
+                <nav class="health-nav" aria-label="Navegación principal">
+
+                    <span class="nav-group-label">Operación del Centro</span>
+                    <ul class="health-nav-list">
+                        <li class="health-nav-item">
+                            <a href="centro.html" class="health-nav-link" id="nav-dashboard">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                <span>Panel General</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="inventario.html" class="health-nav-link" id="nav-inventario">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m7.5 4.27 9 5.15"></path>
+                                    <path
+                                        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z">
+                                    </path>
+                                    <path d="m3.3 7 8.7 5 8.7-5"></path>
+                                    <path d="M12 22V12"></path>
+                                </svg>
+                                <span>Inventario</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="personal.html" class="health-nav-link" id="nav-vacunadores">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span>Personal</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <span class="nav-group-label">Cuenta del Centro</span>
+                    <ul class="health-nav-list">
+                        <li class="health-nav-item active">
+                            <a href="perfiles.html" class="health-nav-link" id="nav-perfiles">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span>Perfiles del Centro</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-footer-block">
+                    <div class="sidebar-session-card">
+                        <div class="sidebar-session-avatar" id="sesion-avatar">CV</div>
+                        <div class="sidebar-session-text">
+                            <span class="sidebar-session-name" id="sesion-nombre">Control de Vacunación</span>
+                            <span class="sidebar-session-sub" id="sesion-cargo">Cuenta del centro</span>
+                        </div>
+                    </div>
+                    <button type="button" class="sidebar-logout" data-siv-logout="login.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Cerrar sesión</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="health-main-viewport">
+
+            <header class="health-header">
+                <div class="header-left-col">
+                    <div class="health-breadcrumbs">
+                        <span>SIV-GUÁRICO</span>
+                        <span>/</span>
+                        <span>Control de Vacunación</span>
+                        <span>/</span>
+                        <span class="text-primary">Perfiles del Centro</span>
+                    </div>
+                    <h1 class="health-main-heading">Perfiles del Centro de Salud</h1>
+                    <p class="health-header-subtext">
+                        Una cuenta por centro, con un perfil personal por cada persona que opera el sistema.
+                    </p>
+                </div>
+
+                <div class="header-right-tools">
+                    <div class="header-btn-group">
+                        <a href="centro.html" class="btn-health btn-health-outline">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                            <span>Volver al panel</span>
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Contexto de la cuenta del centro -->
+            <div class="profile-manage-banner">
+                <div class="profile-manage-banner-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 21h18M5 21V7l7-4 7 4v14"></path>
+                        <path d="M9 21v-6h6v6"></path>
+                    </svg>
+                </div>
+                <div class="profile-manage-banner-text">
+                    <span class="profile-manage-banner-title" id="banner-centro">Centro de salud</span>
+                    <span class="profile-manage-banner-sub" id="banner-cuenta">cuenta@sivguarico.ve</span>
+                </div>
+                <span class="profile-role-chip" id="banner-rol">Sin sesión</span>
+            </div>
+
+            <div class="profile-notice" id="aviso-sin-sesion" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 16v-4"></path>
+                    <path d="M12 8h.01"></path>
+                </svg>
+                <span>
+                    <strong>Vista de demostración.</strong> No hay una sesión iniciada, por lo que se muestran los
+                    perfiles de la cuenta de ejemplo y no es posible registrar nuevos perfiles.
+                    <a href="login.html" class="text-primary font-semibold">Iniciar sesión</a>
+                </span>
+            </div>
+
+            <div class="profile-notice" id="aviso-trabajador" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span>
+                    Sólo el <strong>Jefe del Centro</strong> puede registrar perfiles adicionales. Su perfil puede
+                    consultar el directorio, pero no crear ni deshabilitar cuentas.
+                </span>
+            </div>
+
+            <!-- Directorio de perfiles -->
+            <section class="health-panel">
+                <div class="health-panel-header">
+                    <div class="panel-title-with-icon">
+                        <svg class="icon-22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <div>
+                            <h2 class="panel-heading">Perfiles registrados</h2>
+                            <p class="panel-subheading">Cada perfil ingresa con su correo y contraseña personales</p>
+                        </div>
+                    </div>
+                    <span class="badge-health-pill badge-stable" id="contador-perfiles">0 perfiles</span>
+                </div>
+
+                <div class="health-table-container">
+                    <table class="health-table">
+                        <thead>
+                            <tr>
+                                <th>PERFIL</th>
+                                <th>CARGO</th>
+                                <th>ROL</th>
+                                <th>ALTA</th>
+                                <th class="text-right">ESTADO</th>
+                                <th class="text-right">ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-perfiles">
+                            <tr>
+                                <td colspan="6" class="text-center text-muted">Cargando perfiles...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Alta de perfiles (sólo jefe del centro) -->
+            <section class="health-panel" id="panel-crear" hidden>
+                <div class="health-panel-header">
+                    <div class="panel-title-with-icon">
+                        <svg class="icon-22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <line x1="19" y1="8" x2="19" y2="14"></line>
+                            <line x1="22" y1="11" x2="16" y2="11"></line>
+                        </svg>
+                        <div>
+                            <h2 class="panel-heading">Registrar nuevo perfil</h2>
+                            <p class="panel-subheading">Los campos marcados con asterisco son obligatorios</p>
+                        </div>
+                    </div>
+                    <span class="role-chip role-chip-vacunacion">SÓLO JEFE DEL CENTRO</span>
+                </div>
+
+                <form id="form-perfil-nuevo" novalidate>
+
+                    <div class="admin-form-grid">
+                        <div class="admin-form-field">
+                            <label for="perf-nombre">Nombre y apellido <span class="required-mark">*</span></label>
+                            <input class="admin-input" type="text" id="perf-nombre" name="nombre"
+                                placeholder="Ej.: Lic. Ana Isabel Rondón" required>
+                        </div>
+
+                        <div class="admin-form-field">
+                            <label for="perf-cargo">Cargo en el centro</label>
+                            <select class="admin-select" id="perf-cargo" name="cargo">
+                                <option>Enfermera(o) de inmunización</option>
+                                <option>Auxiliar de inmunización</option>
+                                <option>Médico(a) de sala</option>
+                                <option>Estadístico(a) de salud</option>
+                                <option>Promotor(a) comunitario</option>
+                            </select>
+                        </div>
+
+                        <div class="admin-form-field">
+                            <label for="perf-correo">Correo personal <span class="required-mark">*</span></label>
+                            <input class="admin-input" type="email" id="perf-correo" name="correo"
+                                placeholder="nombre.apellido@sivguarico.ve" required>
+                            <span class="admin-hint">Será su usuario para entrar al sistema.</span>
+                        </div>
+
+                        <div class="admin-form-field">
+                            <label for="perf-clave">Contraseña personal <span class="required-mark">*</span></label>
+                            <input class="admin-input" type="password" id="perf-clave" name="clave"
+                                placeholder="Mínimo 8 caracteres" autocomplete="new-password" required>
+                        </div>
+
+                        <div class="admin-form-field">
+                            <label for="perf-clave-confirmar">Confirmar contraseña <span
+                                    class="required-mark">*</span></label>
+                            <input class="admin-input" type="password" id="perf-clave-confirmar" name="claveConfirmar"
+                                placeholder="Repita la contraseña" autocomplete="new-password" required>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-actions">
+                        <button type="submit" class="btn-health btn-health-primary" id="btn-crear-perfil">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                            </svg>
+                            <span>Registrar perfil</span>
+                        </button>
+
+                        <button type="reset" class="btn-health btn-health-outline">Limpiar formulario</button>
+                    </div>
+                </form>
+            </section>
+
+            <footer class="health-footer">
+                <div class="footer-health-brand">
+                    <svg class="icon-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 4v16m-8-8h16"></path>
+                    </svg>
+                    <span>MINISTERIO DEL PODER POPULAR PARA LA SALUD // SUBREGIÓN GUÁRICO</span>
+                </div>
+                <div class="footer-meta-info">
+                    <span>PERFILES DEL CENTRO DE SALUD</span>
+                    <span>•</span>
+                    <span class="font-mono">VERSIÓN 2.5 SALUD</span>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <script src="js/ui.js"></script>
+    <script src="js/perfiles.js"></script>
+    <script>
+        /* ==================================================================
+           GESTIÓN DE PERFILES DEL CENTRO (SOLO INTERFAZ)
+           La persistencia es simulada en `localStorage`; el alta definitiva
+           corresponde a la capa de Controladores (C) del MVC.
+           ================================================================== */
+        (function () {
+            'use strict';
+
+            var CLAVE_DEMO = 'control.vacunacion@sivguarico.ve';
+
+            var sesion = SIV.centros.sesion();
+            var cuenta = sesion ? sesion.correoCuenta : CLAVE_DEMO;
+            var centro = SIV.centros.obtener(cuenta);
+
+            var avisoSinSesion = document.getElementById('aviso-sin-sesion');
+            var avisoTrabajador = document.getElementById('aviso-trabajador');
+            var panelCrear = document.getElementById('panel-crear');
+            var tbody = document.getElementById('tbody-perfiles');
+            var contador = document.getElementById('contador-perfiles');
+            var bannerCentro = document.getElementById('banner-centro');
+            var bannerCuenta = document.getElementById('banner-cuenta');
+            var bannerRol = document.getElementById('banner-rol');
+
+            var puedeCrear = Boolean(sesion && sesion.esJefe);
+
+            /* --- Utilidades de construcción --- */
+            function crear(etiqueta, clase, texto) {
+                var elemento = document.createElement(etiqueta);
+                if (clase) { elemento.className = clase; }
+                if (texto !== undefined && texto !== null) { elemento.textContent = texto; }
+                return elemento;
+            }
+
+            function estadoPill(estado) {
+                var pill = crear('span', 'badge-health-pill ' +
+                    (estado === 'activo' ? 'badge-optimal' : 'badge-warning'),
+                    estado === 'activo' ? 'Activo' : 'Inactivo');
+                return pill;
+            }
+
+            /* --- Cabecera de contexto --- */
+            function pintarContexto() {
+                if (!centro) {
+                    bannerCentro.textContent = 'Cuenta no encontrada';
+                    bannerCuenta.textContent = cuenta;
+                    bannerRol.textContent = 'Sin sesión';
+                    return;
+                }
+
+                bannerCentro.textContent = centro.centro;
+                bannerCuenta.textContent = centro.correoCuenta + ' · ' + centro.municipio;
+
+                if (!sesion) {
+                    bannerRol.textContent = 'Sin sesión';
+                    bannerRol.className = 'profile-role-chip';
+                } else if (sesion.esJefe) {
+                    bannerRol.textContent = 'Jefe del centro';
+                    bannerRol.className = 'profile-role-chip is-jefe';
+                } else {
+                    bannerRol.textContent = 'Trabajador';
+                    bannerRol.className = 'profile-role-chip';
+                }
+            }
+
+            /* --- Tabla de perfiles --- */
+            function pintarTabla() {
+                tbody.innerHTML = '';
+
+                /* Se relee el almacén: el alta o el cambio de estado modifican
+                   la copia persistida, no la referencia cargada al inicio. */
+                centro = SIV.centros.obtener(cuenta) || centro;
+
+                var perfiles = centro ? centro.perfiles : [];
+
+                if (!perfiles.length) {
+                    var vacia = crear('tr');
+                    var celda = crear('td', 'text-center text-muted',
+                        'Esta cuenta todavía no tiene perfiles registrados.');
+                    celda.colSpan = 6;
+                    vacia.appendChild(celda);
+                    tbody.appendChild(vacia);
+                    contador.textContent = '0 perfiles';
+                    return;
+                }
+
+                contador.textContent = perfiles.length + (perfiles.length === 1 ? ' perfil' : ' perfiles');
+
+                perfiles.forEach(function (perfil) {
+                    var fila = crear('tr');
+                    var esJefe = perfil.rol === 'jefe';
+
+                    /* Perfil: avatar + nombre + correo */
+                    var celdaPerfil = crear('td');
+                    var identidad = crear('div', 'profile-identity-cell');
+                    identidad.appendChild(crear('div', 'profile-identity-avatar' + (esJefe ? ' is-jefe' : ''),
+                        SIV.centros.iniciales(perfil.nombre)));
+
+                    var texto = crear('div', 'profile-identity-text');
+                    texto.appendChild(crear('span', 'profile-identity-name', perfil.nombre));
+                    texto.appendChild(crear('span', 'profile-identity-mail', perfil.correo));
+                    identidad.appendChild(texto);
+                    celdaPerfil.appendChild(identidad);
+
+                    /* Cargo */
+                    var celdaCargo = crear('td', 'text-muted', perfil.cargo);
+
+                    /* Rol */
+                    var celdaRol = crear('td');
+                    celdaRol.appendChild(crear('span', 'profile-role-chip' + (esJefe ? ' is-jefe' : ''),
+                        esJefe ? 'Jefe' : 'Trabajador'));
+
+                    /* Alta */
+                    var celdaAlta = crear('td', 'font-mono text-muted', perfil.creado);
+
+                    /* Estado */
+                    var celdaEstado = crear('td', 'text-right');
+                    celdaEstado.appendChild(estadoPill(perfil.estado));
+
+                    /* Acciones */
+                    var celdaAcciones = crear('td', 'text-right');
+                    if (puedeCrear && !esJefe) {
+                        var boton = crear('button', 'btn-batch-micro ' +
+                            (perfil.estado === 'activo' ? 'btn-batch-amber' : 'btn-batch-gray'),
+                            perfil.estado === 'activo' ? 'Deshabilitar' : 'Habilitar');
+                        boton.type = 'button';
+                        boton.addEventListener('click', function () {
+                            var resultado = SIV.centros.cambiarEstadoPerfil(cuenta, perfil.id);
+                            if (!resultado.ok) {
+                                SIV.toast(resultado.error, 'error');
+                                return;
+                            }
+                            SIV.toast('Perfil de ' + perfil.nombre + ' ' +
+                                (resultado.perfil.estado === 'activo' ? 'habilitado' : 'deshabilitado') + '.',
+                                'success');
+                            pintarTabla();
+                        });
+                        celdaAcciones.appendChild(boton);
+                    } else {
+                        celdaAcciones.appendChild(crear('span', 'text-muted', esJefe ? 'Protegido' : '—'));
+                    }
+
+                    fila.appendChild(celdaPerfil);
+                    fila.appendChild(celdaCargo);
+                    fila.appendChild(celdaRol);
+                    fila.appendChild(celdaAlta);
+                    fila.appendChild(celdaEstado);
+                    fila.appendChild(celdaAcciones);
+
+                    tbody.appendChild(fila);
+                });
+            }
+
+            /* --- Visibilidad de avisos y formulario --- */
+            function pintarPermisos() {
+                avisoSinSesion.hidden = Boolean(sesion);
+                avisoTrabajador.hidden = !sesion || sesion.esJefe;
+                panelCrear.hidden = !puedeCrear;
+            }
+
+            /* --- Sesión en la barra lateral --- */
+            function pintarSesionBarra() {
+                if (!sesion) { return; }
+
+                var avatar = document.getElementById('sesion-avatar');
+                var nombre = document.getElementById('sesion-nombre');
+                var cargo = document.getElementById('sesion-cargo');
+
+                if (avatar) { avatar.textContent = sesion.iniciales || 'CV'; }
+                if (nombre) { nombre.textContent = sesion.nombre; }
+                if (cargo) {
+                    cargo.textContent = (sesion.esJefe ? 'Jefe del centro' : 'Trabajador') +
+                        ' · ' + sesion.centro;
+                }
+            }
+
+            /* --- Alta de un perfil --- */
+            document.getElementById('form-perfil-nuevo').addEventListener('submit', function (evento) {
+                evento.preventDefault();
+
+                var nombre = document.getElementById('perf-nombre').value;
+                var cargo = document.getElementById('perf-cargo').value;
+                var correo = document.getElementById('perf-correo').value;
+                var clave = document.getElementById('perf-clave').value;
+                var confirmar = document.getElementById('perf-clave-confirmar').value;
+
+                if (!nombre.trim() || !correo.trim() || !clave) {
+                    SIV.toast('Complete el nombre, el correo personal y la contraseña.', 'error');
+                    return;
+                }
+
+                if (clave !== confirmar) {
+                    SIV.toast('Las contraseñas no coinciden. Verifique e intente nuevamente.', 'error');
+                    return;
+                }
+
+                var resultado = SIV.centros.crearPerfil(cuenta, {
+                    nombre: nombre,
+                    cargo: cargo,
+                    correo: correo,
+                    clave: clave
+                });
+
+                if (!resultado.ok) {
+                    SIV.toast(resultado.error, 'error', 5000, 'No se pudo crear el perfil');
+                    return;
+                }
+
+                SIV.toast('Perfil de ' + resultado.perfil.nombre + ' registrado correctamente.',
+                    'success', 4000, 'Perfil creado');
+
+                this.reset();
+                pintarTabla();
+            });
+
+            /* --- Navegación y cierre de sesión --- */
+            if (typeof SIV.marcarNavegacionActiva === 'function') {
+                SIV.marcarNavegacionActiva('.health-nav-link');
+            }
+            if (typeof SIV.enlazarCierreSesion === 'function') {
+                SIV.enlazarCierreSesion();
+            }
+
+            /* --- Estado inicial --- */
+            pintarContexto();
+            pintarTabla();
+            pintarPermisos();
+            pintarSesionBarra();
+        })();
+    </script>
+</body>
+
+</html>

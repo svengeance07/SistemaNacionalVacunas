@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Registro de usuarios activos de la plataforma SIV-Guárico: control de cuentas por rol, sede de adscripción y estado de acceso.">
+        content="Registro de cuentas y centros activos del SIV-Guárico: una cuenta por centro de salud, con sus perfiles personales y su estado de acceso.">
 
-    <title>SIV-GUÁRICO // Usuarios Activos</title>
+    <title>SIV-GUÁRICO // Centros Activos</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +64,7 @@
                                     <line x1="19" y1="8" x2="19" y2="14"></line>
                                     <line x1="22" y1="11" x2="16" y2="11"></line>
                                 </svg>
-                                <span>Crear Usuario</span>
+                                <span>Alta de Centro</span>
                             </a>
                         </li>
                         <li class="health-nav-item active">
@@ -75,8 +75,8 @@
                                     <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                                 </svg>
-                                <span>Usuarios Activos</span>
-                                <span class="nav-tag-badge tag-info">24</span>
+                                <span>Centros Activos</span>
+                                <span class="nav-tag-badge tag-info">5</span>
                             </a>
                         </li>
                     </ul>
@@ -110,52 +110,35 @@
                         </li>
                     </ul>
 
-                    <span class="nav-group-label">Módulos Operativos</span>
-                    <ul class="health-nav-list">
-                        <li class="health-nav-item">
-                            <a href="../centro.html" class="health-nav-link" id="nav-sala-situacional">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                    <path d="m9 12 2 2 4-4"></path>
-                                </svg>
-                                <span>Sala Situacional</span>
-                            </a>
-                        </li>
-                        <li class="health-nav-item">
-                            <a href="../inventario.html" class="health-nav-link" id="nav-inventario">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="m7.5 4.27 9 5.15"></path>
-                                    <path
-                                        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z">
-                                    </path>
-                                    <path d="m3.3 7 8.7 5 8.7-5"></path>
-                                    <path d="M12 22V12"></path>
-                                </svg>
-                                <span>Inventario</span>
-                            </a>
-                        </li>
-                        <li class="health-nav-item">
-                            <a href="../personal.html" class="health-nav-link" id="nav-personal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                </nav>
+
+                <div class="sidebar-footer-block">
+                    <div class="sidebar-session-card">
+                        <div class="sidebar-session-avatar is-shared">AG</div>
+                        <div class="sidebar-session-text">
+                            <span class="sidebar-session-name">Administrador General</span>
+                            <span class="sidebar-session-sub">Supervisión de la red</span>
+                            <span class="sidebar-shared-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="9" cy="7" r="4"></circle>
                                     <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
                                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                                 </svg>
-                                <span>Personal</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <div class="sidebar-center-perfil">
-                    <div class="center-perfil-card">
-                        <div class="center-avatar-circle">EC</div>
-                        <div class="center-info-text">
-                            <span class="center-name">Dra. Elena Cordero</span>
-                            <span class="center-role">Administrador General</span>
+                                Cuenta compartida
+                            </span>
                         </div>
                     </div>
+                    <button type="button" class="sidebar-logout" data-siv-logout="../login.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Cerrar sesión</span>
+                    </button>
                 </div>
             </div>
         </aside>
@@ -172,9 +155,9 @@
                         <span>/</span>
                         <span>Administración General</span>
                         <span>/</span>
-                        <span class="text-primary">Usuarios Activos</span>
+                        <span class="text-primary">Centros Activos</span>
                     </div>
-                    <h1 class="health-main-heading">Registro de Usuarios Activos</h1>
+                    <h1 class="health-main-heading">Registro de Cuentas y Centros Activos</h1>
                 </div>
 
                 <div class="header-right-tools">
@@ -192,7 +175,7 @@
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
-                            <span>Crear usuario</span>
+                            <span>Alta de centro</span>
                         </a>
                     </div>
                 </div>
@@ -206,8 +189,8 @@
                 <article class="kpi-health-card">
                     <div class="kpi-card-top">
                         <div>
-                            <span class="kpi-category-badge kpi-badge-purple">TOTAL DE CUENTAS</span>
-                            <h3 class="kpi-card-title">Usuarios Activos</h3>
+                            <span class="kpi-category-badge kpi-badge-purple">CUENTAS Y CENTROS</span>
+                            <h3 class="kpi-card-title">Cuentas Habilitadas</h3>
                         </div>
                         <div class="kpi-icon-pill icon-purple">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -218,15 +201,15 @@
                         </div>
                     </div>
                     <div class="kpi-metric-row">
-                        <span class="kpi-metric-number">24</span>
+                        <span class="kpi-metric-number">7</span>
                         <span class="kpi-metric-unit">cuentas habilitadas</span>
                     </div>
                     <div class="kpi-health-progress">
-                        <div class="kpi-progress-bar bar-purple" style="width: 82%;"></div>
+                        <div class="kpi-progress-bar bar-purple" style="width: 70%;"></div>
                     </div>
                     <div class="kpi-card-footer">
-                        <span class="text-muted">3 cuentas en estado inactivo</span>
-                        <span class="badge-health-pill badge-stable">82% del cupo</span>
+                        <span class="text-muted">1 centro pendiente de perfiles</span>
+                        <span class="badge-health-pill badge-stable">7 de 7</span>
                     </div>
                 </article>
 
@@ -234,7 +217,7 @@
                     <div class="kpi-card-top">
                         <div>
                             <span class="kpi-category-badge kpi-badge-blue">CONTROL DE VACUNACIÓN</span>
-                            <h3 class="kpi-card-title">Usuarios Tipo 2</h3>
+                            <h3 class="kpi-card-title">Centros de Salud</h3>
                         </div>
                         <div class="kpi-icon-pill icon-blue">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -245,15 +228,15 @@
                         </div>
                     </div>
                     <div class="kpi-metric-row">
-                        <span class="kpi-metric-number">18</span>
-                        <span class="kpi-metric-unit">sedes operativas</span>
+                        <span class="kpi-metric-number">5</span>
+                        <span class="kpi-metric-unit">centros operativos</span>
                     </div>
                     <div class="kpi-health-progress">
-                        <div class="kpi-progress-bar bar-blue" style="width: 72%;"></div>
+                        <div class="kpi-progress-bar bar-blue" style="width: 64%;"></div>
                     </div>
                     <div class="kpi-card-footer">
-                        <span class="trend-badge trend-up">+2 este mes</span>
-                        <span class="badge-health-pill badge-optimal">72% del cupo</span>
+                        <span class="trend-badge trend-up">+2 centros este mes</span>
+                        <span class="badge-health-pill badge-optimal">4 con perfiles</span>
                     </div>
                 </article>
 
@@ -261,7 +244,7 @@
                     <div class="kpi-card-top">
                         <div>
                             <span class="kpi-category-badge kpi-badge-green">CONTROL DE SALUD</span>
-                            <h3 class="kpi-card-title">Usuarios Tipo 3</h3>
+                            <h3 class="kpi-card-title">Cuentas de Control Sanitario</h3>
                         </div>
                         <div class="kpi-icon-pill icon-green">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -271,14 +254,14 @@
                         </div>
                     </div>
                     <div class="kpi-metric-row">
-                        <span class="kpi-metric-number">5</span>
-                        <span class="kpi-metric-unit">cuentas de vigilancia</span>
+                        <span class="kpi-metric-number">1</span>
+                        <span class="kpi-metric-unit">cuenta regional</span>
                     </div>
                     <div class="kpi-health-progress">
                         <div class="kpi-progress-bar bar-green" style="width: 45%;"></div>
                     </div>
                     <div class="kpi-card-footer">
-                        <span class="text-muted">1 cuenta inactiva</span>
+                        <span class="text-muted">Supervisión de la red</span>
                         <span class="badge-health-pill badge-optimal">Operativo</span>
                     </div>
                 </article>
@@ -297,7 +280,7 @@
                         </div>
                     </div>
                     <div class="kpi-metric-row">
-                        <span class="kpi-metric-number text-danger">2</span>
+                        <span class="kpi-metric-number text-danger">1</span>
                         <span class="kpi-metric-unit">requieren renovación</span>
                     </div>
                     <div class="kpi-health-progress">
@@ -311,7 +294,7 @@
             </section>
 
             <!-- ==========================================================
-                 TABLA DE USUARIOS ACTIVOS
+                 TABLA DE CUENTAS Y CENTROS
                  ========================================================== -->
             <section class="health-table-panel">
 
@@ -324,9 +307,9 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
                         <div>
-                            <h2 class="panel-heading">Directorio de Cuentas Habilitadas</h2>
-                            <p class="panel-subheading">Estado de acceso, adscripción territorial y última
-                                actividad registrada</p>
+                            <h2 class="panel-heading">Cuentas y Centros Habilitados</h2>
+                            <p class="panel-subheading">Una cuenta por centro de salud, con su cantidad de perfiles
+                                personales y su estado de acceso</p>
                         </div>
                     </div>
 
@@ -336,14 +319,14 @@
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
-                            <input type="text" id="buscar-usuario" placeholder="Buscar por nombre, cédula o sede...">
+                            <input type="text" id="buscar-usuario" placeholder="Buscar centro o cuenta...">
                         </div>
 
                         <select class="admin-select" id="filtro-rol">
-                            <option value="">Todos los roles</option>
-                            <option value="1">Tipo 1 — Administración</option>
-                            <option value="2">Tipo 2 — Vacunación</option>
-                            <option value="3">Tipo 3 — Salud</option>
+                            <option value="">Todos los tipos de cuenta</option>
+                            <option value="1">Tipo 1 — Administración General</option>
+                            <option value="2">Tipo 2 — Centro de Salud</option>
+                            <option value="3">Tipo 3 — Control de Salud</option>
                         </select>
 
                         <select class="admin-select" id="filtro-estado">
@@ -359,10 +342,9 @@
                     <table class="health-table" id="tabla-usuarios">
                         <thead>
                             <tr>
-                                <th>ID DE CUENTA</th>
-                                <th>USUARIO / CORREO</th>
-                                <th>ROL</th>
-                                <th>SEDE DE ADSCRIPCIÓN</th>
+                                <th>CENTRO / CUENTA</th>
+                                <th>TIPO</th>
+                                <th>RESPONSABLE / PERFILES</th>
                                 <th>MUNICIPIO</th>
                                 <th>ÚLTIMO ACCESO</th>
                                 <th>ESTADO</th>
@@ -370,194 +352,191 @@
                             </tr>
                         </thead>
                         <tbody id="tbody-usuarios">
-
-                            <tr data-rol="1" data-estado="activo" data-buscar="dra elena cordero admin general dirección regional">
-                                <td class="font-mono text-muted">USR-ADM-001</td>
+                            <tr data-rol="1" data-estado="activo" data-buscar="administracion general admin general direccion regional cuenta compartida tipo 1">
                                 <td>
-                                    <div class="patient-cell">
-                                        <span class="patient-name">Dra. Elena Cordero</span>
-                                        <span class="patient-id">admin.general@sivguarico.ve</span>
+                                    <div class="profile-identity-cell">
+                                        <div class="profile-identity-avatar is-jefe">AG</div>
+                                        <div class="profile-identity-text">
+                                            <span class="profile-identity-name">Administración General</span>
+                                            <span class="profile-identity-mail">admin.general@sivguarico.ve</span>
+                                        </div>
                                     </div>
                                 </td>
-                                <td><span class="role-chip role-chip-admin">TIPO 1</span></td>
-                                <td>Sede Física Administradora</td>
-                                <td>Juan Germán Roscio</td>
-                                <td class="font-mono text-primary">Hoy, 18:21</td>
+                                <td><span class="profile-role-chip is-jefe">Tipo 1</span></td>
+                                <td>
+                                    <span class="text-primary font-semibold">Cuenta institucional compartida</span><br>
+                                    <span class="text-muted">Sin perfiles personales</span>
+                                </td>
+                                <td class="text-muted">Dirección Regional</td>
+                                <td class="font-mono text-muted">22/10/2026 · 07:02</td>
                                 <td><span class="badge-health-pill badge-optimal">Activo</span></td>
                                 <td class="text-right">
-                                    <button class="btn-table-action" type="button" title="Editar cuenta">
-                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2">
+                                    <button class="btn-table-action" type="button" title="Gestionar cuenta">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M12 20h9"></path>
-                                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
                                         </svg>
                                     </button>
                                 </td>
                             </tr>
-
-                            <tr data-rol="2" data-estado="activo" data-buscar="lic marlene requena ambulatorio calabozo">
-                                <td class="font-mono text-muted">USR-CAL-041</td>
+                            <tr data-rol="2" data-estado="activo" data-buscar="ambulatorio tipo ii calabozo centro control vacunacion francisco de miranda 3 perfiles jefe yajaira colmenares">
                                 <td>
-                                    <div class="patient-cell">
-                                        <span class="patient-name">Lic. Marlene Requena</span>
-                                        <span class="patient-id">m.requena@sivguarico.ve</span>
+                                    <div class="profile-identity-cell">
+                                        <div class="profile-identity-avatar">AC</div>
+                                        <div class="profile-identity-text">
+                                            <span class="profile-identity-name">Ambulatorio Tipo II Calabozo Centro</span>
+                                            <span class="profile-identity-mail">control.vacunacion@sivguarico.ve</span>
+                                        </div>
                                     </div>
                                 </td>
-                                <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
-                                <td>Ambulatorio Tipo II Calabozo Centro</td>
-                                <td>Francisco de Miranda</td>
-                                <td class="font-mono text-primary">Hoy, 18:42</td>
+                                <td><span class="profile-role-chip">Tipo 2</span></td>
+                                <td>
+                                    <span class="text-primary font-semibold">3 perfiles activos</span><br>
+                                    <span class="text-muted">Jefe: Dra. Yajaira Colmenares</span>
+                                </td>
+                                <td class="text-muted">Francisco de Miranda</td>
+                                <td class="font-mono text-muted">22/10/2026 · 08:14</td>
                                 <td><span class="badge-health-pill badge-optimal">Activo</span></td>
                                 <td class="text-right">
-                                    <button class="btn-table-action" type="button" title="Editar cuenta">
-                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2">
+                                    <button class="btn-table-action" type="button" title="Gestionar cuenta">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M12 20h9"></path>
-                                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
                                         </svg>
                                     </button>
                                 </td>
                             </tr>
-
-                            <tr data-rol="2" data-estado="activo" data-buscar="enf jonathan silva puesto de salud tucupido">
-                                <td class="font-mono text-muted">USR-TUC-017</td>
+                            <tr data-rol="2" data-estado="activo" data-buscar="puesto de salud tucupido puesto tucupido jose felix ribas 2 perfiles jefe romulo betancourt">
                                 <td>
-                                    <div class="patient-cell">
-                                        <span class="patient-name">Enf. Jonathan Silva</span>
-                                        <span class="patient-id">j.silva@sivguarico.ve</span>
+                                    <div class="profile-identity-cell">
+                                        <div class="profile-identity-avatar">PT</div>
+                                        <div class="profile-identity-text">
+                                            <span class="profile-identity-name">Puesto de Salud Tucupido</span>
+                                            <span class="profile-identity-mail">puesto.tucupido@sivguarico.ve</span>
+                                        </div>
                                     </div>
                                 </td>
-                                <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
-                                <td>Puesto de Salud Tucupido</td>
-                                <td>José Félix Ribas</td>
-                                <td class="font-mono text-primary">Hoy, 18:36</td>
+                                <td><span class="profile-role-chip">Tipo 2</span></td>
+                                <td>
+                                    <span class="text-primary font-semibold">2 perfiles activos</span><br>
+                                    <span class="text-muted">Jefe: Lcdo. Rómulo Betancourt</span>
+                                </td>
+                                <td class="text-muted">José Félix Ribas</td>
+                                <td class="font-mono text-muted">22/10/2026 · 07:48</td>
                                 <td><span class="badge-health-pill badge-optimal">Activo</span></td>
                                 <td class="text-right">
-                                    <button class="btn-table-action" type="button" title="Editar cuenta">
-                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2">
+                                    <button class="btn-table-action" type="button" title="Gestionar cuenta">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M12 20h9"></path>
-                                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
                                         </svg>
                                     </button>
                                 </td>
                             </tr>
-
-                            <tr data-rol="2" data-estado="expirado" data-buscar="lic yaritza pantoja cdi simón bolívar valle de la pascua">
-                                <td class="font-mono text-muted">USR-VLP-008</td>
+                            <tr data-rol="2" data-estado="activo" data-buscar="cdi valle de la pascua cdi vallepascua leonardo infante 1 perfil jefe ana rondon">
                                 <td>
-                                    <div class="patient-cell">
-                                        <span class="patient-name">Lic. Yaritza Pantoja</span>
-                                        <span class="patient-id">y.pantoja@sivguarico.ve</span>
+                                    <div class="profile-identity-cell">
+                                        <div class="profile-identity-avatar">CD</div>
+                                        <div class="profile-identity-text">
+                                            <span class="profile-identity-name">CDI Valle de la Pascua</span>
+                                            <span class="profile-identity-mail">cdi.vallepascua@sivguarico.ve</span>
+                                        </div>
                                     </div>
                                 </td>
-                                <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
-                                <td>CDI Simón Bolívar</td>
-                                <td>Leonardo Infante</td>
-                                <td class="font-mono text-warning">Ayer, 16:40</td>
-                                <td><span class="badge-health-pill badge-warning">Clave expirada</span></td>
-                                <td class="text-right">
-                                    <button class="btn-table-action" type="button" title="Renovar clave">
-                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2">
-                                            <rect x="3" y="11" width="18" height="11" rx="2"></rect>
-                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr data-rol="2" data-estado="activo" data-buscar="enf carlos guache hospital ranuárez balza roscio">
-                                <td class="font-mono text-muted">USR-ROS-012</td>
+                                <td><span class="profile-role-chip">Tipo 2</span></td>
                                 <td>
-                                    <div class="patient-cell">
-                                        <span class="patient-name">Enf. Carlos Guache</span>
-                                        <span class="patient-id">c.guache@sivguarico.ve</span>
-                                    </div>
+                                    <span class="text-primary font-semibold">1 perfil activo</span><br>
+                                    <span class="text-muted">Jefe: Dra. Ana Rondón</span>
                                 </td>
-                                <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
-                                <td>Hospital Dr. Israel Ranuárez Balza</td>
-                                <td>Juan Germán Roscio</td>
-                                <td class="font-mono text-primary">Hoy, 18:10</td>
+                                <td class="text-muted">Leonardo Infante</td>
+                                <td class="font-mono text-muted">21/10/2026 · 16:35</td>
                                 <td><span class="badge-health-pill badge-optimal">Activo</span></td>
                                 <td class="text-right">
-                                    <button class="btn-table-action" type="button" title="Editar cuenta">
-                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2">
+                                    <button class="btn-table-action" type="button" title="Gestionar cuenta">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M12 20h9"></path>
-                                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
                                         </svg>
                                     </button>
                                 </td>
                             </tr>
-
-                            <tr data-rol="3" data-estado="activo" data-buscar="dr ángel marcano vigilancia epidemiológica roscio">
-                                <td class="font-mono text-muted">USR-SAL-003</td>
+                            <tr data-rol="2" data-estado="activo" data-buscar="hospital israel ranuarez balza san juan de los morros hospital sanjuandelosmorros juan german roscio 4 perfiles jefe angel marcano">
                                 <td>
-                                    <div class="patient-cell">
-                                        <span class="patient-name">Dr. Ángel Marcano</span>
-                                        <span class="patient-id">a.marcano@sivguarico.ve</span>
+                                    <div class="profile-identity-cell">
+                                        <div class="profile-identity-avatar">HR</div>
+                                        <div class="profile-identity-text">
+                                            <span class="profile-identity-name">Hospital Dr. Israel Ranuárez Balza</span>
+                                            <span class="profile-identity-mail">hospital.sanjuandelosmorros@sivguarico.ve</span>
+                                        </div>
                                     </div>
                                 </td>
-                                <td><span class="role-chip role-chip-salud">TIPO 3</span></td>
-                                <td>Oficina de Vigilancia Epidemiológica</td>
-                                <td>Juan Germán Roscio</td>
-                                <td class="font-mono text-primary">Hoy, 17:58</td>
+                                <td><span class="profile-role-chip">Tipo 2</span></td>
+                                <td>
+                                    <span class="text-primary font-semibold">4 perfiles activos</span><br>
+                                    <span class="text-muted">Jefe: Dr. Ángel Marcano</span>
+                                </td>
+                                <td class="text-muted">Juan Germán Roscio</td>
+                                <td class="font-mono text-muted">21/10/2026 · 14:20</td>
                                 <td><span class="badge-health-pill badge-optimal">Activo</span></td>
                                 <td class="text-right">
-                                    <button class="btn-table-action" type="button" title="Editar cuenta">
-                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2">
+                                    <button class="btn-table-action" type="button" title="Gestionar cuenta">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M12 20h9"></path>
-                                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
                                         </svg>
                                     </button>
                                 </td>
                             </tr>
-
-                            <tr data-rol="3" data-estado="inactivo" data-buscar="lic rosa morales programa ampliado inmunizaciones">
-                                <td class="font-mono text-muted">USR-SAL-009</td>
+                            <tr data-rol="2" data-estado="inactivo" data-buscar="puesto de salud zaraza puesto zaraza pedro zaraza sin perfiles pendiente activacion">
                                 <td>
-                                    <div class="patient-cell">
-                                        <span class="patient-name">Lic. Rosa Morales</span>
-                                        <span class="patient-id">r.morales@sivguarico.ve</span>
+                                    <div class="profile-identity-cell">
+                                        <div class="profile-identity-avatar">PZ</div>
+                                        <div class="profile-identity-text">
+                                            <span class="profile-identity-name">Puesto de Salud Zaraza</span>
+                                            <span class="profile-identity-mail">puesto.zaraza@sivguarico.ve</span>
+                                        </div>
                                     </div>
                                 </td>
-                                <td><span class="role-chip role-chip-salud">TIPO 3</span></td>
-                                <td>Coordinación Regional del PAI</td>
-                                <td>Juan Germán Roscio</td>
-                                <td class="font-mono text-muted">12/08/2026</td>
-                                <td><span class="badge-health-pill badge-stable">Inactivo</span></td>
+                                <td><span class="profile-role-chip">Tipo 2</span></td>
+                                <td>
+                                    <span class="text-primary font-semibold">Sin perfiles registrados</span><br>
+                                    <span class="text-muted">Pendiente de activación</span>
+                                </td>
+                                <td class="text-muted">Pedro Zaraza</td>
+                                <td class="font-mono text-muted">Sin acceso registrado</td>
+                                <td><span class="badge-health-pill badge-warning">Inactivo</span></td>
                                 <td class="text-right">
-                                    <button class="btn-table-action" type="button" title="Reactivar cuenta">
-                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2">
-                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                    <button class="btn-table-action" type="button" title="Gestionar cuenta">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 20h9"></path>
+                                            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
                                         </svg>
                                     </button>
                                 </td>
                             </tr>
-
-                            <tr data-rol="2" data-estado="expirado" data-buscar="lic maritza colmenares ambulatorio calabozo">
-                                <td class="font-mono text-muted">USR-CAL-039</td>
+                            <tr data-rol="3" data-estado="activo" data-buscar="control de salud regional control salud guarico supervision sanitaria tipo 3">
                                 <td>
-                                    <div class="patient-cell">
-                                        <span class="patient-name">Lic. Maritza Colmenares</span>
-                                        <span class="patient-id">m.colmenares@sivguarico.ve</span>
+                                    <div class="profile-identity-cell">
+                                        <div class="profile-identity-avatar">CS</div>
+                                        <div class="profile-identity-text">
+                                            <span class="profile-identity-name">Control de Salud Regional</span>
+                                            <span class="profile-identity-mail">control.salud@sivguarico.ve</span>
+                                        </div>
                                     </div>
                                 </td>
-                                <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
-                                <td>Ambulatorio Tipo II Calabozo Centro</td>
-                                <td>Francisco de Miranda</td>
-                                <td class="font-mono text-warning">05/10/2026</td>
-                                <td><span class="badge-health-pill badge-warning">Clave expirada</span></td>
+                                <td><span class="profile-role-chip">Tipo 3</span></td>
+                                <td>
+                                    <span class="text-primary font-semibold">Supervisión sanitaria</span><br>
+                                    <span class="text-muted">Cuenta regional</span>
+                                </td>
+                                <td class="text-muted">Guárico</td>
+                                <td class="font-mono text-muted">22/10/2026 · 06:30</td>
+                                <td><span class="badge-health-pill badge-optimal">Activo</span></td>
                                 <td class="text-right">
-                                    <button class="btn-table-action" type="button" title="Renovar clave">
-                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2">
-                                            <rect x="3" y="11" width="18" height="11" rx="2"></rect>
-                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    <button class="btn-table-action" type="button" title="Gestionar cuenta">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 20h9"></path>
+                                            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
                                         </svg>
                                     </button>
                                 </td>
@@ -567,14 +546,11 @@
                 </div>
 
                 <div class="health-table-footer">
-                    <span>Mostrando <strong id="conteo-usuarios">8</strong> de <strong>24</strong> cuentas registradas en la
-                        plataforma</span>
+                    <span>Mostrando <strong id="conteo-usuarios">7</strong> de <strong>7</strong> cuentas y centros registrados</span>
                     <div class="pagination-controls">
                         <button class="pagination-btn" type="button" disabled>&laquo; Anterior</button>
                         <button class="pagination-btn active" type="button">1</button>
-                        <button class="pagination-btn" type="button">2</button>
-                        <button class="pagination-btn" type="button">3</button>
-                        <button class="pagination-btn" type="button">Siguiente &raquo;</button>
+                        <button class="pagination-btn" type="button" disabled>Siguiente &raquo;</button>
                     </div>
                 </div>
             </section>
@@ -587,7 +563,7 @@
                     <span>MINISTERIO DEL PODER POPULAR PARA LA SALUD // SUBREGIÓN GUÁRICO</span>
                 </div>
                 <div class="footer-meta-info">
-                    <span>REGISTRO DE USUARIOS ACTIVOS</span>
+                    <span>REGISTRO DE CUENTAS Y CENTROS</span>
                     <span>•</span>
                     <span class="font-mono">VERSIÓN 2.5 SALUD</span>
                 </div>
@@ -597,6 +573,7 @@
     </div>
 
     <script src="../js/ui.js"></script>
+    <script src="../js/perfiles.js"></script>
     <script>
         /* ==============================================================
            FILTROS Y ACCIONES DEL DIRECTORIO (SOLO INTERFAZ)
@@ -611,14 +588,23 @@
             var conteo = document.getElementById('conteo-usuarios');
             var filas = Array.prototype.slice.call(cuerpo.querySelectorAll('tr'));
 
+            /* Compara sin distinguir mayúsculas ni tildes: «José» encuentra «jose». */
+            function normalizar(texto) {
+                return (texto || '')
+                    .toString()
+                    .toLowerCase()
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '');
+            }
+
             function aplicarFiltros() {
-                var texto = (buscador.value || '').toLowerCase().trim();
+                var texto = normalizar((buscador.value || '').trim());
                 var rol = filtroRol.value;
                 var estado = filtroEstado.value;
                 var visibles = 0;
 
                 filas.forEach(function (fila) {
-                    var coincideTexto = !texto || (fila.getAttribute('data-buscar') || '').indexOf(texto) !== -1;
+                    var coincideTexto = !texto || normalizar(fila.getAttribute('data-buscar')).indexOf(texto) !== -1;
                     var coincideRol = !rol || fila.getAttribute('data-rol') === rol;
                     var coincideEstado = !estado || fila.getAttribute('data-estado') === estado;
 
@@ -638,15 +624,19 @@
             filtroEstado.addEventListener('change', aplicarFiltros);
 
             document.getElementById('btn-exportar-usuarios').addEventListener('click', function () {
-                SIV.toast('La exportación de la planilla de usuarios se habilitará con la integración de la base de datos.', 'info');
+                SIV.toast('La exportación de la planilla de cuentas se habilitará con la integración de la base de datos.', 'info');
             });
+
+            if (typeof SIV.enlazarCierreSesion === 'function') {
+                SIV.enlazarCierreSesion();
+            }
 
             /* --- Acciones por fila (placeholder de UI) --- */
             Array.prototype.forEach.call(cuerpo.querySelectorAll('.btn-table-action'), function (boton) {
                 boton.addEventListener('click', function () {
                     var fila = boton.closest('tr');
-                    var usuario = fila.querySelector('.patient-name');
-                    SIV.toast('Acción sobre la cuenta de ' + (usuario ? usuario.textContent : 'usuario') +
+                    var usuario = fila.querySelector('.profile-identity-name');
+                    SIV.toast('Gestión de la cuenta de ' + (usuario ? usuario.textContent : 'la entidad') +
                         ' — disponible cuando el Controlador (C) esté conectado.', 'info');
                 });
             });

@@ -128,4 +128,34 @@
         });
     };
 
+    /* --- Cierre de sesión: descarta la sesión simulada y vuelve al acceso --- */
+    SIV.cerrarSesion = function () {
+        /* Si el almacén de perfiles está cargado, se descarta la sesión de tipo 2. */
+        if (window.SIV && window.SIV.centros && typeof window.SIV.centros.cerrarSesion === 'function') {
+            window.SIV.centros.cerrarSesion();
+        }
+    };
+
+    /* --- Enlaza los botones de cierre de sesión (atributo data-siv-logout) --- */
+    SIV.enlazarCierreSesion = function (raiz) {
+        var nodos = (raiz || document).querySelectorAll('[data-siv-logout]');
+
+        Array.prototype.forEach.call(nodos, function (nodo) {
+            if (nodo.getAttribute('data-siv-logout-listo') === '1') { return; }
+            nodo.setAttribute('data-siv-logout-listo', '1');
+
+            nodo.addEventListener('click', function (evento) {
+                evento.preventDefault();
+                SIV.cerrarSesion();
+
+                var destino = nodo.getAttribute('data-siv-logout') || 'login.html';
+                if (window.SIV && window.SIV.toast) {
+                    SIV.toast('Sesión cerrada correctamente.', 'success', 2200);
+                }
+
+                window.setTimeout(function () { window.location.href = destino; }, 260);
+            });
+        });
+    };
+
 })(window, document);
