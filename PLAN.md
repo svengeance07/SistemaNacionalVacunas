@@ -17,9 +17,10 @@
 | Fase 1 — Acceso y navegación | 9 | 9 | 0 |
 | Fase 2 — Módulos de administración (tipo 1) | 12 | 11 | 0 |
 | Fase 2.5 — Barras laterales, sesión y perfiles del centro | 12 | 12 | 0 |
+| Fase 2.6 — Integración de las vistas nacionales del tipo 2 | 7 | 7 | 0 |
 | Fase 3 — Perfil tipo 3 (Control de Salud) | 5 | 0 | 5 |
 | Fase 4 — Backend / Modelo / Controladores | 9 | 0 | 9 |
-| **TOTAL** | **47** | **32** | **14** |
+| **TOTAL** | **54** | **39** | **14** |
 
 > Fase 2: el ítem **2.2** quedó descartado en la Fase 2.5 (se retiró el grupo «Módulos Operativos»).
 
@@ -119,6 +120,41 @@ modelo de **una cuenta por centro de salud** con perfiles personales (correo + c
 
 ---
 
+## 🟢 Fase 2.6 — Integración de las vistas nacionales del tipo 2
+
+*Objetivo: incorporar la actualización de las vistas del perfil 2 (Panel General, Pacientes y
+Reportes ESAVI) conservando todo el trabajo previo de login, administración, perfiles, inventario
+y personal.*
+
+- [x] **2.6.1** Integrar `vistas/centro.html`, `vistas/pacientes.html` y `vistas/reportes.html`
+      desde el último commit de la línea alterna (`2290228`), sin perder login, administración,
+      perfiles ni las vistas `inventario.html` / `personal.html`.
+- [x] **2.6.2** Unificar la barra lateral del tipo 2 en las seis vistas: grupos *Operación del
+      Centro* / *Cuenta del Centro*, seis enlaces, tarjeta de sesión y cierre al pie.
+- [x] **2.6.3** Fusionar `centro.css`: bloque nuevo de pacientes/reportes + estilos completos de
+      formularios, tablas clínicas, píldoras ESAVI y pie al fondo en vistas cortas.
+- [x] **2.6.4** Completar la funcionalidad ESAVI: búsqueda por cédula del paciente o del
+      representante, selección del menor, carga del carnet e historial, registro de reportes,
+      filtros por texto/gravedad, ficha modal y exportación CSV.
+- [x] **2.6.5** Añadir exportación CSV y paginación visual al Panel General (`centro.html`).
+- [x] **2.6.6** Unificar la marca **SIV-NACIONAL / PUYASO-NACIONAL** en login, administración y
+      vistas del tipo 2, conservando las referencias territoriales del centro piloto (Guárico).
+- [x] **2.6.7** Depurar la integración: 12 vistas balanceadas, enlaces y recursos locales
+      existentes, sin marcadores de conflicto ni BOM, consola limpia y sin desborde horizontal a
+      1440 / 1280 / 1024 / 820 / 420 px.
+
+**Notas**
+- Las vistas nuevas usan el mismo `vistas/css/centro.css` y los mismos scripts compartidos
+  (`js/ui.js`, `js/perfiles.js`); no se añadió una segunda hoja de estilos.
+- Los datos de pacientes, vacunas y reportes son **simulados** en la propia vista para la
+  demostración; se sustituirán por los endpoints de la capa C.
+- `vistas/img/mapa_guarico.png` se retiró junto con el panel anterior; el nuevo Panel General no
+  depende de imágenes externas.
+- `inventario.html`, `personal.html` y `perfiles.html` se conservan y ahora enlazan también a
+  Pacientes y Reportes ESAVI.
+
+---
+
 ## 🟡 Fase 3 — Perfil tipo 3 «Control de Salud»  — *Pendiente*
 
 *Objetivo: definir el módulo propio del tercer tipo de usuario.*
@@ -166,13 +202,19 @@ modelo de **una cuenta por centro de salud** con perfiles personales (correo + c
 | 22/10/2026 | Se crea `vistas/perfiles.html`; `usuarios-nuevos.html` pasa a **Alta de Centro** y `usuarios-activos.html` a **Centros Activos**. | Administración / Tipo 2 |
 | 22/10/2026 | Se completan `inventario.html` y `personal.html` (migas, pie, scripts) y se corrige su desbalance de `<div>`. | Tipo 2 |
 | 22/10/2026 | Sección 19-22 del CSS: sesión en barra lateral, paso de perfil, gestión de perfiles y panel segmentado. | CSS |
+| 22/10/2026 | Se integran las vistas nacionales del tipo 2 (`centro.html`, `pacientes.html`, `reportes.html`) del commit `2290228`, conservando login, administración, perfiles, inventario y personal. | Tipo 2 / Navegación |
+| 22/10/2026 | Barra lateral única del tipo 2 con seis enlaces, sesión y cierre; marca **SIV-NACIONAL / PUYASO-NACIONAL** unificada en login, administración y tipo 2. | UI / CSS |
+| 22/10/2026 | Módulo ESAVI completo: búsqueda por cédula o representante, selección del menor, carnet e historial, registro de reportes, filtros, ficha modal y exportación CSV. Exportación y paginación visual en el Panel General. | Tipo 2 / Reportes |
+| 22/10/2026 | Depuración final: 12 vistas balanceadas, enlaces y codificación correctos, consola limpia y sin desborde a 1440 / 1280 / 1024 / 820 / 420 px. | QA |
 
 ---
 
 ## 🗂️ Ideas y pendientes sueltos
 
-* Definir el destino del enlace **"Ver Reporte →"** de la tarjeta *Cobertura Poblacional Guárico*
-  en `vistas/centro.html` (hoy apunta a `#` porque la vista de reporte aún no existe).
+* Definir el destino del enlace **"Ver reportes del centro →"** de la tarjeta de Farmacovigilancia
+  en `vistas/centro.html` (hoy es un ancla visual hasta conectar la capa C).
+* Sustituir los datos simulados de pacientes, vacunas y reportes ESAVI por los endpoints de la
+  capa C; hoy viven en `vistas/pacientes.html` y `vistas/reportes.html` para la demostración.
 * Cuando exista la capa **C**, retirar `vistas/js/perfiles.js` y persistir centros, perfiles y
   sesión en la base de datos. El resto de las vistas ya consume `SIV.centros` como fachada.
 * Evaluar si el **jefe del centro** puede restablecer la contraseña de un trabajador desde

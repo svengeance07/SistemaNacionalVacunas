@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SIV-GUÁRICO // Almacén simulado de centros y perfiles (tipo 2)
+   SIV-NACIONAL // Almacén simulado de centros y perfiles (tipo 2)
    --------------------------------------------------------------------------
    MODELO DE NEGOCIO SIMULADO que sustituye, por ahora, a la capa de datos:
 

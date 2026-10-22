@@ -1,6 +1,6 @@
-# SIV-GUÁRICO // Sistema Integrado de Vacunación y Salud Pública
+# SIV-NACIONAL // Sistema Nacional de Inmunizaciones y Salud Pública
 
-Plataforma asistencial y de control epidemiológico para la gestión del **Programa Ampliado de Inmunizaciones (PAI)** en la Subregión Guárico.
+Plataforma asistencial y de control epidemiológico para la gestión del **Programa Ampliado de Inmunizaciones (PAI)** en la **República Bolivariana de Venezuela (MPPS - SPNS)**, con el centro piloto **Hospital Dr. Israel Ranuárez Balza** (Subregión Guárico).
 
 > **Este archivo es CONTEXTO PERMANENTE del proyecto.**
 > Antes de incorporar cualquier cambio, vista o funcionalidad nueva, lea este documento completo y
@@ -46,7 +46,7 @@ El sistema contempla **3 perfiles de usuario**, seleccionados en la pantalla de 
 | Tipo | Perfil | Nombre del perfil | Responsabilidad | Módulo de entrada |
 |---|---|---|---|---|
 | **1** | Administración General | `Administrador General` | Sede física administradora: da de alta **centros de salud** (cuenta tipo 2), audita acciones y entrega lotes de vacunas | `vistas/admin/index.html` |
-| **2** | Control de Vacunación | `Control de Vacunación` | **Una cuenta por centro de salud**, compartida por su personal mediante **perfiles personales**; registra vacunas, pacientes e inventario y recibe lotes del tipo 1 | `vistas/centro.html` |
+| **2** | Control de Vacunación | `Control de Vacunación` | **Una cuenta por centro de salud**, compartida por su personal mediante **perfiles personales**; registra vacunas, pacientes e inventario, reporta ESAVI y recibe lotes del tipo 1 | `vistas/centro.html` |
 | **3** | Control de Salud | `Control de Salud` | Vigilancia epidemiológica y control de cobertura | *Pendiente de definir (ver `PLAN.md`)* |
 
 ### Credenciales de demostración (hardcodeadas)
@@ -103,7 +103,9 @@ SistemaNacionalVacunas/
 ├── vistas/                      # Capa de VISTAS (Views) puras del sistema MVC
 │   ├── login.html               # Acceso institucional (triple switch de tipo de usuario)
 │   │
-│   ├── centro.html              # [TIPO 2] Sala Situacional / Panel General de Inmunización
+│   ├── centro.html              # [TIPO 2] Panel General / Sala Situacional del centro
+│   ├── pacientes.html           # [TIPO 2] Consulta por cédula y registro de pacientes
+│   ├── reportes.html            # [TIPO 2] Vigilancia epidemiológica y reporte ESAVI
 │   ├── inventario.html          # [TIPO 2] Catálogo de Biológicos y Cadena de Frío
 │   ├── personal.html            # [TIPO 2] Directorio de Personal de Enfermería y Brigadas
 │   ├── perfiles.html            # [TIPO 2] Perfiles personales del centro (jefe del centro)
@@ -118,12 +120,9 @@ SistemaNacionalVacunas/
 │   ├── css/
 │   │   └── centro.css           # Hoja de estilos clínica ÚNICA (paleta, tipografía, grid, responsivo)
 │   │
-│   ├── js/
-│   │   ├── ui.js                # Utilidades de UI compartidas (SIV.toast, sesión) — sin lógica de negocio
-│   │   └── perfiles.js          # Almacén SIMULADO de centros/perfiles (localStorage) — sustituye a la capa C
-│   │
-│   └── img/
-│       └── mapa_guarico.png     # Silueta cartográfica oficial del estado Guárico
+│   └── js/
+│       ├── ui.js                # Utilidades de UI compartidas (SIV.toast, sesión) — sin lógica de negocio
+│       └── perfiles.js          # Almacén SIMULADO de centros/perfiles (localStorage) — sustituye a la capa C
 ```
 
 ---
@@ -139,6 +138,8 @@ index.html
           │                 ├── auditoria.html
           │                 └── lotes-entrega.html
           ├── TIPO 2 ──► vistas/centro.html
+          │                 ├── pacientes.html
+          │                 ├── reportes.html
           │                 ├── inventario.html
           │                 ├── personal.html
           │                 └── perfiles.html   (el jefe crea; el trabajador solo consulta)
@@ -155,7 +156,7 @@ index.html
 ## 🩺 Módulos de Vistas Disponibles (`vistas/`)
 
 ### 0. Acceso Institucional (`vistas/login.html`)
-   - Panel izquierdo institucional con la identidad del programa (PUYASO-GUÁRICO).
+   - Panel izquierdo institucional con la identidad del programa (PUYASO-NACIONAL).
    - **Triple switch** de tipo de usuario (1 / 2 / 3) con tarjeta del perfil seleccionado.
    - Campos: correo institucional + contraseña, con mostrar/ocultar clave.
    - **Tipo 2 en dos pasos**: validación de la cuenta del centro → selección de perfil personal
@@ -164,53 +165,62 @@ index.html
      defecto; al desplegarla, un clic autocompleta el formulario.
    - Error de acceso → notificación flotante superior derecha con auto-cierre.
 
-### 1. Sala Situacional (`vistas/centro.html`) — *Tipo 2*
-   - Tarjetas KPI: dosis aplicadas, alertas de lotes, cobertura poblacional.
-   - Mapa y distribución sanitaria por municipios (Roscio, Miranda, Infante, Zaraza, Ribas).
-   - Monitoreo de cadena de frío (+3.8 °C, +7.8 °C) y lotes con riesgo de caducidad.
-   - Tabla de pacientes inmunizados con buscador en tiempo real.
+### 1. Panel General (`vistas/centro.html`) — *Tipo 2*
+   - KPIs de jornada mensual y vigilancia de eventos adversos (ESAVI).
+   - Tabla clínica de pacientes inmunizados con trazabilidad nacional (#VAC-…).
+   - Accesos directos a registrar pacientes y reportar problemas de vacunas.
    - Barra lateral con los grupos *Operación del Centro* / *Cuenta del Centro* y sesión activa.
 
-### 2. Inventario de Biológicos (`vistas/inventario.html`) — *Tipo 2*
+### 2. Atención de Pacientes (`vistas/pacientes.html`) — *Tipo 2*
+   - Selector de categoría: adulto / niño(a) con búsqueda por cédula del representante.
+   - Carnet individual con historial de dosis, lote, centro y enfermero(a).
+   - Registro de nuevo paciente y carga de una nueva vacuna al carnet.
+
+### 3. Reporte de Problemas / ESAVI (`vistas/reportes.html`) — *Tipo 2*
+   - Búsqueda por cédula y resaltado de la última vacuna aplicada.
+   - Clasificación de severidad (leve / moderado / grave) y nube de síntomas.
+   - Ficha epidemiológica con identificador oficial (#REP-GUA-…), exportación e impresión.
+
+### 4. Inventario de Biológicos (`vistas/inventario.html`) — *Tipo 2*
    - Catálogo de vacunas (Fiebre Amarilla, Pentavalente, BCG, Polio Oral, VPH, Toxoide).
    - Indicadores de temperatura de almacenamiento, días para caducidad y estado de stock.
    - Buscador rápido por nombre o lote de vacuna.
 
-### 3. Directorio de Personal y Brigadas (`vistas/personal.html`) — *Tipo 2*
+### 5. Directorio de Personal y Brigadas (`vistas/personal.html`) — *Tipo 2*
    - Fichas de enfermeros, enfermeras y coordinadores de campo.
    - Asignación territorial por ambulatorio, termos PQS y registro de dosis administradas.
    - Buscador por nombre, cargo o municipio.
 
-### 4. Perfiles del Centro (`vistas/perfiles.html`) — *Tipo 2*
+### 6. Perfiles del Centro (`vistas/perfiles.html`) — *Tipo 2*
    - Tabla de perfiles personales de la cuenta del centro (avatar, cargo, rol, alta, estado).
    - El **jefe del centro** crea perfiles (nombre, cargo, correo y contraseña personales) y
      habilita/deshabilita a los existentes.
    - Un **trabajador** ve la misma tabla y un aviso de solo lectura, sin formulario de alta.
 
-### 5. Panel de Supervisión Institucional (`vistas/admin/index.html`) — *Tipo 1*
+### 7. Panel de Supervisión Institucional (`vistas/admin/index.html`) — *Tipo 1*
    - KPIs de supervisión: cuentas y centros, lotes entregados, acciones auditadas, sedes vigiladas.
    - Panel segmentado en bloques verticales: **Red Asistencial bajo supervisión**, **Actividad
      reciente de la red** y **Logística de lotes**.
    - Tabla de la red con centro, municipio, cuenta tipo 2, cantidad de perfiles, último acceso y estado.
 
-### 6. Alta de Centro de Salud (`vistas/admin/usuarios-nuevos.html`) — *Tipo 1*
+### 8. Alta de Centro de Salud (`vistas/admin/usuarios-nuevos.html`) — *Tipo 1*
    - Formulario en bloques: datos del centro, **cuenta del centro** (correo + contraseña) y
      **perfil base del jefe** (nombre, cargo, correo y contraseña personales).
    - Selección del municipio de adscripción y fecha de alta.
    - Al enviar, crea el centro en `SIV.centros` y añade la tarjeta a *Altas de la Sesión*.
 
-### 7. Registro de Centros y Cuentas Activas (`vistas/admin/usuarios-activos.html`) — *Tipo 1*
+### 9. Registro de Centros y Cuentas Activas (`vistas/admin/usuarios-activos.html`) — *Tipo 1*
    - KPIs de cuentas y centros habilitados, centros de salud, cuentas tipo 3 y claves expiradas.
    - Tabla con centro/cuenta, tipo, responsable y cantidad de perfiles, municipio, último acceso y estado.
    - Filtros combinables: buscador de texto, tipo de cuenta y estado.
 
-### 8. Bitácora de Acciones (`vistas/admin/auditoria.html`) — *Tipo 1*
+### 10. Bitácora de Acciones (`vistas/admin/auditoria.html`) — *Tipo 1*
    - KPIs de creations / modificaciones / eliminaciones y trazabilidad del actor.
    - Tabla con fecha-hora, actor, rol, **tipo de acción**, entidad, registro, IP y resultado.
    - Filtros por tipo de acción (todas / creación / modificación / eliminación).
    - Línea de tiempo de los eventos más recientes.
 
-### 9. Entrega de Lotes (`vistas/admin/lotes-entrega.html`) — *Tipo 1*
+### 11. Entrega de Lotes (`vistas/admin/lotes-entrega.html`) — *Tipo 1*
    - KPIs de despacho, dosis transferidas, entregas sin confirmar e incidencias de cadena de frío.
    - Formulario de despacho (**sede física tipo 1 → sede tipo 2**) con condición de traslado.
    - Tabla histórica con flujo de origen → destino y estado de recepción.
@@ -337,7 +347,7 @@ en secciones numeradas. **Reutilice las clases existentes; no genere duplicados.
 ## 📎 Referencias
 
 * **Plan de trabajo y pendientes:** [`PLAN.md`](./PLAN.md)
-* **Mapa cartográfico:** `vistas/img/mapa_guarico.png`
+* **Vistas nacionales del tipo 2:** `vistas/centro.html`, `vistas/pacientes.html` y `vistas/reportes.html`
 * **Estilos clínicos:** `vistas/css/centro.css`
 * **Utilidades de interfaz:** `vistas/js/ui.js`
 * **Almacén simulado de centros/perfiles:** `vistas/js/perfiles.js`

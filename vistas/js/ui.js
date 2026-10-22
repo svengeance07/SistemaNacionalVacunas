@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SIV-GUÁRICO // Capa de Interfaz (UI compartida)
+   SIV-NACIONAL // Capa de Interfaz (UI compartida)
    --------------------------------------------------------------------------
    Archivo EXCLUSIVAMENTE de presentación. Contiene únicamente utilidades
    visuales reutilizadas por las vistas (notificaciones flotantes, ayudas de

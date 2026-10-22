@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sistema Nacional de Inmunizaciones (SIV): Búsqueda por cédula, consulta de carnet, registro de nuevo paciente y aplicación de vacunas.">
+    <title>PUYASO / Sistema Nacional de Inmunizaciones - Pacientes</title>
+
+    <!-- Fuentes Médicas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/centro.css">
+</head>
+
+<body>
+    <div class="health-layout">
+
+        <!-- BARRA LATERAL MÉDICA -->
+        <aside class="health-sidebar" id="health-sidebar">
+            <div class="health-sidebar-inner">
+
+                <div class="sidebar-brand">
+                    <div class="brand-cross-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 4v16m-8-8h16"></path>
+                        </svg>
+                    </div>
+                    <div class="brand-text-block">
+                        <span class="brand-title">PUYASO-NACIONAL</span>
+                        <span class="brand-subtitle">Sistema Nacional de Vacunación</span>
+                    </div>
+                </div>
+
+                <nav class="health-nav" aria-label="Navegación principal">
+
+                    <span class="nav-group-label">Operación del Centro</span>
+                    <ul class="health-nav-list">
+                        <li class="health-nav-item">
+                            <a href="centro.html" class="health-nav-link" id="nav-dashboard">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                <span>Panel General</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item active">
+                            <a href="pacientes.html" class="health-nav-link" id="nav-pacientes">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line>
+                                </svg>
+                                <span>Pacientes</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="reportes.html" class="health-nav-link" id="nav-reportes">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                </svg>
+                                <span>Reporte de Problemas (ESAVI)</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="inventario.html" class="health-nav-link" id="nav-inventario">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path>
+                                </svg>
+                                <span>Inventario</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="personal.html" class="health-nav-link" id="nav-vacunadores">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span>Personal</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <span class="nav-group-label">Cuenta del Centro</span>
+                    <ul class="health-nav-list">
+                        <li class="health-nav-item">
+                            <a href="perfiles.html" class="health-nav-link" id="nav-perfiles">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span>Perfiles del Centro</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-footer-block">
+                    <div class="sidebar-session-card">
+                        <div class="sidebar-session-avatar" id="sesion-avatar">CV</div>
+                        <div class="sidebar-session-text">
+                            <span class="sidebar-session-name" id="sesion-nombre">Perfil del centro</span>
+                            <span class="sidebar-session-sub" id="sesion-cargo">Cuenta del centro</span>
+                        </div>
+                    </div>
+                    <button type="button" class="sidebar-logout" data-siv-logout="login.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Cerrar sesión</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="health-main-viewport">
+
+            <!-- CABECERA INSTITUCIONAL -->
+            <header class="health-header">
+                <div class="header-left-col">
+                <div class="health-breadcrumbs">
+                    <span>SIV-NACIONAL</span>
+                    <span>/</span>
+                    <span>Control de Vacunación</span>
+                    <span>/</span>
+                    <span class="text-primary">Pacientes</span>
+                </div>
+
+                    <h1 class="health-main-heading">Atención y Vacunación de Pacientes</h1>
+                </div>
+            </header>
+
+            <div class="patient-module-container">
+
+                <!-- ==============================================================
+                     BARRA DE BÚSQUEDA DEL PACIENTE (SIEMPRE DISPONIBLE ARRIBA)
+                     ============================================================== -->
+                <section class="patient-search-card" aria-label="Búsqueda de Paciente">
+                    <div class="search-card-header">
+                        <h2 class="search-card-title">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <span>Búsqueda de Paciente por Cédula</span>
+                        </h2>
+                        <p class="search-card-subtitle">
+                            Ingrese el número de cédula del paciente adulto o del representante legal si es menor de
+                            edad:
+                        </p>
+                    </div>
+
+                    <form class="patient-search-form" onsubmit="event.preventDefault(); consultarPaciente();">
+                        <div class="patient-search-input-group">
+                            <select class="patient-doc-type" id="tipo-doc-select" name="tipo_doc"
+                                title="Tipo de documento">
+                                <option value="V" selected>V-</option>
+                                <option value="E">E-</option>
+                            </select>
+                            <input type="text" id="input-cedula" class="patient-search-input" name="cedula" value=""
+                                placeholder="Ingrese número de cédula para consultar..." autocomplete="off"
+                                onkeydown="if(event.key === 'Enter'){ event.preventDefault(); consultarPaciente(); }">
+                        </div>
+                        <button type="button" onclick="consultarPaciente()" class="btn-health btn-health-primary"
+                            style="cursor: pointer; display: inline-flex; align-items: center; gap: 8px; border: none;">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <span>Consultar Paciente</span>
+                        </button>
+                        <button type="button" onclick="verInicio()" class="btn-health btn-health-outline"
+                            style="cursor: pointer; border: 1px solid var(--border-color); background: #ffffff;">
+                            <span>Limpiar</span>
+                        </button>
+                    </form>
+                </section>
+
+
+                <!-- ==============================================================
+                     ESTADO 1: INICIAL / ESPERANDO CONSULTA
+                     ============================================================== -->
+                <div id="vista-inicio" class="flow-view-block active" style="display: block;">
+                    <div
+                        style="background: #ffffff; border: 1.5px dashed var(--border-color); border-radius: var(--radius-lg); padding: 56px 32px; text-align: center; box-shadow: var(--shadow-sm);">
+                        <div
+                            style="width: 58px; height: 58px; margin: 0 auto 16px; border-radius: 50%; background: var(--color-primario-claro); color: var(--color-primario); display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                        <h3
+                            style="font-size: 1.25rem; font-weight: 700; color: var(--color-texto); margin-bottom: 8px;">
+                            Búsqueda y Gestión de Inmunizaciones
+                        </h3>
+                        <p
+                            style="font-size: 0.9rem; color: var(--color-texto-secundario); max-width: 500px; margin: 0 auto; line-height: 1.6;">
+                            Ingrese el número de cédula en la barra superior para consultar el carnet de vacunación del
+                            paciente o registrar un nuevo ingreso en el centro de salud.
+                        </p>
+                    </div>
+                </div>
+
+
+                <!-- ==============================================================
+                     ESTADO 2: ¿ESTÁ REGISTRADO? -> SOLAMENTE SU TARJETA Y BOTÓN DE CARGAR VACUNA
+                     ============================================================== -->
+                <div id="vista-encontrado" class="flow-view-block" style="display: none;">
+
+                    <!-- TARJETA CLÍNICA DEL PACIENTE (CARNET OFICIAL PAI) -->
+                    <section class="patient-profile-card" aria-label="Ficha Oficial del Paciente">
+                        <div class="profile-card-topbar">
+                            <div class="profile-identity">
+                                <div class="patient-avatar-large" id="paciente-display-avatar">CM</div>
+                                <div class="profile-names-block">
+                                    <h2 id="paciente-display-nombre">Carlos Eduardo Mendoza Peña</h2>
+                                    <div class="profile-meta-badges">
+                                        <span class="meta-chip-white font-mono"
+                                            id="paciente-display-cedula">V-28.452.190</span>
+                                        <span class="meta-chip-white" id="paciente-display-categoria">Mayor de Edad (28
+                                            años)</span>
+                                        <span class="meta-chip-white" id="paciente-display-sexo">Sexo: Masculino</span>
+                                        <span class="meta-chip-white">Estado Guárico</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                                <button type="button" onclick="verAplicarVacuna()" class="btn-health btn-health-primary"
+                                    style="cursor: pointer; background: #ffffff; color: var(--color-primario-oscuro); border-color: #ffffff; font-weight: 700; padding: 10px 20px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+                                    <span>💉 Cargar Nueva Vacuna</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card-body">
+
+                            <!-- DATOS SOCIODEMOGRÁFICOS -->
+                            <div class="patient-details-grid">
+                                <div class="detail-data-box">
+                                    <div class="detail-label">Teléfono de Contacto</div>
+                                    <div class="detail-value" id="paciente-display-telf">0414-8901234</div>
+                                </div>
+                                <div class="detail-data-box">
+                                    <div class="detail-label">Fecha de Nacimiento</div>
+                                    <div class="detail-value" id="paciente-display-nac">15/04/1998</div>
+                                </div>
+                                <div class="detail-data-box">
+                                    <div class="detail-label">Ubicación Territorial</div>
+                                    <div class="detail-value" id="paciente-display-ubicacion">San Juan de los Morros,
+                                        Mcpio. Roscio</div>
+                                </div>
+                                <div class="detail-data-box" id="box-representante" style="display: none;">
+                                    <div class="detail-label">Representante Legal</div>
+                                    <div class="detail-value" id="paciente-display-rep">No registrado</div>
+                                </div>
+                                <div class="detail-data-box">
+                                    <div class="detail-label">Centro de Salud Emisor</div>
+                                    <div class="detail-value">Hospital Dr. Israel Ranuárez Balza</div>
+                                </div>
+                            </div>
+
+                            <!-- CARNET DE VACUNACIÓN / HISTORIAL COMPLETO -->
+                            <div>
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+                                    <div>
+                                        <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-texto);">
+                                            Historial y Carnet de Vacunación Registrado
+                                        </h3>
+                                        <p style="font-size: 0.8rem; color: var(--color-texto-secundario);">
+                                            Dosis administradas y certificadas en el Sistema Nacional (PAI - MPPS).
+                                        </p>
+                                    </div>
+                                    <span id="badge-total-dosis"
+                                        style="font-size: 0.8rem; font-weight: 700; color: var(--color-primario-oscuro); background: var(--color-primario-claro); padding: 5px 12px; border-radius: 999px;">
+                                        ● 3 Dosis Aplicadas
+                                    </span>
+                                </div>
+
+                                <div class="health-table-container">
+                                    <table class="health-table">
+                                        <thead>
+                                            <tr>
+                                                <th>BIOLÓGICO / VACUNA</th>
+                                                <th>DOSIS / ESQUEMA</th>
+                                                <th>FECHA APLICACIÓN</th>
+                                                <th>LOTE</th>
+                                                <th>CENTRO DE SALUD</th>
+                                                <th>ENFERMERO(A) RESPONSABLE</th>
+                                                <th>ESTADO</th>
+                                                <th class="text-right">ACCIONES</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabla-carnet-body">
+                                            <!-- Generado dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color); flex-wrap: wrap; gap: 10px;">
+                                    <button type="button" onclick="verInicio()" class="btn-health btn-health-outline"
+                                        style="cursor: pointer; background: #ffffff; border: 1px solid var(--border-color);">
+                                        <span>🔙 Realizar Otra Búsqueda</span>
+                                    </button>
+                                    <button type="button" onclick="verAplicarVacuna()"
+                                        class="btn-health btn-health-primary"
+                                        style="cursor: pointer; padding: 10px 22px; border: none;">
+                                        <span>💉 Cargar Nueva Vacuna a este Paciente &rarr;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+
+                <!-- ==============================================================
+                     ESTADO 3: ¿NO ESTÁ REGISTRADO? -> FORMULARIO DE REGISTRO
+                     ============================================================== -->
+                <div id="vista-no-encontrado" class="flow-view-block" style="display: none;">
+                    <section class="patient-registration-panel" aria-label="Registro de Paciente Nuevo">
+
+                        <div
+                            style="border-bottom: 2px solid var(--border-color); padding-bottom: 14px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+                            <div>
+                                <h2 class="registration-panel-title">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <line x1="19" y1="8" x2="19" y2="14"></line>
+                                        <line x1="22" y1="11" x2="16" y2="11"></line>
+                                    </svg>
+                                    <span>Formulario de Ingreso de Paciente Nuevo</span>
+                                </h2>
+                                <p class="registration-panel-desc" style="margin-bottom: 0;">
+                                    La cédula ingresada <strong id="lbl-cedula-no-encontrada"
+                                        style="color: var(--color-primario-oscuro); font-family: var(--font-mono);"></strong>
+                                    no se encuentra en el sistema. Complete los datos sociodemográficos para habilitar
+                                    su carnet oficial.
+                                </p>
+                            </div>
+                            <button type="button" onclick="verInicio()" class="btn-health btn-health-outline"
+                                style="cursor: pointer; font-size: 0.8rem; padding: 6px 14px; background: #ffffff; border: 1px solid var(--border-color);">
+                                <span>🔙 Cambiar Cédula</span>
+                            </button>
+                        </div>
+
+                        <div
+                            style="border-bottom: 2px solid var(--border-color); padding-bottom: 14px; margin-bottom: 20px;">
+                            <h2 class="registration-panel-title">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <line x1="19" y1="8" x2="19" y2="14"></line>
+                                    <line x1="22" y1="11" x2="16" y2="11"></line>
+                                </svg>
+                                <span>Formulario de Ingreso de Paciente Nuevo</span>
+                            </h2>
+                            <p class="registration-panel-desc" style="margin-bottom: 0;">
+                                Ingrese los datos sociodemográficos para habilitar el carnet y proceder con la
+                                administración de vacunas.
+                            </p>
+                        </div>
+
+                        <form id="form-registro-nuevo-paciente"
+                            onsubmit="event.preventDefault(); guardarNuevoPaciente();">
+
+                            <!-- CATEGORÍA -->
+                            <div
+                                style="background: var(--bg-app); border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 22px;">
+                                <label
+                                    style="display: block; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--color-primario-oscuro); margin-bottom: 8px;">
+                                    Categoría del Paciente a Registrar *
+                                </label>
+                                <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                                    <label
+                                        style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem;">
+                                        <input type="radio" name="cat_paciente" value="adulto" checked onchange="actualizarModoCategoria()"
+                                            style="width: 18px; height: 18px; accent-color: var(--color-primario);">
+                                        <span>👤 Mayor de Edad / Adulto (Cédula Propia)</span>
+                                    </label>
+                                    <label
+                                        style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem;">
+                                        <input type="radio" name="cat_paciente" value="nino" onchange="actualizarModoCategoria()"
+                                            style="width: 18px; height: 18px; accent-color: var(--color-primario);">
+                                        <span>👶 Menor de Edad / Pediátrico (Bajo Cédula del Representante)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- DATOS PERSONALES -->
+                            <div class="form-section-title">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>1. Datos Personales del Paciente</span>
+                            </div>
+
+                            <div class="form-grid-3">
+                                <div class="form-group-field">
+                                    <label for="inp-nombres">Nombres Completos *</label>
+                                    <input type="text" id="inp-nombres" name="nombres"
+                                        placeholder="Ej: Valentina del Valle" value="Valentina del Valle" required>
+                                </div>
+                                <div class="form-group-field">
+                                    <label for="inp-apellidos">Apellidos Completos *</label>
+                                    <input type="text" id="inp-apellidos" name="apellidos"
+                                        placeholder="Ej: Gómez Arreaza" value="Gómez Arreaza" required>
+                                </div>
+                                <div class="form-group-field" id="grupo-cedula-paciente">
+                                    <label for="inp-cedula" id="lbl-inp-cedula">Cédula de Identidad *</label>
+                                    <div style="display: flex; gap: 8px;">
+                                        <select id="inp-tipo-cedula" name="tipo_cedula" style="width: 80px;">
+                                            <option value="V">V-</option>
+                                            <option value="E">E-</option>
+                                        </select>
+                                        <input type="text" id="inp-cedula" name="cedula" placeholder="Ej: 14223987"
+                                            value="14223987" required style="flex: 1;">
+                                    </div>
+                                    <span id="hint-cedula-menor" style="display: none; font-size: 0.76rem; color: #166534; margin-top: 4px; font-weight: 600;">
+                                        ℹ️ Los menores de edad no requieren cédula propia; se asocian a la cédula del representante legal.
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-grid-3">
+                                <div class="form-group-field">
+                                    <label for="inp-fecha-nac">Fecha de Nacimiento *</label>
+                                    <input type="date" id="inp-fecha-nac" name="fecha_nac" value="1995-08-22" required>
+                                </div>
+                                <div class="form-group-field">
+                                    <label for="inp-sexo">Sexo *</label>
+                                    <select id="inp-sexo" name="sexo" required>
+                                        <option value="Femenino" selected>Femenino</option>
+                                        <option value="Masculino">Masculino</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-field">
+                                    <label for="inp-telefono">Teléfono de Contacto</label>
+                                    <input type="tel" id="inp-telefono" name="telefono" value="0412-1234567"
+                                        placeholder="Ej: 0412-1234567">
+                                </div>
+                            </div>
+
+                            <div class="form-grid-3">
+                                <div class="form-group-field">
+                                    <label for="inp-estado">Estado Territorial *</label>
+                                    <select id="inp-estado" name="estado" required>
+                                        <option value="Guárico" selected>Guárico</option>
+                                        <option value="Distrito Capital">Distrito Capital</option>
+                                        <option value="Aragua">Aragua</option>
+                                        <option value="Carabobo">Carabobo</option>
+                                        <option value="Miranda">Miranda</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-field">
+                                    <label for="inp-municipio">Municipio / Parroquia *</label>
+                                    <input type="text" id="inp-municipio" name="municipio"
+                                        value="Mcpio. Juan Germán Roscio - San Juan de los Morros" required>
+                                </div>
+                                <div class="form-group-field">
+                                    <label for="inp-centro">Centro de Salud *</label>
+                                    <input type="text" id="inp-centro" name="centro"
+                                        value="Hospital Dr. Israel Ranuárez Balza" required readonly
+                                        style="background: #f8fafc;">
+                                </div>
+                            </div>
+
+                            <!-- DATOS DEL REPRESENTANTE LEGAL -->
+                            <div id="seccion-representante"
+                                style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: var(--radius-md); padding: 18px 20px; margin-top: 18px; margin-bottom: 22px;">
+                                <div class="form-section-title"
+                                    style="margin-top: 0; color: #166534; border-color: #86efac;">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                    <span id="lbl-titulo-rep">2. Datos del Representante Legal (Requerido para Menores de Edad)</span>
+                                </div>
+
+                                <div class="form-grid-3">
+                                    <div class="form-group-field">
+                                        <label for="inp-rep-cedula" id="lbl-rep-cedula" style="color: #166534;">Cédula del
+                                            Representante *</label>
+                                        <div style="display: flex; gap: 8px;">
+                                            <select name="rep_tipo_cedula" id="sel-rep-tipo-cedula" style="width: 80px;">
+                                                <option value="V">V-</option>
+                                                <option value="E">E-</option>
+                                            </select>
+                                            <input type="text" id="inp-rep-cedula" name="rep_cedula"
+                                                placeholder="Ej: 24119504" style="flex: 1;">
+                                        </div>
+                                    </div>
+                                    <div class="form-group-field">
+                                        <label for="inp-rep-nombre" id="lbl-rep-nombre" style="color: #166534;">Nombres y Apellidos
+                                            Representante *</label>
+                                        <input type="text" id="inp-rep-nombre" name="rep_nombre"
+                                            placeholder="Ej: Ana Gabriela Rojas">
+                                    </div>
+                                    <div class="form-group-field">
+                                        <label for="inp-rep-parentesco" style="color: #166534;">Parentesco /
+                                            Filiación</label>
+                                        <select id="inp-rep-parentesco" name="rep_parentesco">
+                                            <option value="Madre">Madre</option>
+                                            <option value="Padre">Padre</option>
+                                            <option value="Representante Legal">Representante Legal / Tutor</option>
+                                            <option value="Abuelo(a)">Abuelo(a)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. ANTECEDENTES DE VACUNACIÓN / CARNET PREVIO -->
+                            <div
+                                style="background: #ffffff; border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 18px 20px; margin-top: 18px; margin-bottom: 22px; box-shadow: var(--shadow-sm);">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+                                    <div class="form-section-title"
+                                        style="margin: 0; color: var(--color-primario-oscuro); border: none; padding: 0;">
+                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                        </svg>
+                                        <span>3. Antecedentes de Vacunación (Vacunas Previas / Carnet Físico)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <span id="badge-contador-previas"
+                                            style="font-size: 0.8rem; font-weight: 700; color: var(--color-primario-oscuro); background: var(--color-primario-claro); padding: 4px 12px; border-radius: 999px;">
+                                            0 vacunas previas seleccionadas
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <p
+                                    style="font-size: 0.88rem; color: var(--color-texto-secundario); margin-bottom: 16px; line-height: 1.5;">
+                                    Seleccione las vacunas que el paciente ya tiene aplicadas según su carnet físico o
+                                    antecedentes. Al registrarse, se incorporarán directamente a su Carnet Digital
+                                    Oficial con estado <strong>Certificado</strong>.
+                                </p>
+
+                                <!-- GRID DE VACUNAS PREVIAS DEL PAI -->
+                                <div id="contenedor-vacunas-previas"
+                                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 12px; margin-bottom: 16px;">
+                                    <!-- Inyectado dinámicamente desde el catálogo -->
+                                </div>
+
+                                <!-- BOTÓN PARA AÑADIR OTRA VACUNA PERSONALIZADA -->
+                                <div
+                                    style="border-top: 1px dashed var(--border-color); padding-top: 14px; margin-top: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                                    <span style="font-size: 0.84rem; color: var(--color-texto-secundario);">
+                                        ¿El paciente recibió otra vacuna que no figura en el catálogo anterior?
+                                    </span>
+                                    <button type="button" onclick="agregarFilaVacunaExtra()"
+                                        class="btn-health btn-health-outline btn-health-sm"
+                                        style="cursor: pointer; background: #ffffff; border: 1px dashed var(--color-primario); color: var(--color-primario); font-weight: 600;">
+                                        <span>➕ Añadir Otra Vacuna Previa</span>
+                                    </button>
+                                </div>
+
+                                <!-- CONTENEDOR DE VACUNAS EXTRAS PERSONALIZADAS -->
+                                <div id="contenedor-vacunas-extras"
+                                    style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;"></div>
+                            </div>
+
+                            <!-- ACCIONES: REGISTRAR Y GENERAR CARNET -->
+                            <div class="action-form-bar">
+                                <button type="button" onclick="verInicio()" class="btn-health btn-health-outline"
+                                    style="cursor: pointer; background: #ffffff; border: 1px solid var(--border-color);">
+                                    <span>Cancelar</span>
+                                </button>
+                                <button type="button" onclick="guardarNuevoPaciente()"
+                                    class="btn-health btn-health-primary"
+                                    style="cursor: pointer; padding: 10px 24px; border: none;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z">
+                                        </path>
+                                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                        <polyline points="7 3 7 8 15 8"></polyline>
+                                    </svg>
+                                    <span>Registrar Paciente y Generar Carnet</span>
+                                </button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+
+
+                <!-- ==============================================================
+                     ESTADO 4: APLICAR NUEVA VACUNA (DISPONIBLE AL ENCONTRAR O REGISTRAR)
+                     ============================================================== -->
+                <div id="vista-aplicar-vacuna" class="flow-view-block" style="display: none;">
+                    <section class="vaccine-apply-panel" aria-label="Aplicar Nueva Vacuna">
+
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; border-bottom: 2px solid #bae6fd; padding-bottom: 16px;">
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div
+                                        style="width: 42px; height: 42px; border-radius: 12px; background: var(--color-primario); color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);">
+                                        💉
+                                    </div>
+                                    <div>
+                                        <h2
+                                            style="font-size: 1.3rem; font-weight: 700; color: var(--color-primario-oscuro); margin: 0;">
+                                            Cargar Nueva Vacuna al Paciente
+                                        </h2>
+                                        <div
+                                            style="font-size: 0.85rem; color: var(--color-texto-secundario); margin-top: 2px;">
+                                            Paciente: <strong id="vacunar-display-nombre">Carlos Eduardo Mendoza
+                                                Peña</strong> • C.I. <span class="font-mono"
+                                                id="vacunar-display-cedula">V-28.452.190</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                style="background: #e0f2fe; border: 1px solid #7dd3fc; padding: 6px 14px; border-radius: var(--radius-md); font-size: 0.78rem; font-weight: 700; color: #0369a1;">
+                                🏥 Hospital Dr. Israel Ranuárez Balza
+                            </div>
+                        </div>
+
+                        <form id="form-aplicar-nueva-vacuna" onsubmit="event.preventDefault(); asentarVacuna();">
+                            <div class="form-grid-3">
+                                <div class="form-group-field">
+                                    <label for="vac-biologico">Biológico / Vacuna a Administrar *</label>
+                                    <select id="vac-biologico" name="vacuna_nombre" required
+                                        style="font-weight: 600; color: var(--color-primario-oscuro);">
+                                        <option value="">Seleccione vacuna del catálogo...</option>
+                                        <option value="Fiebre Amarilla">Fiebre Amarilla (Dosis 0.5ml)</option>
+                                        <option value="Toxoide Tetánico Diftérico">Toxoide Tetánico Diftérico</option>
+                                        <option value="Hepatitis B Adulto">Hepatitis B Adulto</option>
+                                        <option value="Influenza Estacional" selected>Influenza Estacional (Cepa Anual)
+                                        </option>
+                                        <option value="COVID-19">COVID-19 (Refuerzo Bivalente)</option>
+                                        <option value="Pentavalente">Pentavalente (DTP-HB-Hib)</option>
+                                        <option value="Polio Oral">Polio Oral / IPV</option>
+                                        <option value="BCG">BCG (Tuberculosis)</option>
+                                        <option value="Triple Viral SRP">Triple Viral (SRP)</option>
+                                        <option value="Neumococo Conjugada">Neumococo Conjugada</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-field">
+                                    <label for="vac-dosis">Dosis a Aplicar *</label>
+                                    <select id="vac-dosis" name="vacuna_dosis" required>
+                                        <option value="Dosis Anual Adulto" selected>Dosis Anual Adulto</option>
+                                        <option value="1ra Dosis">1ra Dosis</option>
+                                        <option value="2da Dosis">2da Dosis</option>
+                                        <option value="3ra Dosis">3ra Dosis (Fin de Esquema)</option>
+                                        <option value="1er Refuerzo">1er Refuerzo</option>
+                                        <option value="2do Refuerzo">2do Refuerzo</option>
+                                        <option value="Dosis Única">Dosis Única</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-field">
+                                    <label for="vac-fecha">Fecha de Colocación *</label>
+                                    <input type="date" id="vac-fecha" name="vacuna_fecha" value="2026-10-21" required>
+                                </div>
+                            </div>
+
+                            <div class="form-grid-3">
+                                <div class="form-group-field">
+                                    <label for="vac-lote">Número de Lote del Biológico *</label>
+                                    <input type="text" id="vac-lote" name="vacuna_lote" value="INF-VEN-G1" required
+                                        class="font-mono font-semibold" style="color: var(--color-primario-oscuro);">
+                                </div>
+                                <div class="form-group-field">
+                                    <label for="vac-sitio">Vía / Sitio Anatómico de Punción</label>
+                                    <select id="vac-sitio" name="vacuna_sitio">
+                                        <option value="Intramuscular - Deltoides Brazo Izquierdo" selected>Intramuscular
+                                            - Deltoides Brazo Izquierdo</option>
+                                        <option value="Intramuscular - Deltoides Brazo Derecho">Intramuscular -
+                                            Deltoides Brazo Derecho</option>
+                                        <option value="Subcutánea - Brazo Izquierdo">Subcutánea - Brazo Izquierdo
+                                        </option>
+                                        <option value="Intradérmica - Deltoides Derecho (BCG)">Intradérmica - Deltoides
+                                            Derecho (BCG)</option>
+                                        <option value="Oral (Gotas)">Oral (Gotas)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-field">
+                                    <label for="vac-enfermero">Enfermero(a) que Administra *</label>
+                                    <input type="text" id="vac-enfermero" name="vacuna_enfermero"
+                                        value="Lic. Marlene Requena" required>
+                                </div>
+                            </div>
+
+                            <!-- ACCIONES DEL FORMULARIO DE VACUNACIÓN -->
+                            <div class="action-form-bar" style="margin-top: 20px;">
+                                <button type="button" onclick="verEncontrado()" class="btn-health btn-health-outline"
+                                    style="cursor: pointer; background: #ffffff; border: 1px solid var(--border-color);">
+                                    <span>🔙 Cancelar y Volver al Carnet</span>
+                                </button>
+                                <button type="button" onclick="asentarVacuna()" class="btn-health btn-health-primary"
+                                    style="cursor: pointer; padding: 10px 24px; border: none;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z">
+                                        </path>
+                                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                        <polyline points="7 3 7 8 15 8"></polyline>
+                                    </svg>
+                                    <span>Guardar Vacuna en el Carnet</span>
+                                </button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+
+            </div>
+            <footer class="health-footer">
+                <div class="footer-health-brand">
+                    <svg class="icon-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 4v16m-8-8h16"></path>
+                    </svg>
+                    <span>MINISTERIO DEL PODER POPULAR PARA LA SALUD // REPÚBLICA BOLIVARIANA DE VENEZUELA</span>
+                </div>
+                <div class="footer-meta-info">
+                    <span>SISTEMA NACIONAL DE INMUNIZACIONES</span>
+                    <span>•</span>
+                    <span>PROTOCOLO CLÍNICO SEGURO</span>
+                    <span>•</span>
+                    <span class="font-mono">VERSIÓN 2.5 SALUD</span>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        // Base de datos de pacientes registrados en memoria
+        const baseDatosPacientes = {
+            '28452190': {
+                tipoCedula: 'V',
+                cedula: '28452190',
+                nombreCompleto: 'Carlos Eduardo Mendoza Peña',
+                iniciales: 'CM',
+                categoria: 'Mayor de Edad (28 años)',
+                sexo: 'Masculino',
+                telefono: '0414-8901234',
+                fechaNac: '15/04/1998',
+                ubicacion: 'San Juan de los Morros, Mcpio. Roscio',
+                centro: 'Hospital Dr. Israel Ranuárez Balza',
+                vacunas: [
+                    {
+                        nombre: 'Fiebre Amarilla',
+                        dosis: 'Dosis Única (0.5ml)',
+                        fecha: '2026-03-12',
+                        lote: 'FA-VEN-2026-G1',
+                        centro: 'Hospital Dr. Israel Ranuárez Balza',
+                        enfermero: 'Lic. Marlene Requena'
+                    },
+                    {
+                        nombre: 'Toxoide Tetánico Diftérico',
+                        dosis: '1er Refuerzo',
+                        fecha: '2025-11-20',
+                        lote: 'TT-VEN-88',
+                        centro: 'CDI Che Guevara',
+                        enfermero: 'Enf. Jonathan Silva'
+                    },
+                    {
+                        nombre: 'Hepatitis B Adulto',
+                        dosis: '3ra Dosis (Fin Esquema)',
+                        fecha: '2025-05-10',
+                        lote: 'HB-VEN-118',
+                        centro: 'Hospital Dr. Israel Ranuárez Balza',
+                        enfermero: 'Lic. Marlene Requena'
+                    }
+                ]
+            }
+        };
+
+        // Referencia al paciente actualmente seleccionado
+        let pacienteActivo = baseDatosPacientes['28452190'];
+
+        // Alternancia armónica entre vistas (solo una visible a la vez)
+        function cambiarVista(vistaId) {
+            const vistas = ['vista-inicio', 'vista-encontrado', 'vista-no-encontrado', 'vista-aplicar-vacuna'];
+            vistas.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    if (id === vistaId) {
+                        el.classList.add('active');
+                        el.style.display = 'block';
+                    } else {
+                        el.classList.remove('active');
+                        el.style.display = 'none';
+                    }
+                }
+            });
+            window.scrollTo({ top: 120, behavior: 'smooth' });
+        }
+
+        // Estado inicial
+        function verInicio() {
+            const input = document.getElementById('input-cedula');
+            if (input) input.value = '';
+            limpiarVacunasPrevias();
+            const radAdulto = document.querySelector('input[name="cat_paciente"][value="adulto"]');
+            if (radAdulto) radAdulto.checked = true;
+            actualizarModoCategoria();
+            cambiarVista('vista-inicio');
+        }
+
+        // Catálogo de vacunas previas comunes (PAI Venezuela y Esquemas Básicos)
+        const catalogoVacunasPrevias = [
+            { id: 'bcg', nombre: 'BCG (Tuberculosis)', tipo: 'Bacteriana / PAI', dosisDef: 'Dosis Única (Recién Nacido)', dosisOpciones: ['Dosis Única (Recién Nacido)', 'Refuerzo'] },
+            { id: 'hepb', nombre: 'Hepatitis B', tipo: 'Viral / PAI', dosisDef: '3ra Dosis (Fin Esquema)', dosisOpciones: ['1ra Dosis', '2da Dosis', '3ra Dosis (Fin Esquema)', 'Dosis Neonatal', 'Refuerzo'] },
+            { id: 'polio', nombre: 'Polio (IPV / OPV)', tipo: 'Viral / PAI', dosisDef: 'Esquema Completo (3 Dosis)', dosisOpciones: ['1ra Dosis (IPV)', '2da Dosis (bOPV)', '3ra Dosis (bOPV)', 'Esquema Completo (3 Dosis)', '1er Refuerzo', '2do Refuerzo'] },
+            { id: 'penta', nombre: 'Pentavalente (DTP-HB-Hib)', tipo: 'Combinada / PAI', dosisDef: 'Esquema Completo (3 Dosis)', dosisOpciones: ['1ra Dosis', '2da Dosis', '3ra Dosis', 'Esquema Completo (3 Dosis)', '1er Refuerzo (DTP)', '2do Refuerzo (DTP)'] },
+            { id: 'fa', nombre: 'Fiebre Amarilla', tipo: 'Endémica / Sanidad', dosisDef: 'Dosis Única (0.5ml)', dosisOpciones: ['Dosis Única (0.5ml)', 'Refuerzo Internacional'] },
+            { id: 'tt', nombre: 'Toxoide Tetánico Diftérico', tipo: 'Bacteriana / Adulto', dosisDef: 'Esquema Básico Adulto', dosisOpciones: ['1ra Dosis', '2da Dosis', '3ra Dosis', 'Esquema Básico Adulto', '1er Refuerzo', '2do Refuerzo'] },
+            { id: 'covid', nombre: 'COVID-19', tipo: 'Inmunización Especial', dosisDef: '2da Dosis (Esquema Completo)', dosisOpciones: ['1ra Dosis', '2da Dosis (Esquema Completo)', '1er Refuerzo', '2do Refuerzo (Bivalente)'] },
+            { id: 'influenza', nombre: 'Influenza Estacional', tipo: 'Viral / Anual', dosisDef: 'Cepa Anual Previa', dosisOpciones: ['Cepa Anual Previa', '1ra Dosis Pediátrica', '2da Dosis Pediátrica'] },
+            { id: 'srp', nombre: 'SRP (Sarampión-Rubéola-Parotiditis)', tipo: 'Triple Viral / PAI', dosisDef: '1ra Dosis (1 Año)', dosisOpciones: ['1ra Dosis (1 Año)', '2da Dosis / Refuerzo (5 Años)', 'Esquema Completo'] },
+            { id: 'rotavirus', nombre: 'Rotavirus', tipo: 'Pediátrica / PAI', dosisDef: '2da Dosis (Fin Esquema)', dosisOpciones: ['1ra Dosis', '2da Dosis (Fin Esquema)'] },
+            { id: 'neumo', nombre: 'Neumococo Conjugada', tipo: 'Bacteriana / PAI', dosisDef: 'Esquema Pediátrico / Adulto', dosisOpciones: ['1ra Dosis', '2da Dosis', 'Refuerzo / Monodosis'] },
+            { id: 'vph', nombre: 'VPH (Virus de Papiloma Humano)', tipo: 'Oncológica / PAI', dosisDef: 'Dosis Única / Esquema', dosisOpciones: ['1ra Dosis', '2da Dosis', 'Dosis Única / Esquema'] }
+        ];
+
+        // Inicializar tarjetas del catálogo previo
+        function inicializarCatalogoPrevio() {
+            const cont = document.getElementById('contenedor-vacunas-previas');
+            if (!cont) return;
+            cont.innerHTML = catalogoVacunasPrevias.map(vac => `
+                <div class="card-vacuna-previa" id="card-previa-${vac.id}" style="border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 12px 14px; background: #f8fafc; transition: all 0.2s ease;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--color-texto); flex: 1;">
+                            <input type="checkbox" class="chk-vacuna-previa" value="${vac.nombre}" data-id="${vac.id}" onchange="toggleVacunaPrevia('${vac.id}')" style="width: 18px; height: 18px; accent-color: var(--color-primario); cursor: pointer;">
+                            <span>${vac.nombre}</span>
+                        </label>
+                        <span style="font-size: 0.7rem; color: var(--color-texto-muted); background: #ffffff; border: 1px solid var(--border-color); padding: 2px 6px; border-radius: 4px; white-space: nowrap;">
+                            ${vac.tipo}
+                        </span>
+                    </div>
+                    <div id="campos-previa-${vac.id}" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid #cbd5e1;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <div>
+                                <label style="font-size: 0.72rem; font-weight: 700; color: var(--color-texto-secundario); display: block; margin-bottom: 2px;">Dosis Aplicada</label>
+                                <select id="dosis-previa-${vac.id}" style="width: 100%; font-size: 0.8rem; padding: 5px 8px; border-radius: 6px; border: 1px solid var(--border-color); background: #ffffff;">
+                                    ${vac.dosisOpciones.map(opt => `<option value="${opt}" ${opt === vac.dosisDef ? 'selected' : ''}>${opt}</option>`).join('')}
+                                </select>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.72rem; font-weight: 700; color: var(--color-texto-secundario); display: block; margin-bottom: 2px;">Fecha / Año Aprox.</label>
+                                <input type="date" id="fecha-previa-${vac.id}" style="width: 100%; font-size: 0.8rem; padding: 4px 6px; border-radius: 6px; border: 1px solid var(--border-color); background: #ffffff;">
+                            </div>
+                            <div>
+                                <label style="font-size: 0.72rem; font-weight: 700; color: var(--color-texto-secundario); display: block; margin-bottom: 2px;">Lote de Vacuna</label>
+                                <input type="text" id="lote-previa-${vac.id}" value="HISTÓRICO-CARNET" placeholder="Ej: LOT-2023-A" class="font-mono" style="width: 100%; font-size: 0.8rem; padding: 5px 8px; border-radius: 6px; border: 1px solid var(--border-color); background: #ffffff; font-weight: 600; color: var(--color-primario-oscuro);">
+                            </div>
+                            <div>
+                                <label style="font-size: 0.72rem; font-weight: 700; color: var(--color-texto-secundario); display: block; margin-bottom: 2px;">Centro Emisor / Constancia</label>
+                                <input type="text" id="centro-previa-${vac.id}" value="Carnet Físico Previo" placeholder="Centro o Municipio emisor" style="width: 100%; font-size: 0.8rem; padding: 5px 8px; border-radius: 6px; border: 1px solid var(--border-color); background: #ffffff;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Alternar tarjeta de vacuna previa al hacer clic en el checkbox
+        function toggleVacunaPrevia(id) {
+            const chk = document.querySelector(`.chk-vacuna-previa[data-id="${id}"]`);
+            const card = document.getElementById(`card-previa-${id}`);
+            const campos = document.getElementById(`campos-previa-${id}`);
+            if (!chk || !card || !campos) return;
+
+            if (chk.checked) {
+                card.style.borderColor = '#86efac';
+                card.style.background = '#f0fdf4';
+                card.style.boxShadow = '0 2px 6px rgba(34, 197, 94, 0.1)';
+                campos.style.display = 'block';
+            } else {
+                card.style.borderColor = 'var(--border-color)';
+                card.style.background = '#f8fafc';
+                card.style.boxShadow = 'none';
+                campos.style.display = 'none';
+            }
+            actualizarContadorPrevias();
+        }
+
+        // Actualizar contador visual de vacunas previas seleccionadas
+        function actualizarContadorPrevias() {
+            const numCheck = document.querySelectorAll('.chk-vacuna-previa:checked').length;
+            const numExtras = document.querySelectorAll('.fila-vacuna-extra').length;
+            const total = numCheck + numExtras;
+            const badge = document.getElementById('badge-contador-previas');
+            if (badge) {
+                badge.textContent = `${total} vacuna${total === 1 ? '' : 's'} previa${total === 1 ? '' : 's'} seleccionada${total === 1 ? '' : 's'}`;
+                if (total > 0) {
+                    badge.style.background = '#86efac';
+                    badge.style.color = '#166534';
+                } else {
+                    badge.style.background = 'var(--color-primario-claro)';
+                    badge.style.color = 'var(--color-primario-oscuro)';
+                }
+            }
+        }
+
+        // Agregar fila dinámica para una vacuna previa adicional personalizada
+        let contadorExtras = 0;
+        function agregarFilaVacunaExtra() {
+            contadorExtras++;
+            const cont = document.getElementById('contenedor-vacunas-extras');
+            if (!cont) return;
+
+            const div = document.createElement('div');
+            div.className = 'fila-vacuna-extra';
+            div.id = `fila-extra-${contadorExtras}`;
+            div.style = 'border: 1.5px solid #86efac; background: #f0fdf4; border-radius: var(--radius-md); padding: 12px 14px; display: grid; grid-template-columns: 2fr 1.3fr 1.2fr 1.3fr 1.8fr auto; gap: 8px; align-items: end;';
+            div.innerHTML = `
+                <div>
+                    <label style="font-size: 0.72rem; font-weight: 700; color: #166534; display: block; margin-bottom: 2px;">Nombre de la Vacuna *</label>
+                    <input type="text" class="extra-nom" placeholder="Ej: Varicela, Rabia, Hepatitis A" style="width: 100%; font-size: 0.8rem; padding: 6px 8px; border-radius: 6px; border: 1px solid #86efac; background: #ffffff;" required>
+                </div>
+                <div>
+                    <label style="font-size: 0.72rem; font-weight: 700; color: #166534; display: block; margin-bottom: 2px;">Dosis Aplicada</label>
+                    <select class="extra-dos" style="width: 100%; font-size: 0.8rem; padding: 6px 8px; border-radius: 6px; border: 1px solid #86efac; background: #ffffff;">
+                        <option value="Dosis Única">Dosis Única</option>
+                        <option value="1ra Dosis">1ra Dosis</option>
+                        <option value="2da Dosis">2da Dosis</option>
+                        <option value="3ra Dosis">3ra Dosis</option>
+                        <option value="Refuerzo">Refuerzo</option>
+                        <option value="Esquema Completo">Esquema Completo</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-size: 0.72rem; font-weight: 700; color: #166534; display: block; margin-bottom: 2px;">Fecha / Año Aprox.</label>
+                    <input type="date" class="extra-fec" style="width: 100%; font-size: 0.8rem; padding: 5px 8px; border-radius: 6px; border: 1px solid #86efac; background: #ffffff;">
+                </div>
+                <div>
+                    <label style="font-size: 0.72rem; font-weight: 700; color: #166534; display: block; margin-bottom: 2px;">Lote de Vacuna</label>
+                    <input type="text" class="extra-lot" value="HISTÓRICO-CARNET" placeholder="Ej: VAR-2023-A" style="width: 100%; font-size: 0.8rem; padding: 6px 8px; border-radius: 6px; border: 1px solid #86efac; background: #ffffff; font-family: var(--font-mono); font-weight: 600; color: var(--color-primario-oscuro);">
+                </div>
+                <div>
+                    <label style="font-size: 0.72rem; font-weight: 700; color: #166534; display: block; margin-bottom: 2px;">Centro Emisor</label>
+                    <input type="text" class="extra-cen" value="Carnet Físico Previo" style="width: 100%; font-size: 0.8rem; padding: 6px 8px; border-radius: 6px; border: 1px solid #86efac; background: #ffffff;">
+                </div>
+                <button type="button" onclick="eliminarFilaExtra('fila-extra-${contadorExtras}')" style="background: #fee2e2; border: 1px solid #fca5a5; color: #b91c1c; border-radius: 6px; height: 32px; width: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: bold;" title="Eliminar esta vacuna">
+                    ✕
+                </button>
+            `;
+            cont.appendChild(div);
+            actualizarContadorPrevias();
+        }
+
+        // Eliminar fila de vacuna extra
+        function eliminarFilaExtra(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+            actualizarContadorPrevias();
+        }
+
+        // Restablecer todas las selecciones de vacunas previas
+        function limpiarVacunasPrevias() {
+            document.querySelectorAll('.chk-vacuna-previa').forEach(chk => {
+                chk.checked = false;
+                const id = chk.dataset.id;
+                const card = document.getElementById(`card-previa-${id}`);
+                const campos = document.getElementById(`campos-previa-${id}`);
+                if (card) {
+                    card.style.borderColor = 'var(--border-color)';
+                    card.style.background = '#f8fafc';
+                    card.style.boxShadow = 'none';
+                }
+                if (campos) campos.style.display = 'none';
+            });
+            const contExtras = document.getElementById('contenedor-vacunas-extras');
+            if (contExtras) contExtras.innerHTML = '';
+            actualizarContadorPrevias();
+        }
+
+        // Alternar modo según categoría: si es menor de edad, se retira la restricción de cédula propia
+        function actualizarModoCategoria() {
+            const cat = document.querySelector('input[name="cat_paciente"]:checked');
+            const esNino = cat && cat.value === 'nino';
+            const inpCedula = document.getElementById('inp-cedula');
+            const lblCedula = document.getElementById('lbl-inp-cedula');
+            const hintMenor = document.getElementById('hint-cedula-menor');
+            const seccionRep = document.getElementById('seccion-representante');
+            const lblTituloRep = document.getElementById('lbl-titulo-rep');
+            const inpRepCedula = document.getElementById('inp-rep-cedula');
+            const inpRepNombre = document.getElementById('inp-rep-nombre');
+
+            if (esNino) {
+                // En menor de edad: NO es obligatoria la cédula propia
+                if (inpCedula) {
+                    inpCedula.removeAttribute('required');
+                    inpCedula.placeholder = 'Sin cédula (Bajo C.I. del representante)';
+                    // Si el campo de cédula del paciente tenía la cédula buscada (que es la del representante) y el representante está vacío, transferirla
+                    if (inpCedula.value && inpRepCedula && !inpRepCedula.value) {
+                        inpRepCedula.value = inpCedula.value;
+                        inpCedula.value = '';
+                    }
+                }
+                if (lblCedula) lblCedula.innerHTML = 'Cédula del Menor <span style="font-weight: 400; color: var(--color-texto-secundario); font-size: 0.8rem;">(Opcional - Solo si posee)</span>';
+                if (hintMenor) hintMenor.style.display = 'block';
+                if (seccionRep) {
+                    seccionRep.style.borderColor = '#16a34a';
+                    seccionRep.style.background = '#f0fdf4';
+                }
+                if (lblTituloRep) lblTituloRep.textContent = '2. Datos del Representante Legal (Obligatorio para Menores de Edad)';
+                if (inpRepCedula) inpRepCedula.setAttribute('required', 'required');
+                if (inpRepNombre) inpRepNombre.setAttribute('required', 'required');
+            } else {
+                // Adulto: cédula propia obligatoria
+                if (inpCedula) {
+                    inpCedula.setAttribute('required', 'required');
+                    inpCedula.placeholder = 'Ej: 14223987';
+                    if (!inpCedula.value && inpRepCedula && inpRepCedula.value) {
+                        inpCedula.value = inpRepCedula.value;
+                    }
+                }
+                if (lblCedula) lblCedula.innerHTML = 'Cédula de Identidad *';
+                if (hintMenor) hintMenor.style.display = 'none';
+                if (seccionRep) {
+                    seccionRep.style.borderColor = '#86efac';
+                    seccionRep.style.background = '#f0fdf4';
+                }
+                if (lblTituloRep) lblTituloRep.textContent = '2. Datos del Representante Legal (Solo aplica para Menores de Edad)';
+                if (inpRepCedula) inpRepCedula.removeAttribute('required');
+                if (inpRepNombre) inpRepNombre.removeAttribute('required');
+            }
+        }
+
+        // Renderizar dinámicamente la Tarjeta Oficial y Carnet del Paciente
+        function renderizarTarjeta(p) {
+            document.getElementById('paciente-display-nombre').textContent = p.nombreCompleto;
+            if (p.esNino && !p.tieneCedulaPropia) {
+                document.getElementById('paciente-display-cedula').textContent = `Bajo C.I. Rep: ${p.repTipo || 'V'}-${p.repCedula || p.cedula}`;
+            } else {
+                document.getElementById('paciente-display-cedula').textContent = `${p.tipoCedula}-${p.cedula}`;
+            }
+            document.getElementById('paciente-display-avatar').textContent = p.iniciales;
+            document.getElementById('paciente-display-categoria').textContent = p.categoria;
+            document.getElementById('paciente-display-sexo').textContent = `Sexo: ${p.sexo}`;
+            document.getElementById('paciente-display-telf').textContent = p.telefono || 'No registrado';
+            document.getElementById('paciente-display-nac').textContent = p.fechaNac || 'No registrada';
+            document.getElementById('paciente-display-ubicacion').textContent = p.ubicacion;
+            document.getElementById('badge-total-dosis').textContent = `● ${p.vacunas.length} Dosis Registradas`;
+
+            // Representante legal si aplica
+            const boxRep = document.getElementById('box-representante');
+            const displayRep = document.getElementById('paciente-display-rep');
+            if (boxRep && displayRep) {
+                if (p.repNombre) {
+                    boxRep.style.display = 'block';
+                    displayRep.textContent = `${p.repNombre} (${p.repParentesco || 'Representante'} - C.I. ${p.repTipo || 'V'}-${p.repCedula || ''})`;
+                } else {
+                    boxRep.style.display = 'none';
+                }
+            }
+
+            // Actualizar datos en el formulario de aplicación
+            const vacNombre = document.getElementById('vacunar-display-nombre');
+            if (vacNombre) vacNombre.textContent = p.nombreCompleto;
+            const vacCed = document.getElementById('vacunar-display-cedula');
+            if (vacCed) {
+                vacCed.textContent = (p.esNino && !p.tieneCedulaPropia)
+                    ? `Bajo C.I. Rep: ${p.repTipo || 'V'}-${p.repCedula || p.cedula}`
+                    : `${p.tipoCedula}-${p.cedula}`;
+            }
+
+            const tbody = document.getElementById('tabla-carnet-body');
+            if (!tbody) return;
+
+            if (p.vacunas.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" style="text-align: center; padding: 36px 20px; color: var(--color-texto-secundario);">
+                            <div style="width: 44px; height: 44px; margin: 0 auto 10px; border-radius: 50%; background: var(--color-primario-claro); color: var(--color-primario); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                📋
+                            </div>
+                            <strong style="font-size: 1rem; color: var(--color-texto); display: block; margin-bottom: 4px;">
+                                El paciente no posee vacunas registradas en su carnet
+                            </strong>
+                            <p style="font-size: 0.85rem; margin-bottom: 14px;">
+                                Utilice el botón superior para cargar y asentar su primera dosis administrada.
+                            </p>
+                            <button type="button" onclick="verAplicarVacuna()" class="btn-health btn-health-primary" style="padding: 8px 18px; border: none; font-size: 0.85rem; cursor: pointer;">
+                                💉 Cargar Primera Vacuna
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            } else {
+                tbody.innerHTML = p.vacunas.map((v, idx) => `
+                    <tr ${idx === 0 && v.esNueva ? 'style="background: #f0fdf4;"' : ''}>
+                        <td><strong style="color: var(--color-primario-oscuro);">${v.nombre}</strong></td>
+                        <td><span class="badge-dose-pill">${v.dosis}</span></td>
+                        <td class="font-mono">${v.fecha}</td>
+                        <td><span class="font-mono text-primary font-semibold">${v.lote}</span></td>
+                        <td>${v.centro}</td>
+                        <td>${v.enfermero}</td>
+                        <td><span class="health-status-chip chip-verified">● Verificado</span></td>
+                        <td class="text-right">
+                            <a href="reportes.html?cedula=${p.cedula}&vacuna=${encodeURIComponent(v.nombre)}" class="btn-health btn-health-sm btn-health-outline" style="font-size: 0.72rem; padding: 4px 8px; color: #b91c1c; border-color: #fca5a5; text-decoration: none;" title="Registrar evento adverso o problema con esta dosis">
+                                ⚠️ Reportar Problema
+                            </a>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        // Búsqueda de paciente por cédula
+        function consultarPaciente() {
+            const input = document.getElementById('input-cedula');
+            const tipoDoc = document.getElementById('tipo-doc-select') ? document.getElementById('tipo-doc-select').value : 'V';
+            const cedula = input ? input.value.trim().replace(/\D/g, '') : '';
+
+            if (!cedula) {
+                alert('Por favor ingrese un número de cédula para consultar.');
+                if (input) input.focus();
+                return;
+            }
+
+            // ¿ESTÁ REGISTRADO? -> SOLAMENTE SU TARJETA Y EL BOTÓN DE CARGAR VACUNA
+            if (baseDatosPacientes[cedula]) {
+                pacienteActivo = baseDatosPacientes[cedula];
+                renderizarTarjeta(pacienteActivo);
+                cambiarVista('vista-encontrado');
+            }
+            // ¿NO ESTÁ REGISTRADO? -> FORMULARIO DE REGISTRO
+            else {
+                document.getElementById('lbl-cedula-no-encontrada').textContent = `${tipoDoc}-${cedula}`;
+                const inpCed = document.getElementById('inp-cedula');
+                if (inpCed) inpCed.value = cedula;
+                const selTipo = document.getElementById('inp-tipo-cedula');
+                if (selTipo) selTipo.value = tipoDoc;
+
+                const inpRepCed = document.getElementById('inp-rep-cedula');
+                if (inpRepCed) inpRepCed.value = cedula;
+                const selRepTipo = document.getElementById('sel-rep-tipo-cedula');
+                if (selRepTipo) selRepTipo.value = tipoDoc;
+
+                // Limpiar campos para nuevo ingreso
+                document.getElementById('inp-nombres').value = '';
+                document.getElementById('inp-apellidos').value = '';
+                document.getElementById('inp-telefono').value = '';
+                const inpRepNom = document.getElementById('inp-rep-nombre');
+                if (inpRepNom) inpRepNom.value = '';
+
+                // Restablecer selección de vacunas previas
+                limpiarVacunasPrevias();
+
+                // Asegurar sincronización con la categoría actual
+                actualizarModoCategoria();
+
+                cambiarVista('vista-no-encontrado');
+            }
+        }
+
+        // Volver a la tarjeta activa
+        function verEncontrado() {
+            if (pacienteActivo) {
+                renderizarTarjeta(pacienteActivo);
+            }
+            cambiarVista('vista-encontrado');
+        }
+
+        // Mostrar formulario para cargar nueva dosis
+        function verAplicarVacuna() {
+            if (pacienteActivo) {
+                const vacNombre = document.getElementById('vacunar-display-nombre');
+                if (vacNombre) vacNombre.textContent = pacienteActivo.nombreCompleto;
+                const vacCed = document.getElementById('vacunar-display-cedula');
+                if (vacCed) {
+                    vacCed.textContent = (pacienteActivo.esNino && !pacienteActivo.tieneCedulaPropia)
+                        ? `Bajo C.I. Rep: ${pacienteActivo.repTipo || 'V'}-${pacienteActivo.repCedula || pacienteActivo.cedula}`
+                        : `${pacienteActivo.tipoCedula}-${pacienteActivo.cedula}`;
+                }
+            }
+            cambiarVista('vista-aplicar-vacuna');
+        }
+
+        // Guardar nuevo paciente con sus vacunas anteriores seleccionadas
+        function guardarNuevoPaciente() {
+            const nombres = document.getElementById('inp-nombres').value.trim();
+            const apellidos = document.getElementById('inp-apellidos').value.trim();
+            const cedulaInput = document.getElementById('inp-cedula').value.trim().replace(/\D/g, '');
+            const tipoDocInput = document.getElementById('inp-tipo-cedula') ? document.getElementById('inp-tipo-cedula').value : 'V';
+            const telf = document.getElementById('inp-telefono').value.trim();
+            const fechaNac = document.getElementById('inp-fecha-nac').value;
+            const sexo = document.getElementById('inp-sexo').value;
+            const municipio = document.getElementById('inp-municipio').value;
+
+            const catSeleccionada = document.querySelector('input[name="cat_paciente"]:checked');
+            const esNino = catSeleccionada && catSeleccionada.value === 'nino';
+
+            const repCedula = document.getElementById('inp-rep-cedula') ? document.getElementById('inp-rep-cedula').value.trim().replace(/\D/g, '') : '';
+            const repNombre = document.getElementById('inp-rep-nombre') ? document.getElementById('inp-rep-nombre').value.trim() : '';
+            const repParentesco = document.getElementById('inp-rep-parentesco') ? document.getElementById('inp-rep-parentesco').value : 'Madre';
+            const selRepTipo = document.getElementById('sel-rep-tipo-cedula');
+            const repTipoDoc = selRepTipo ? selRepTipo.value : 'V';
+
+            if (!nombres || !apellidos) {
+                alert('Por favor complete los nombres y apellidos del paciente.');
+                return;
+            }
+
+            // Identificación según categoría:
+            // - Menor de edad: NO requiere cédula propia; se asocia a la cédula del representante legal
+            // - Adulto: Requiere su cédula de identidad
+            let cedulaRegistrada = '';
+            let tipoDocRegistrado = 'V';
+            let tieneCedulaPropia = false;
+
+            if (esNino) {
+                if (cedulaInput) {
+                    cedulaRegistrada = cedulaInput;
+                    tipoDocRegistrado = tipoDocInput;
+                    tieneCedulaPropia = true;
+                } else if (repCedula) {
+                    cedulaRegistrada = repCedula;
+                    tipoDocRegistrado = repTipoDoc;
+                    tieneCedulaPropia = false;
+                } else {
+                    alert('Para menores de edad sin cédula propia, debe indicar la cédula del representante legal.');
+                    const fRep = document.getElementById('inp-rep-cedula');
+                    if (fRep) fRep.focus();
+                    return;
+                }
+            } else {
+                if (!cedulaInput) {
+                    alert('Por favor complete la cédula de identidad del paciente adulto.');
+                    const fCed = document.getElementById('inp-cedula');
+                    if (fCed) fCed.focus();
+                    return;
+                }
+                cedulaRegistrada = cedulaInput;
+                tipoDocRegistrado = tipoDocInput;
+                tieneCedulaPropia = true;
+            }
+
+            // 1. Recopilar vacunas del catálogo estándar seleccionadas
+            const vacunasPrevias = [];
+            document.querySelectorAll('.chk-vacuna-previa:checked').forEach(chk => {
+                const id = chk.dataset.id;
+                const nombre = chk.value;
+                const dosisEl = document.getElementById(`dosis-previa-${id}`);
+                const fechaEl = document.getElementById(`fecha-previa-${id}`);
+                const loteEl = document.getElementById(`lote-previa-${id}`);
+                const centroEl = document.getElementById(`centro-previa-${id}`);
+
+                const dosis = dosisEl ? dosisEl.value : 'Dosis Certificada';
+                const fecha = fechaEl && fechaEl.value ? fechaEl.value : 'Antecedente Previo';
+                const lote = loteEl && loteEl.value.trim() ? loteEl.value.trim().toUpperCase() : 'HISTÓRICO-CARNET';
+                const centro = centroEl && centroEl.value.trim() ? centroEl.value.trim() : 'Carnet Físico Previo';
+
+                vacunasPrevias.push({
+                    nombre: nombre,
+                    dosis: dosis,
+                    fecha: fecha,
+                    lote: lote,
+                    centro: centro,
+                    enfermero: 'Validado en Admisión',
+                    estado: 'Certificada'
+                });
+            });
+
+            // 2. Recopilar vacunas adicionales personalizadas
+            document.querySelectorAll('.fila-vacuna-extra').forEach(fila => {
+                const nomEl = fila.querySelector('.extra-nom');
+                const dosEl = fila.querySelector('.extra-dos');
+                const fecEl = fila.querySelector('.extra-fec');
+                const lotEl = fila.querySelector('.extra-lot');
+                const cenEl = fila.querySelector('.extra-cen');
+
+                if (nomEl && nomEl.value.trim()) {
+                    vacunasPrevias.push({
+                        nombre: nomEl.value.trim(),
+                        dosis: dosEl ? dosEl.value : 'Dosis Única',
+                        fecha: fecEl && fecEl.value ? fecEl.value : 'Antecedente Previo',
+                        lote: lotEl && lotEl.value.trim() ? lotEl.value.trim().toUpperCase() : 'HISTÓRICO-CARNET',
+                        centro: cenEl && cenEl.value.trim() ? cenEl.value.trim() : 'Carnet Físico Previo',
+                        enfermero: 'Validado en Admisión',
+                        estado: 'Certificada'
+                    });
+                }
+            });
+
+            // Crear ficha en el sistema con sus vacunas históricas y datos de filiación
+            const nuevo = {
+                tipoCedula: tipoDocRegistrado,
+                cedula: cedulaRegistrada,
+                tieneCedulaPropia: tieneCedulaPropia,
+                esNino: esNino,
+                repNombre: repNombre,
+                repCedula: repCedula,
+                repTipo: repTipoDoc,
+                repParentesco: repParentesco,
+                nombreCompleto: `${nombres} ${apellidos}`,
+                iniciales: (nombres[0] || 'P').toUpperCase() + (apellidos[0] || 'N').toUpperCase(),
+                categoria: esNino
+                    ? `Menor de Edad (Pediátrico - Bajo C.I. Rep: ${repTipoDoc}-${repCedula || cedulaRegistrada})`
+                    : 'Mayor de Edad',
+                sexo: sexo || 'No especificado',
+                telefono: telf || (repNombre ? `Rep: ${repNombre}` : 'Sin teléfono'),
+                fechaNac: fechaNac || 'No registrada',
+                ubicacion: municipio || 'San Juan de los Morros, Mcpio. Roscio',
+                centro: 'Hospital Dr. Israel Ranuárez Balza',
+                vacunas: vacunasPrevias
+            };
+
+            baseDatosPacientes[cedulaRegistrada] = nuevo;
+            pacienteActivo = nuevo;
+
+            // Actualizar la barra superior con la cédula del paciente o representante
+            document.getElementById('input-cedula').value = cedulaRegistrada;
+
+            // Renderizar su tarjeta final con las dosis históricas y mostrarla
+            renderizarTarjeta(pacienteActivo);
+            cambiarVista('vista-encontrado');
+
+            const resumenDosis = vacunasPrevias.length > 0
+                ? `\nSe han registrado ${vacunasPrevias.length} vacunas previas en su carnet oficial.`
+                : '';
+            const detalleIdent = (esNino && !tieneCedulaPropia)
+                ? `asociado a la C.I. del representante ${repTipoDoc}-${repCedula}`
+                : `(${nuevo.tipoCedula}-${nuevo.cedula})`;
+            alert(`✅ Paciente ${nuevo.nombreCompleto} registrado exitosamente ${detalleIdent}.${resumenDosis}\n\nYa puede visualizar su carnet y hacer clic en "💉 Cargar Nueva Vacuna".`);
+        }
+
+        // Asentar la vacuna administrada y retornar a su Carnet
+        function asentarVacuna() {
+            if (!pacienteActivo) return;
+
+            const vacunaNombre = document.getElementById('vac-biologico').value;
+            const vacunaDosis = document.getElementById('vac-dosis').value;
+            const vacunaFecha = document.getElementById('vac-fecha').value;
+            const vacunaLote = document.getElementById('vac-lote').value;
+            const vacunaEnfermero = document.getElementById('vac-enfermero').value;
+
+            if (!vacunaNombre || !vacunaLote) {
+                alert('Por favor seleccione la vacuna e ingrese el número de lote del biológico.');
+                return;
+            }
+
+            // Insertar la nueva vacuna al inicio del carnet del paciente
+            pacienteActivo.vacunas.unshift({
+                nombre: vacunaNombre,
+                dosis: vacunaDosis,
+                fecha: vacunaFecha,
+                lote: vacunaLote,
+                centro: 'Hospital Dr. Israel Ranuárez Balza',
+                enfermero: vacunaEnfermero,
+                esNueva: true
+            });
+
+            // Re-renderizar tarjeta con la nueva dosis cargada
+            renderizarTarjeta(pacienteActivo);
+
+            alert(`💉 ¡Vacuna ${vacunaNombre} (Lote: ${vacunaLote}) registrada con éxito en el Carnet Oficial del Paciente!`);
+
+            // Regresar a la tarjeta del paciente
+            cambiarVista('vista-encontrado');
+        }
+
+        // Renderizado inicial por si se carga con paciente por defecto
+        document.addEventListener('DOMContentLoaded', () => {
+            inicializarCatalogoPrevio();
+            actualizarModoCategoria();
+            renderizarTarjeta(pacienteActivo);
+        });
+    </script>
+    <script src="js/ui.js"></script>
+    <script src="js/perfiles.js"></script>
+    <script>
+        /* ==================================================================
+           CONTEXTO DE LA SESIÓN (SOLO INTERFAZ)
+           El tipo 2 opera con un perfil personal dentro de la cuenta del
+           centro de salud. Si no hay sesión iniciada se muestra un estado
+           neutro para permitir la navegación directa de la vista.
+           ================================================================== */
+        (function () {
+            'use strict';
+
+            if (window.SIV && typeof SIV.marcarNavegacionActiva === 'function') {
+                SIV.marcarNavegacionActiva('.health-nav-link');
+            }
+            if (window.SIV && typeof SIV.enlazarCierreSesion === 'function') {
+                SIV.enlazarCierreSesion();
+            }
+
+            var sesion = window.SIV && SIV.centros ? SIV.centros.sesion() : null;
+            if (!sesion) { return; }
+
+            var avatar = document.getElementById('sesion-avatar');
+            var nombre = document.getElementById('sesion-nombre');
+            var cargo = document.getElementById('sesion-cargo');
+
+            if (avatar) { avatar.textContent = sesion.iniciales || 'CV'; }
+            if (nombre) { nombre.textContent = sesion.nombre || 'Perfil del centro'; }
+            if (cargo) {
+                cargo.textContent = (sesion.esJefe ? 'Jefe del centro' : 'Trabajador') +
+                    ' · ' + (sesion.centro || '');
+            }
+        })();
+    </script>
+</body>
+
+</html>
