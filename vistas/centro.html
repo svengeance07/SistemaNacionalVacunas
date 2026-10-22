@@ -42,8 +42,8 @@
                 <nav class="health-nav" aria-label="Navegación principal">
 
                     <ul class="health-nav-list">
-                        <li class="health-nav-item active">
-                            <a href="centro.html" class="health-nav-link" id="nav-dashboard">
+                        <li class="health-nav-item active" id="nav-item-dashboard">
+                            <a href="javascript:void(0)" class="health-nav-link" id="nav-dashboard" onclick="alternarSeccionCentro('dashboard')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <rect x="3" y="3" width="7" height="7"></rect>
                                     <rect x="14" y="3" width="7" height="7"></rect>
@@ -51,6 +51,18 @@
                                     <rect x="3" y="14" width="7" height="7"></rect>
                                 </svg>
                                 <span>Panel General</span>
+                            </a>
+                        </li>
+                        <!-- Renglón: Personal de Enfermería (Gestión y Usuarios) -->
+                        <li class="health-nav-item" id="nav-item-enfermeros">
+                            <a href="#seccion-enfermeros" class="health-nav-link" id="nav-enfermeros" onclick="alternarSeccionCentro('enfermeros')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span>Enfermeros</span>
                             </a>
                         </li>
                         <!-- Enlace: Registro y consulta de pacientes -->
@@ -76,8 +88,29 @@
                                 <span>Reporte de Problemas (ESAVI)</span>
                             </a>
                         </li>
+                        <!-- Enlace: Cerrar Sesión -->
+                        <li class="health-nav-item">
+                            <a href="login.html" class="health-nav-link" id="nav-logout">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                </svg>
+                                <span>Cerrar Sesión</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
+            </div>
+
+            <div class="sidebar-center-perfil">
+                <div class="center-perfil-card">
+                    <div class="center-avatar-circle">HR</div>
+                    <div class="center-info-text">
+                        <span class="center-name">Hosp. Ranuárez Balza</span>
+                        <span style="font-size: 0.72rem; color: var(--color-texto-muted);">San Juan de los Morros</span>
+                    </div>
+                </div>
             </div>
         </aside>
 
@@ -119,6 +152,11 @@
                     </div>
                 </div>
             </header>
+
+            <!-- ==============================================================
+                 VISTA 1: DASHBOARD Y PANEL GENERAL
+                 ============================================================== -->
+            <div id="vista-dashboard">
 
             <section class="health-kpi-grid" aria-label="Indicadores Clave de Salud">
 
@@ -414,9 +452,271 @@
                     </div>
                 </div>
             </section>
+            </div> <!-- Fin #vista-dashboard -->
+
+            <!-- ==============================================================
+                 VISTA 2: GESTIÓN Y AUTORIZACIÓN DEL PERSONAL DE ENFERMERÍA
+                 (EXCLUSIVO DEL JEFE DE CENTRO DE SALUD)
+                 ============================================================== -->
+            <div id="vista-gestion-enfermeros" style="display: none;">
+
+                <!-- HEADER DE GESTIÓN DE ENFERMEROS -->
+                <section class="nurse-mgmt-header" aria-label="Control de Personal de Enfermería">
+                    <div class="nurse-mgmt-title-block">
+                        <div class="nurse-mgmt-icon-circle">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="nurse-mgmt-title">Plantel y Autorización de Personal de Enfermería</h2>
+                            <p class="nurse-mgmt-subtitle">
+                                Hospital Dr. Israel Ranuárez Balza • Control de credenciales MPPS, turnos y habilitación para vacunar
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" class="btn-health btn-health-primary" onclick="abrirModalNuevoEnfermero()">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            <span>+ Crear y Permitir Nuevo Enfermero</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- MÉTRICAS DE ENFERMERÍA PARA EL JEFE DE CENTRO -->
+                <section class="nurse-stats-grid" aria-label="Métricas del Plantel">
+                    <article class="nurse-stat-card">
+                        <div>
+                            <div class="nurse-stat-number" id="kpi-total-enfermeros">4</div>
+                            <div class="nurse-stat-label">Enfermeros Registrados</div>
+                        </div>
+                        <div class="kpi-icon-pill icon-blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                    </article>
+
+                    <article class="nurse-stat-card">
+                        <div>
+                            <div class="nurse-stat-number text-success" id="kpi-enfermeros-permitidos">3</div>
+                            <div class="nurse-stat-label">Habilitados / Permitidos</div>
+                        </div>
+                        <div class="kpi-icon-pill icon-blue" style="background:#dcfce7; color:#15803d;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                    </article>
+
+                    <article class="nurse-stat-card">
+                        <div>
+                            <div class="nurse-stat-number" id="kpi-enfermeros-espera" style="color:#b45309;">1</div>
+                            <div class="nurse-stat-label">En Espera / Inactivos</div>
+                        </div>
+                        <div class="kpi-icon-pill icon-blue" style="background:#fef3c7; color:#b45309;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                        </div>
+                    </article>
+
+                    <article class="nurse-stat-card">
+                        <div>
+                            <div class="nurse-stat-number text-primary" id="kpi-dosis-equipo">12</div>
+                            <div class="nurse-stat-label">Dosis Aplicadas Hoy por el Equipo</div>
+                        </div>
+                        <div class="kpi-icon-pill icon-blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m18 2 4 4"></path>
+                                <path d="m17 7 3-3"></path>
+                                <path d="M19 9 8.7 19.3c-.4.4-1 .6-1.6.6H3v-4.1c0-.6.2-1.2.6-1.6L13.9 3.9"></path>
+                            </svg>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- TABLA DEL PERSONAL DE ENFERMERÍA -->
+                <section class="health-table-panel">
+                    <div class="health-panel-header">
+                        <div class="panel-title-with-icon">
+                            <div>
+                                <h2 class="panel-heading">Nómina y Credenciales del Personal de Enfermería</h2>
+                                <p class="panel-subheading">Personal autorizado para administrar esquemas PAI y notificar eventos ESAVI en este centro</p>
+                            </div>
+                        </div>
+
+                        <div class="table-filter-bar">
+                            <input type="text" id="filtro-enfermero-busqueda" class="patient-search-input"
+                                placeholder="Buscar por nombre, cédula o MPPS..." oninput="renderizarTablaEnfermeros()"
+                                style="max-width: 280px; padding: 7px 12px; font-size: 0.82rem;">
+                            
+                            <select id="filtro-enfermero-estado" class="form-select-sm" onchange="renderizarTablaEnfermeros()"
+                                style="padding: 7px 10px; font-size: 0.82rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-weight: 600;">
+                                <option value="TODOS">Todos los Estados</option>
+                                <option value="Permitido">Solo Permitidos / Habilitados</option>
+                                <option value="En Espera">En Espera de Validación</option>
+                                <option value="Inhabilitado">Inhabilitados / Suspendidos</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="health-table-container">
+                        <table class="health-table">
+                            <thead>
+                                <tr>
+                                    <th>ENFERMERO(A) / CÉDULA</th>
+                                    <th>MATRÍCULA MPPS</th>
+                                    <th>PUESTO / TURNO</th>
+                                    <th>ACTIVIDAD HOY</th>
+                                    <th>ESTADO DE AUTORIZACIÓN</th>
+                                    <th>FECHA ALTA</th>
+                                    <th class="text-right">CONTROL JEFE DE CENTRO</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-enfermeros-centro-body">
+                                <!-- Generado por JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </div>
 
         </main>
     </div>
+
+    <!-- ==============================================================
+         MODAL: REGISTRO Y AUTORIZACIÓN DE NUEVO ENFERMERO (JEFE DE CENTRO)
+         ============================================================== -->
+    <div id="modal-crear-enfermero" class="nurse-create-modal" role="dialog" aria-modal="true" aria-labelledby="modal-nurse-create-title">
+        <div class="nurse-modal-card">
+            <div class="nurse-modal-header">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-primario-claro); color: var(--color-primario-oscuro); display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <line x1="19" y1="8" x2="19" y2="14"></line>
+                            <line x1="22" y1="11" x2="16" y2="11"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 id="modal-nurse-create-title" style="font-size: 1.1rem; font-weight: 800; color: var(--color-primario-oscuro); margin: 0;">
+                            Alta y Habilitación de Personal de Enfermería
+                        </h3>
+                        <span style="font-size: 0.74rem; color: var(--color-texto-muted);">Centro: Hospital Dr. Israel Ranuárez Balza</span>
+                    </div>
+                </div>
+                <button type="button" onclick="cerrarModalNuevoEnfermero()" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--color-texto-muted);">✕</button>
+            </div>
+
+            <form id="form-crear-enfermero" onsubmit="guardarNuevoEnfermero(event)">
+                <div class="nurse-modal-body">
+                    <div class="form-grid">
+                        <div class="form-col">
+                            <label class="form-label" for="nuevo-enf-tipodoc">Tipo de Documento</label>
+                            <select id="nuevo-enf-tipodoc" class="form-select">
+                                <option value="V">V - Venezolano</option>
+                                <option value="E">E - Extranjero</option>
+                            </select>
+                        </div>
+
+                        <div class="form-col">
+                            <label class="form-label" for="nuevo-enf-cedula">Cédula de Identidad *</label>
+                            <input type="text" id="nuevo-enf-cedula" class="form-input font-mono" placeholder="Ej: 18452190" required>
+                        </div>
+
+                        <div class="form-col full-width">
+                            <label class="form-label" for="nuevo-enf-nombre">Nombres y Apellidos Completos *</label>
+                            <input type="text" id="nuevo-enf-nombre" class="form-input" placeholder="Ej: Lic. Yulimar Coromoto Blanco" required>
+                        </div>
+
+                        <div class="form-col">
+                            <label class="form-label" for="nuevo-enf-mpps">Matrícula Profesional MPPS *</label>
+                            <input type="text" id="nuevo-enf-mpps" class="form-input font-mono" placeholder="Ej: 62.408" required>
+                        </div>
+
+                        <div class="form-col">
+                            <label class="form-label" for="nuevo-enf-cargo">Cargo / Rol PAI</label>
+                            <select id="nuevo-enf-cargo" class="form-select">
+                                <option value="Enfermero Asistencial">Enfermero Asistencial</option>
+                                <option value="Especialista en Inmunizaciones (PAI)">Especialista en Inmunizaciones (PAI)</option>
+                                <option value="Supervisor de Cadena de Frío">Supervisor de Cadena de Frío</option>
+                                <option value="Enfermero de Triage">Enfermero de Triage</option>
+                            </select>
+                        </div>
+
+                        <!-- CREDENCIALES DE ACCESO AL SISTEMA (USUARIO Y CONTRASEÑA PARA INICIO DE SESIÓN) -->
+                        <div class="form-col">
+                            <label class="form-label" for="nuevo-enf-correo">Correo Electrónico (Usuario de Acceso) *</label>
+                            <input type="email" id="nuevo-enf-correo" class="form-input" placeholder="ejemplo: enfermero@sivguarico.ve" autocomplete="username" required>
+                        </div>
+
+                        <div class="form-col">
+                            <label class="form-label" for="nuevo-enf-clave">Contraseña de Acceso *</label>
+                            <input type="password" id="nuevo-enf-clave" class="form-input font-mono" placeholder="Mínimo 8 caracteres" minlength="8" autocomplete="new-password" required>
+                        </div>
+
+                        <div class="form-col">
+                            <label class="form-label" for="nuevo-enf-turno">Turno Asignado</label>
+                            <select id="nuevo-enf-turno" class="form-select">
+                                <option value="Mañana (07:00 - 13:00)">Mañana (07:00 - 13:00)</option>
+                                <option value="Tarde (13:00 - 19:00)">Tarde (13:00 - 19:00)</option>
+                                <option value="Noche (19:00 - 07:00)">Noche (19:00 - 07:00)</option>
+                                <option value="Guardia 24 Horas">Guardia 24 Horas</option>
+                            </select>
+                        </div>
+
+                        <div class="form-col">
+                            <label class="form-label" for="nuevo-enf-puesto">Puesto / Box de Vacunación</label>
+                            <select id="nuevo-enf-puesto" class="form-select">
+                                <option value="Box 01 - Triage e Inoculación Rápida">Box 01 - Triage e Inoculación Rápida</option>
+                                <option value="Box 02 - Inmunizaciones Generales">Box 02 - Inmunizaciones Generales</option>
+                                <option value="Box 03 - Refuerzos y Campañas">Box 03 - Refuerzos y Campañas</option>
+                                <option value="Sala Pediátrica de Inmunización">Sala Pediátrica de Inmunización</option>
+                            </select>
+                        </div>
+
+                        <div class="form-col full-width" style="background:#f0fdf4; border:1px solid #86efac; border-radius:var(--radius-md); padding:12px; margin-top:6px;">
+                            <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                                <input type="checkbox" id="nuevo-enf-permitir-check" checked style="width:18px; height:18px;">
+                                <div>
+                                    <strong style="color:#166534; font-size:0.88rem;">Habilitar y Permitir Inmediatamente</strong>
+                                    <div style="font-size:0.75rem; color:#15803d;">Crea las credenciales de acceso para que el enfermero pueda iniciar sesión en el sistema, firmar la administración de vacunas y notificar reportes ESAVI.</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nurse-modal-footer">
+                    <button type="button" onclick="cerrarModalNuevoEnfermero()" class="btn-health btn-health-outline">
+                        <span>Cancelar</span>
+                    </button>
+                    <button type="submit" class="btn-health btn-health-primary" style="padding:10px 22px;">
+                        <span>✓ Guardar y Crear Usuario Enfermero</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICACIÓN -->
+    <div id="centro-toast" class="nurse-mgmt-toast" role="alert"></div>
+
+    <!-- SCRIPT MODULAR EXTERNO (SIN JAVASCRIPT INLINE) -->
+    <script src="js/perfiles.js"></script>
+    <script src="js/centro.js"></script>
 </body>
 
 </html>

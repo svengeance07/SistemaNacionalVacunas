@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Acceso institucional al SIV-NACIONAL: Sistema Nacional de Inmunizaciones y Salud Pública (MPPS - SPNS).">
+
+    <title>SIV-NACIONAL // Acceso Institucional</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/centro.css">
+</head>
+
+<body>
+
+    <div class="auth-shell">
+
+        <!-- ==========================================================
+             PANEL INSTITUCIONAL IZQUIERDO
+             Identidad del programa, funciones y beneficios del sistema
+             ========================================================== -->
+        <aside class="auth-aside">
+
+            <div class="auth-brand">
+                <div class="auth-cross-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 4v16m-8-8h16"></path>
+                    </svg>
+                </div>
+                <div class="auth-brand-text">
+                    <span class="auth-brand-title">SIV-NACIONAL</span>
+                    <span class="auth-brand-subtitle">Sistema Nacional de Inmunizaciones</span>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="auth-hero-title">Control Epidemiológico<br>y-Asistencial del PAI</h2>
+                <p class="auth-hero-text">
+                    Plataforma institucional para la gestión del Programa Ampliado de Inmunizaciones
+                    en la República Bolivariana de Venezuela: trazabilidad de lotes, cobertura poblacional y
+                    registro sanitario en tiempo real.
+                </p>
+
+                <div class="auth-feature-list">
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="m9 12 2 2 4-4"></path>
+                            </svg>
+                        </div>
+                        <div class="auth-feature-text">
+                            <strong>Cadena de frío normada</strong>
+                            <span>Monitoreo de temperatura y control de caducidad de biológicos.</span>
+                        </div>
+                    </div>
+
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            </svg>
+                        </div>
+                        <div class="auth-feature-text">
+                            <strong>Brigadas de inmunización</strong>
+                            <span>Asignación territorial por ambulatorio y termos PQS.</span>
+                        </div>
+                    </div>
+
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                        </div>
+                        <div class="auth-feature-text">
+                            <strong>Trazabilidad institucional</strong>
+                            <span>Bitácora de acciones sobre los registros sanitarios del sistema.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-aside-footer">
+                MINISTERIO DEL PODER POPULAR PARA LA SALUD // REPÚBLICA BOLIVARIANA DE VENEZUELA<br>
+                Entidad responsable: Sistema Nacional de Inmunizaciones y Salud Pública — Venezuela, 2026.
+            </div>
+        </aside>
+
+        <!-- ==========================================================
+             FORMULARIO DE ACCESO (COLUMNA DERECHA)
+             ========================================================== -->
+        <main class="auth-main">
+
+            <div class="auth-card">
+
+                <!-- ==========================================================
+                     PASO 1 · CREDENCIALES DE LA CUENTA INSTITUCIONAL
+                     ========================================================== -->
+                <div class="auth-step is-visible" id="paso-1">
+
+                        <header class="auth-card-header">
+                        <h1 class="auth-card-title">Acceso institucional</h1>
+                        <p class="auth-card-subtitle">
+                            Seleccione el perfil de usuario con el que ingresa al sistema y valide sus credenciales.
+                        </p>
+                    </header>
+
+                    <!-- SELECTOR TRIPLE DE TIPO DE USUARIO -->
+                    <div class="role-switch" role="tablist" aria-label="Tipo de usuario">
+                        <button type="button" class="role-switch-btn active" role="tab" aria-selected="true"
+                            data-rol="1">
+                            <span class="role-switch-code">TIPO 1</span>
+                            <span>Administrador General</span>
+                        </button>
+                        <button type="button" class="role-switch-btn" role="tab" aria-selected="false" data-rol="2">
+                            <span class="role-switch-code">TIPO 2</span>
+                            <span>Control de Vacunación</span>
+                        </button>
+                        <button type="button" class="role-switch-btn" role="tab" aria-selected="false" data-rol="3">
+                            <span class="role-switch-code">TIPO 3</span>
+                            <span>Control de Salud</span>
+                        </button>
+                    </div>
+
+                    <!-- PERFIL SELECCIONADO -->
+                    <div class="auth-profile-chip">
+                        <div class="auth-profile-avatar" id="perfil-avatar">AG</div>
+                        <div class="auth-profile-text">
+                            <span class="auth-profile-name" id="perfil-nombre">Administrador General</span>
+                            <span class="auth-profile-desc" id="perfil-descripcion">Sede física administradora de lotes y
+                                usuarios de la red</span>
+                        </div>
+                    </div>
+
+                    <form id="form-login" novalidate>
+
+                        <div class="auth-field">
+                            <label for="login-correo">Correo institucional</label>
+                            <div class="auth-input-wrap">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                    <path d="m22 7-10 6L2 7"></path>
+                                </svg>
+                                <input class="auth-input" type="email" id="login-correo" name="correo"
+                                    placeholder="usuario@sivguarico.ve" autocomplete="username" required>
+                            </div>
+                        </div>
+
+                        <div class="auth-field">
+                            <label for="login-clave">Contraseña</label>
+                            <div class="auth-input-wrap">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                                <input class="auth-input" type="password" id="login-clave" name="clave"
+                                    placeholder="••••••••" autocomplete="current-password" required>
+                                <button type="button" class="auth-toggle-btn" id="btn-ver-clave" aria-label="Mostrar contraseña">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="auth-field-row">
+                            <label class="auth-check-inline">
+                                <input type="checkbox" id="login-recordar" checked>
+                                <span>Recordar sesión</span>
+                            </label>
+                            <a href="#" class="auth-link-soft" id="link-recuperar">¿Olvidó su contraseña?</a>
+                        </div>
+
+                        <button type="submit" class="btn-auth-submit" id="btn-ingresar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                                <polyline points="10 17 15 12 10 7"></polyline>
+                                <line x1="15" y1="12" x2="3" y2="12"></line>
+                            </svg>
+                            <span>Ingresar al sistema</span>
+                        </button>
+                    </form>
+
+                    <p class="auth-legal">
+                        Acceso restringido a personal autorizado del MPPPS.<br>
+                        Toda acción registrada en el sistema queda almacenada en la bitácora institucional.
+                    </p>
+
+                </div>
+
+                <!-- ==========================================================
+                     PASO 2 · PERFIL PERSONAL (EXCLUSIVO DEL TIPO 2)
+                     Una vez validada la cuenta del centro de salud, cada
+                     persona se identifica con su propio perfil, igual que
+                     los perfiles de usuario de un servicio de streaming.
+                     ========================================================== -->
+                <div class="auth-step" id="paso-2">
+
+                    <header class="auth-card-header">
+                        <h1 class="auth-card-title">Seleccione su perfil</h1>
+                        <p class="auth-card-subtitle" id="paso-2-subtitulo">
+                            Elija su perfil personal e ingrese con su correo y contraseña propios.
+                        </p>
+                    </header>
+
+                    <div class="auth-step-center">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18"></path>
+                            <path d="M5 21V7l7-4 7 4v14"></path>
+                            <path d="M9 21v-5h6v5"></path>
+                        </svg>
+                        <span id="paso-2-centro">Centro de salud</span>
+                    </div>
+
+                    <div class="profile-picker-grid" id="lista-perfiles"></div>
+
+                    <p class="profile-picker-empty" id="perfiles-vacios" hidden>
+                        Esta cuenta de centro todavía no tiene perfiles registrados.
+                        Solicite al Administrador General (tipo 1) la creación del perfil base.
+                    </p>
+
+                    <form id="form-perfil" novalidate hidden>
+                        <div class="profile-credentials-panel">
+
+                            <div class="auth-field">
+                                <label for="perfil-correo">Correo personal</label>
+                                <div class="auth-input-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                        <path d="m22 7-10 6L2 7"></path>
+                                    </svg>
+                                    <input class="auth-input" type="email" id="perfil-correo" name="correoPerfil"
+                                        placeholder="nombre.apellido@sivguarico.ve" autocomplete="username" required>
+                                </div>
+                            </div>
+
+                            <div class="auth-field">
+                                <label for="perfil-clave">Contraseña personal</label>
+                                <div class="auth-input-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                    <input class="auth-input" type="password" id="perfil-clave" name="clavePerfil"
+                                        placeholder="••••••••" autocomplete="current-password" required>
+                                    <button type="button" class="auth-toggle-btn" id="btn-ver-clave-perfil"
+                                        aria-label="Mostrar contraseña">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-auth-submit" id="btn-ingresar-perfil">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                                    <polyline points="10 17 15 12 10 7"></polyline>
+                                    <line x1="15" y1="12" x2="3" y2="12"></line>
+                                </svg>
+                                <span>Entrar con este perfil</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="auth-step-actions">
+                        <button type="button" class="auth-back-btn" id="btn-volver-paso-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                            <span>Cambiar de cuenta</span>
+                        </button>
+                        <span class="auth-step-note">
+                            Sólo el jefe del centro registra perfiles adicionales.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==========================================================
+         CREDENCIALES DE DEMOSTRACIÓN (ESQUINA INFERIOR DERECHA)
+         Hardcoded: reemplaza la futura validación contra la base de datos.
+         ========================================================== -->
+    <aside class="demo-credentials is-collapsed" aria-label="Credenciales de demostración">
+        <div class="demo-cred-header">
+            <span class="demo-cred-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 16v-4"></path>
+                    <path d="M12 8h.01"></path>
+                </svg>
+                Credenciales de prueba
+            </span>
+            <button type="button" class="demo-cred-toggle is-collapsed" id="btn-plegar-credenciales">
+                <span>Ver</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <div class="demo-cred-list is-collapsed" id="lista-credenciales">
+            <button type="button" class="demo-cred-item" data-rol="1">
+                <span class="demo-cred-role">
+                    <span class="demo-cred-code">TIPO 1</span>
+                    Administrador General
+                </span>
+                <span class="demo-cred-line">admin.general@sivguarico.ve</span>
+                <span class="demo-cred-line">AdminGeneral2026!</span>
+            </button>
+
+            <button type="button" class="demo-cred-item" data-rol="2">
+                <span class="demo-cred-role">
+                    <span class="demo-cred-code">TIPO 2</span>
+                    Control de Vacunación
+                </span>
+                <span class="demo-cred-line">control.vacunacion@sivguarico.ve</span>
+                <span class="demo-cred-line">ControlVacunacion2026!</span>
+            </button>
+
+            <!-- PERFILES PERSONALES DE LA CUENTA DE CENTRO -->
+            <div class="demo-cred-subgroup" id="demo-perfiles-tipo2"></div>
+
+            <button type="button" class="demo-cred-item" data-rol="3">
+                <span class="demo-cred-role">
+                    <span class="demo-cred-code">TIPO 3</span>
+                    Control de Salud
+                </span>
+                <span class="demo-cred-line">control.salud@sivguarico.ve</span>
+                <span class="demo-cred-line">ControlSalud2026!</span>
+            </button>
+        </div>
+
+        <div class="demo-cred-hint" id="demo-cred-hint">
+            Haga clic en un perfil para autocompletar sus credenciales.
+        </div>
+    </aside>
+
+    <script src="js/ui.js"></script>
+    <script src="js/perfiles.js"></script>
+    <script>
+        /* ==================================================================
+           LÓGICA DE ACCESO (SOLO INTERFAZ / UI)
+           La validación definitiva contra la base de datos corresponde a la
+           capa de Controladores (C) del MVC, aún no implementada.
+
+           Flujo del TIPO 2 (Control de Vacunación):
+             1. Se valida la CUENTA DEL CENTRO DE SALUD (una sola por sede,
+                compartida por varias personas).
+             2. Se elige el PERFIL PERSONAL de quien opera el sistema, igual
+                que en los servicios de streaming.
+             3. Se validan el correo y la contraseña personales de ese perfil.
+           ================================================================== */
+        (function () {
+            'use strict';
+
+            /* --- Perfiles del sistema (hardcoded, sustituto temporal de la DB) --- */
+            var PERFILES = {
+                '1': {
+                    nombre: 'Administrador General',
+                    descripcion: 'Sede física administradora de lotes y usuarios de la red',
+                    iniciales: 'AG',
+                    correo: 'admin.general@sivguarico.ve',
+                    clave: 'AdminGeneral2026!',
+                    destino: 'admin/index.html'
+                },
+                '2': {
+                    nombre: 'Control de Vacunación',
+                    descripcion: 'Cuenta del centro de salud con perfiles personales',
+                    iniciales: 'CV',
+                    correo: 'control.vacunacion@sivguarico.ve',
+                    clave: 'ControlVacunacion2026!',
+                    destino: 'centro.html'
+                },
+                '3': {
+                    nombre: 'Control de Salud',
+                    descripcion: 'Vigilancia epidemiológica y control de cobertura',
+                    iniciales: 'CS',
+                    correo: 'control.salud@sivguarico.ve',
+                    clave: 'ControlSalud2026!',
+                    destino: 'centro.html'
+                }
+            };
+
+            var rolActual = '1';
+            var centroActual = null;
+            var perfilSeleccionado = null;
+
+            var botones = document.querySelectorAll('.role-switch-btn');
+            var inputCorreo = document.getElementById('login-correo');
+            var inputClave = document.getElementById('login-clave');
+            var perfilNombre = document.getElementById('perfil-nombre');
+            var perfilDescripcion = document.getElementById('perfil-descripcion');
+            var perfilAvatar = document.getElementById('perfil-avatar');
+            var listaCredenciales = document.getElementById('lista-credenciales');
+            var botonPlegar = document.getElementById('btn-plegar-credenciales');
+
+            var pasoUno = document.getElementById('paso-1');
+            var pasoDos = document.getElementById('paso-2');
+            var listaPerfiles = document.getElementById('lista-perfiles');
+            var perfilesVacios = document.getElementById('perfiles-vacios');
+            var formPerfil = document.getElementById('form-perfil');
+            var inputPerfilCorreo = document.getElementById('perfil-correo');
+            var inputPerfilClave = document.getElementById('perfil-clave');
+            var textoCentro = document.getElementById('paso-2-centro');
+            var subtituloPasoDos = document.getElementById('paso-2-subtitulo');
+            var contDemoPerfiles = document.getElementById('demo-perfiles-tipo2');
+
+            /* --- Utilidad para construir elementos sin depender de innerHTML --- */
+            function crear(etiqueta, clase, texto) {
+                var elemento = document.createElement(etiqueta);
+                if (clase) { elemento.className = clase; }
+                if (texto !== undefined && texto !== null) { elemento.textContent = texto; }
+                return elemento;
+            }
+
+            /* --- Pintar el perfil seleccionado --- */
+            function pintarPerfil(rol) {
+                var perfil = PERFILES[rol];
+                perfilNombre.textContent = perfil.nombre;
+                perfilDescripcion.textContent = perfil.descripcion;
+                perfilAvatar.textContent = perfil.iniciales;
+            }
+
+            /* --- Alternar entre el paso 1 y el paso 2 --- */
+            function mostrarPaso(numero) {
+                pasoUno.classList.toggle('is-visible', numero === 1);
+                pasoDos.classList.toggle('is-visible', numero === 2);
+            }
+
+            /* --- Activar un tipo de usuario en el selector triple --- */
+            function seleccionarRol(rol) {
+                Array.prototype.forEach.call(botones, function (b) {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+
+                var destino = document.querySelector('.role-switch-btn[data-rol="' + rol + '"]');
+                if (destino) {
+                    destino.classList.add('active');
+                    destino.setAttribute('aria-selected', 'true');
+                }
+
+                rolActual = rol;
+                pintarPerfil(rolActual);
+            }
+
+            /* --- Validar la CUENTA del centro de salud (tipo 2) --- */
+            function validarCuentaCentro(correo, clave) {
+                var centro = SIV.centros.validarCuenta(correo, clave);
+                if (centro) { return centro; }
+
+                var demo = PERFILES['2'];
+                if (correo === demo.correo.toLowerCase() && clave === demo.clave) {
+                    return SIV.centros.obtener(demo.correo);
+                }
+
+                return null;
+            }
+
+            /* --- Dibujar las tarjetas de perfil personal --- */
+            function pintarPerfiles() {
+                listaPerfiles.innerHTML = '';
+
+                var perfiles = centroActual ? centroActual.perfiles : [];
+
+                if (!perfiles.length) {
+                    perfilesVacios.hidden = false;
+                    formPerfil.hidden = true;
+                    return;
+                }
+
+                perfilesVacios.hidden = true;
+
+                perfiles.forEach(function (perfil) {
+                    var tarjeta = crear('button', 'profile-card' + (perfil.rol === 'jefe' ? ' is-jefe' : ''));
+                    tarjeta.type = 'button';
+                    tarjeta.setAttribute('data-id', perfil.id);
+
+                    tarjeta.appendChild(crear('span', 'profile-card-avatar', SIV.centros.iniciales(perfil.nombre)));
+                    tarjeta.appendChild(crear('span', 'profile-card-name', perfil.nombre));
+                    tarjeta.appendChild(crear('span', 'profile-card-cargo', perfil.cargo));
+                    tarjeta.appendChild(crear(
+                        'span',
+                        'profile-card-tag' + (perfil.rol === 'jefe' ? ' tag-jefe' : ''),
+                        perfil.rol === 'jefe' ? 'Jefe del centro' : 'Enfermero(a)'
+                    ));
+
+                    tarjeta.addEventListener('click', function () {
+                        seleccionarPerfil(perfil.id);
+                    });
+
+                    listaPerfiles.appendChild(tarjeta);
+                });
+            }
+
+            /* --- Seleccionar un perfil personal y mostrar sus credenciales --- */
+            function seleccionarPerfil(id) {
+                if (!centroActual) { return; }
+
+                var perfiles = centroActual.perfiles;
+                var encontrado = null;
+
+                for (var i = 0; i < perfiles.length; i++) {
+                    if (perfiles[i].id === id) { encontrado = perfiles[i]; break; }
+                }
+                if (!encontrado) { return; }
+
+                perfilSeleccionado = encontrado;
+
+                Array.prototype.forEach.call(listaPerfiles.querySelectorAll('.profile-card'), function (tarjeta) {
+                    tarjeta.classList.toggle('is-selected', tarjeta.getAttribute('data-id') === id);
+                });
+
+                formPerfil.hidden = false;
+                inputPerfilCorreo.value = encontrado.correo;
+                inputPerfilClave.value = '';
+                inputPerfilClave.focus();
+            }
+
+            /* --- Preparar el paso 2 a partir de una cuenta validada --- */
+            function abrirPasoDos(centro) {
+                centroActual = centro;
+                perfilSeleccionado = null;
+
+                textoCentro.textContent = centro.centro + ' — ' + centro.correoCuenta;
+                subtituloPasoDos.textContent =
+                    'Elija su perfil personal e ingrese con su correo y contraseña propios.';
+
+                formPerfil.hidden = true;
+                pintarPerfiles();
+                mostrarPaso(2);
+            }
+
+            /* --- Cambio de tipo de usuario (triple switch) --- */
+            Array.prototype.forEach.call(botones, function (boton) {
+                boton.addEventListener('click', function () {
+                    seleccionarRol(boton.getAttribute('data-rol'));
+                    mostrarPaso(1);
+                });
+            });
+
+            /* --- Autocompletado desde la tarjeta de credenciales --- */
+            function plegarCredenciales(plegada) {
+                listaCredenciales.classList.toggle('is-collapsed', plegada);
+                botonPlegar.classList.toggle('is-collapsed', plegada);
+                botonPlegar.closest('.demo-credentials').classList.toggle('is-collapsed', plegada);
+                botonPlegar.querySelector('span').textContent = plegada ? 'Ver' : 'Ocultar';
+            }
+
+            Array.prototype.forEach.call(listaCredenciales.querySelectorAll('.demo-cred-item[data-rol]'), function (item) {
+                item.addEventListener('click', function () {
+                    var rol = item.getAttribute('data-rol');
+                    var perfil = PERFILES[rol];
+
+                    seleccionarRol(rol);
+                    inputCorreo.value = perfil.correo;
+                    inputClave.value = perfil.clave;
+
+                    /* El tipo 2 continúa en el selector de perfil personal */
+                    if (rol === '2') {
+                        var centro = validarCuentaCentro(perfil.correo, perfil.clave);
+                        if (centro) { abrirPasoDos(centro); }
+                    }
+
+                    /* El tipo 2 aún necesita ver las credenciales de sus perfiles:
+                       la tarjeta se mantiene abierta hasta elegir uno. */
+                    if (rol !== '2') {
+                        plegarCredenciales(true);
+                    }
+                });
+            });
+
+            /* --- Credenciales de demostración: perfiles de la cuenta tipo 2 --- */
+            function pintarCredencialesTipo2() {
+                if (!contDemoPerfiles) { return; }
+
+                contDemoPerfiles.innerHTML = '';
+                contDemoPerfiles.appendChild(crear('span', 'demo-cred-subgroup-title',
+                    'Perfiles personales de esa cuenta'));
+
+                var centro = SIV.centros.obtener(PERFILES['2'].correo);
+                if (!centro) { return; }
+
+                centro.perfiles.forEach(function (perfil) {
+                    var item = crear('button', 'demo-cred-item is-sub');
+                    item.type = 'button';
+
+                    var lineaRol = crear('span', 'demo-cred-role');
+                    lineaRol.appendChild(crear('span', 'demo-cred-sub-tag',
+                        perfil.rol === 'jefe' ? 'JEFE CENTRO' : 'ENFERMERO'));
+                    lineaRol.appendChild(document.createTextNode(perfil.nombre));
+
+                    item.appendChild(lineaRol);
+                    item.appendChild(crear('span', 'demo-cred-line', perfil.correo));
+                    item.appendChild(crear('span', 'demo-cred-line', perfil.clave));
+
+                    item.addEventListener('click', function () {
+                        seleccionarRol('2');
+                        inputCorreo.value = centro.correoCuenta;
+                        inputClave.value = centro.claveCuenta;
+
+                        abrirPasoDos(centro);
+                        seleccionarPerfil(perfil.id);
+
+                        /* Autocompleta las credenciales personales del perfil
+                           y pliega la tarjeta para dejar libre el formulario. */
+                        inputPerfilCorreo.value = perfil.correo;
+                        inputPerfilClave.value = perfil.clave;
+                        plegarCredenciales(true);
+                    });
+
+                    contDemoPerfiles.appendChild(item);
+                });
+            }
+
+            /* --- Mostrar / ocultar contraseña de la cuenta --- */
+            document.getElementById('btn-ver-clave').addEventListener('click', function () {
+                var visible = inputClave.type === 'text';
+                inputClave.type = visible ? 'password' : 'text';
+                this.setAttribute('aria-label', visible ? 'Mostrar contraseña' : 'Ocultar contraseña');
+            });
+
+            /* --- Mostrar / ocultar contraseña del perfil personal --- */
+            document.getElementById('btn-ver-clave-perfil').addEventListener('click', function () {
+                var visible = inputPerfilClave.type === 'text';
+                inputPerfilClave.type = visible ? 'password' : 'text';
+                this.setAttribute('aria-label', visible ? 'Mostrar contraseña' : 'Ocultar contraseña');
+            });
+
+            /* --- Plegar / desplegar la tarjeta de credenciales --- */
+            botonPlegar.addEventListener('click', function () {
+                plegarCredenciales(!listaCredenciales.classList.contains('is-collapsed'));
+            });
+
+            /* --- Recuperación de contraseña (placeholder de UI) --- */
+            document.getElementById('link-recuperar').addEventListener('click', function (evento) {
+                evento.preventDefault();
+                SIV.toast(
+                    'La recuperación de credenciales estará disponible cuando se habilite el servicio de correo institucional.',
+                    'info'
+                );
+            });
+
+            /* --- Envío del formulario de credenciales de la cuenta --- */
+            document.getElementById('form-login').addEventListener('submit', function (evento) {
+                evento.preventDefault();
+
+                var perfil = PERFILES[rolActual];
+                var correo = (inputCorreo.value || '').trim().toLowerCase();
+                var clave = inputClave.value || '';
+
+                if (!correo || !clave) {
+                    SIV.toast('Debe completar el correo institucional y la contraseña para ingresar.', 'error');
+                    return;
+                }
+
+                /* Tipo 2: se valida la cuenta del centro y se pasa al perfil personal */
+                if (rolActual === '2') {
+                    var centro = validarCuentaCentro(correo, clave);
+
+                    if (!centro) {
+                        SIV.toast(
+                            'Las credenciales de la cuenta del centro de salud son inválidas. ' +
+                            'Verifique el correo y la contraseña e intente nuevamente.',
+                            'error',
+                            5000,
+                            'Credenciales inválidas'
+                        );
+                        inputClave.value = '';
+                        inputClave.focus();
+                        return;
+                    }
+
+                    abrirPasoDos(centro);
+                    return;
+                }
+
+                if (correo !== perfil.correo.toLowerCase() || clave !== perfil.clave) {
+                    SIV.toast(
+                        'Las credenciales ingresadas son inválidas para el perfil "' + perfil.nombre +
+                        '". Verifique el correo y la contraseña e intente nuevamente.',
+                        'error',
+                        5000,
+                        'Credenciales inválidas'
+                    );
+                    inputClave.value = '';
+                    inputClave.focus();
+                    return;
+                }
+
+                SIV.toast('Acceso concedido. Redirigiendo al módulo de ' + perfil.nombre + '...', 'success', 2200);
+
+                /* Una cuenta tipo 1 o tipo 3 no arrastra el perfil de un centro */
+                if (window.SIV && SIV.centros) { SIV.centros.cerrarSesion(); }
+
+                window.setTimeout(function () {
+                    window.location.href = perfil.destino;
+                }, 700);
+            });
+
+            /* --- Envío del formulario de credenciales del perfil personal --- */
+            formPerfil.addEventListener('submit', function (evento) {
+                evento.preventDefault();
+
+                if (!centroActual || !perfilSeleccionado) {
+                    SIV.toast('Seleccione primero su perfil personal.', 'error');
+                    return;
+                }
+
+                var correo = (inputPerfilCorreo.value || '').trim().toLowerCase();
+                var clave = inputPerfilClave.value || '';
+
+                if (!correo || !clave) {
+                    SIV.toast('Complete el correo personal y la contraseña de su perfil.', 'error');
+                    return;
+                }
+
+                var perfil = SIV.centros.validarPerfil(centroActual.correoCuenta, correo, clave);
+
+                if (!perfil) {
+                    SIV.toast(
+                        'El correo o la contraseña del perfil son inválidos. Verifique e intente nuevamente.',
+                        'error',
+                        5000,
+                        'Credenciales inválidas'
+                    );
+                    inputPerfilClave.value = '';
+                    inputPerfilClave.focus();
+                    return;
+                }
+
+                SIV.centros.iniciarSesion(centroActual, perfil);
+
+                /* Redirección correspondiente: Jefe de Centro -> centro.html | Enfermero -> enfermero.html */
+                var esJefe = (perfil.rol === 'jefe');
+                var destino = esJefe ? 'centro.html' : 'enfermero.html';
+                var nombreDestino = esJefe ? ('Perfil del Centro de Salud (' + centroActual.centro + ')') : 'Perfil de Enfermero(a)';
+
+                SIV.toast('Acceso concedido. Redirigiendo al ' + nombreDestino + '...', 'success', 2200);
+
+                window.setTimeout(function () {
+                    window.location.href = destino;
+                }, 700);
+            });
+
+            /* --- Volver al paso 1 (cambiar de cuenta) --- */
+            document.getElementById('btn-volver-paso-1').addEventListener('click', function () {
+                centroActual = null;
+                perfilSeleccionado = null;
+                formPerfil.hidden = true;
+                mostrarPaso(1);
+                inputClave.focus();
+            });
+
+            /* --- Estado inicial --- */
+            pintarPerfil(rolActual);
+            pintarCredencialesTipo2();
+        })();
+    </script>
+</body>
+
+</html>
