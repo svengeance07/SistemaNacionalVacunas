@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Notificación de Eventos Adversos y Problemas con Vacunas (ESAVI) a nivel de Centro de Salud. Consulta por cédula, visualización de la última vacuna y registro para la futura consolidación subregional.">
+    <title>PUYASO / Reporte de Problemas de Vacunas (ESAVI) - Centro de Salud</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/centro.css">
+</head>
+
+<body>
+    <div class="health-layout">
+
+        <!-- BARRA LATERAL MÉDICA -->
+        <aside class="health-sidebar" id="health-sidebar">
+            <div>
+                <div class="sidebar-brand">
+                    <div class="brand-cross-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 4v16m-8-8h16"></path>
+                        </svg>
+                    </div>
+                    <div class="brand-text-block">
+                        <span class="brand-title">PUYASO-NACIONAL</span>
+                        <span class="brand-subtitle">Sistema Nacional de Vacunación</span>
+                    </div>
+                </div>
+
+                <nav class="health-nav" aria-label="Navegación principal">
+                    <ul class="health-nav-list">
+                        <!-- Enlace: Panel General -->
+                        <li class="health-nav-item">
+                            <a href="centro.html" class="health-nav-link" id="nav-dashboard">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                <span>Panel General</span>
+                            </a>
+                        </li>
+                        <!-- Enlace: Pacientes -->
+                        <li class="health-nav-item">
+                            <a href="pacientes.html" class="health-nav-link" id="nav-pacientes">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <line x1="19" y1="8" x2="19" y2="14"></line>
+                                    <line x1="22" y1="11" x2="16" y2="11"></line>
+                                </svg>
+                                <span>Pacientes</span>
+                            </a>
+                        </li>
+                        <!-- Enlace: Reportes ESAVI (Activo) -->
+                        <li class="health-nav-item active">
+                            <a href="reportes.html" class="health-nav-link" id="nav-reportes">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                </svg>
+                                <span>Reporte de Problemas </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="health-main-viewport">
+            <header class="health-header">
+                <div class="header-left-col">
+                    <h1 class="health-main-heading">Reporte de Problemas y Reacciones a Vacunas</h1>
+                    <div style="font-size: 0.82rem; color: var(--color-texto-secundario); margin-top: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <span style="font-weight: 700; color: var(--color-primario-oscuro);">🏥 Hospital Dr. Israel Ranuárez Balza</span>
+                        <span>•</span>
+                        <span>Estado Guárico</span>
+                        <span>•</span>
+                        <span>Municipio Juan Germán Roscio</span>
+                        <span>•</span>
+                        <span>Parroquia San Juan de los Morros</span>
+                    </div>
+                </div>
+                <div class="header-right-tools">
+                    <button class="btn-health btn-health-primary" id="btn-iniciar-reporte" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span>+ Registrar Problema / Reacción</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- TARJETAS DE INDICADORES DEL CENTRO DE SALUD -->
+            <section class="health-kpi-grid" aria-label="Indicadores del Centro de Salud">
+                <article class="kpi-health-card">
+                    <div class="kpi-card-top">
+                        <div>
+                            <span class="kpi-category-badge kpi-badge-blue">CENTRO DE SALUD</span>
+                            <h3 class="kpi-card-title">Reportes Emitidos por este Centro</h3>
+                        </div>
+                        <div class="kpi-icon-pill icon-blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-metric-row">
+                        <span class="kpi-metric-number" id="kpi-total-reportes">0</span>
+                        <span class="kpi-metric-unit">notificaciones guardadas</span>
+                    </div>
+                </article>
+
+                <article class="kpi-health-card">
+                    <div class="kpi-card-top">
+                        <div>
+                            <span class="kpi-category-badge kpi-badge-red">ALERTAS CLÍNICAS</span>
+                            <h3 class="kpi-card-title">Casos Severos del Centro</h3>
+                        </div>
+                        <div class="kpi-icon-pill icon-red">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-metric-row">
+                        <span class="kpi-metric-number text-danger" id="kpi-reportes-graves">0</span>
+                        <span class="kpi-metric-unit">casos graves atendidos</span>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- BANNER INFORMATIVO: DESTINO SUBREGIONAL -->
+            <section class="subregion-summary-bar" aria-label="Información de Destino Subregional">
+                <div>
+                    <span style="font-size: 0.72rem; font-weight: 700; color: var(--color-texto-muted); text-transform: uppercase; letter-spacing: 0.05em;">
+                        Jurisdicción Territorial y Envío Subregional:
+                    </span>
+                    <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-primario-oscuro); margin-top: 4px;">
+                        Estado Guárico • Municipio Juan Germán Roscio • Parroquia San Juan de los Morros
+                    </div>
+                    <p style="font-size: 0.8rem; color: var(--color-texto-secundario); margin: 4px 0 0 0;">
+                        Los reportes generados en este centro quedan asentados en el historial de cada persona y <strong>serán agrupados automáticamente en data de la Subregión</strong>
+                    </p>
+                </div>
+                <div style="background: var(--color-primario-subtle); border: 1px solid var(--color-primario-claro); padding: 8px 14px; border-radius: var(--radius-md); font-size: 0.78rem; color: var(--color-primario-oscuro); font-weight: 600;">
+                    🏛️ Subregión Receptora: Subregión Guárico
+                </div>
+            </section>
+
+            <!-- SECCIÓN: REGISTRO DE REPORTE POR CÉDULA -->
+            <section class="patient-registration-panel" id="seccion-registro-reporte">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+                    <div>
+                        <h2 class="registration-panel-title">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            <span>Notificación de Reacción Adversa o Problema con la Vacuna</span>
+                        </h2>
+                        <p style="font-size: 0.85rem; color: var(--color-texto-secundario); margin-top: 4px;">
+                            Búsqueda por cédula para consultar la <strong>última vacuna administrada</strong>, el historial completo y asentar el reporte clínico para la subregión.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PASO 1: BÚSQUEDA POR CÉDULA EN ESTE CENTRO -->
+                <div style="background: #ffffff; border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; margin-bottom: 20px;">
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 280px;">
+                            <label style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--color-texto); margin-bottom: 6px;">
+                                Ingrese Cédula del Paciente (Adulto o Representante si es Menor):
+                            </label>
+                            <div style="display: flex; gap: 8px;">
+                                <select id="busq-reporte-tipo-doc" class="patient-doc-type" style="padding: 10px; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-weight: 600;">
+                                    <option value="V">V-</option>
+                                    <option value="E">E-</option>
+                                    <option value="P">P-</option>
+                                </select>
+                                <input type="text" id="busq-reporte-cedula" class="patient-search-input"
+                                    placeholder="Ingrese cédula (Ej: 28452190 o 24119504)..." style="flex: 1;" autocomplete="off">
+                                <button type="button" class="btn-health btn-health-primary" id="btn-consultar-historial-paciente">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    </svg>
+                                    <span>Buscar Ficha y Vacunas</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alerta de búsqueda -->
+                    <div id="alerta-busqueda-reporte" style="display: none; margin-top: 14px;"></div>
+
+                    <!-- SELECTOR DE MENOR SI ES UN REPRESENTANTE -->
+                    <div id="bloque-hijos-reporte" style="display: none; margin-top: 16px; border-top: 1px dashed var(--border-color); padding-top: 14px;">
+                        <label style="font-size: 0.82rem; font-weight: 700; color: #166534; display: block; margin-bottom: 8px;">
+                            Seleccione el niño/menor que presenta el problema con la vacuna:
+                        </label>
+                        <div class="children-found-grid" id="contenedor-hijos-reporte"></div>
+                    </div>
+                </div>
+
+                <!-- PASO 2: VISUALIZACIÓN DE LA ÚLTIMA VACUNA Y DEL HISTORIAL COMPLETO -->
+                <div id="bloque-historial-vacunas-paciente" style="margin-bottom: 20px;">
+                    
+                    <!-- TARJETA DESTACADA: ÚLTIMA VACUNA APLICADA -->
+                    <div id="tarjeta-ultima-vacuna-destacada" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #86efac; border-radius: var(--radius-md); padding: 18px 22px; margin-bottom: 20px; box-shadow: var(--shadow-sm);">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                                    <span style="background: #15803d; color: #ffffff; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">
+                                        ÚLTIMA VACUNA ADMINISTRADA
+                                    </span>
+                                    <span style="font-size: 0.8rem; color: #166534; font-weight: 600;" id="txt-paciente-destacado-nombre">
+                                        Carlos Eduardo Mendoza Peña (V-28.452.190)
+                                    </span>
+                                </div>
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: #14532d; margin: 4px 0;" id="txt-ultima-vacuna-nombre">
+                                    Fiebre Amarilla (Dosis Única 0.5ml)
+                                </h3>
+                                <div style="font-size: 0.84rem; color: #166534; display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px;">
+                                    <div>📅 <strong>Fecha de Aplicación:</strong> <span id="txt-ultima-vacuna-fecha" class="font-mono">2026-03-12</span></div>
+                                    <div>🏷️ <strong>Número de Lote:</strong> <span id="txt-ultima-vacuna-lote" class="font-mono font-semibold" style="color: #047857;">FA-VEN-2026-G1</span></div>
+                                    <div>🏥 <strong>Centro:</strong> <span id="txt-ultima-vacuna-centro">Hospital Dr. Israel Ranuárez Balza</span></div>
+                                </div>
+                            </div>
+                            <span class="btn-health btn-health-primary" style="background: #15803d; border-color: #15803d; pointer-events: none;">
+                                <span>⚠️ Vacuna Seleccionada para Notificación</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- TABLA DEL HISTORIAL COMPLETO DE OTRAS VACUNAS -->
+                    <div style="background: #ffffff; border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 18px 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+                            <div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--color-texto);">
+                                    Historial Completo de Vacunación Registrado en el Sistema
+                                </h4>
+                                <p style="font-size: 0.78rem; color: var(--color-texto-secundario);">
+                                    Dosis registradas asociadas al paciente:
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="health-table-container">
+                            <table class="health-table">
+                                <thead>
+                                    <tr>
+                                        <th>BIOLÓGICO Y DOSIS</th>
+                                        <th>FECHA DE COLOCACIÓN</th>
+                                        <th>LOTE REGISTRADO</th>
+                                        <th>CENTRO DE SALUD</th>
+                                        <th>ENFERMERO RESPONSABLE</th>
+                                        <th class="text-right">ESTADO</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cuerpo-tabla-historial-reporte">
+                                    <tr>
+                                        <td><strong>Fiebre Amarilla</strong> (Dosis Única)</td>
+                                        <td class="font-mono">2026-03-12</td>
+                                        <td><span class="font-mono text-primary font-semibold">FA-VEN-2026-G1</span></td>
+                                        <td>Hospital Dr. Israel Ranuárez Balza</td>
+                                        <td>Lic. Marlene Requena</td>
+                                        <td class="text-right"><span class="health-status-chip chip-warning">● En Proceso Reporte</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Toxoide Tetánico Diftérico</strong> (1er Refuerzo)</td>
+                                        <td class="font-mono">2025-11-20</td>
+                                        <td><span class="font-mono text-primary font-semibold">TT-VEN-88</span></td>
+                                        <td>CDI Che Guevara</td>
+                                        <td>Enf. Jonathan Silva</td>
+                                        <td class="text-right"><span class="health-status-chip chip-verified">● Normal</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Hepatitis B Adulto</strong> (3ra Dosis)</td>
+                                        <td class="font-mono">2025-05-10</td>
+                                        <td><span class="font-mono text-primary font-semibold">HB-VEN-118</span></td>
+                                        <td>Hospital Dr. Israel Ranuárez Balza</td>
+                                        <td>Lic. Marlene Requena</td>
+                                        <td class="text-right"><span class="health-status-chip chip-verified">● Normal</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 3: INTERROGATORIO DEL ENFERMERO AL PACIENTE -->
+                <form id="form-interrogatorio-esavi" action="#" method="POST">
+                    
+                    <!-- Banner de la vacuna seleccionada para el reporte -->
+                    <div class="vaccine-selected-banner" id="banner-vacuna-seleccionada">
+                        <div class="vaccine-selected-info">
+                            <div class="vaccine-selected-icon">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m18 2 4 4"></path>
+                                    <path d="m17 7 3-3"></path>
+                                    <path d="M19 9 8.7 19.3c-.4.4-1 .6-1.6.6H3v-4.1c0-.6.2-1.2.6-1.6L13.9 3.9"></path>
+                                    <path d="m18 10 2 2"></path>
+                                    <path d="m14 6 2 2"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.72rem; font-weight: 700; color: var(--color-primario-oscuro); text-transform: uppercase;">
+                                    Vacuna Objeto del Reporte Clínico:
+                                </div>
+                                <div style="font-size: 1.1rem; font-weight: 700; color: var(--color-texto);" id="sel-vacuna-nombre">
+                                    Pentavalente Acelular (2da Dosis Refuerzo)
+                                </div>
+                                <div style="font-size: 0.8rem; color: var(--color-texto-secundario); margin-top: 2px;">
+                                    <strong>Fecha de Colocación:</strong> <span id="sel-vacuna-fecha" class="font-mono">2026-10-21</span> • 
+                                    <strong>Lote:</strong> <span id="sel-vacuna-lote" class="font-mono font-semibold text-primary">PV-VEN-09</span> • 
+                                    <strong>Centro donde se la aplicó:</strong> <span id="sel-vacuna-centro">Hospital Dr. Israel Ranuárez Balza</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-health btn-health-outline" id="btn-cambiar-vacuna-seleccionada" style="font-size: 0.75rem;">
+                            <span>Cambiar de Vacuna</span>
+                        </button>
+                    </div>
+
+                    <!-- PREGUNTAS DEL INTERROGATORIO CLÍNICO -->
+                    <div class="form-grid-3" style="margin-bottom: 16px;">
+                        <div class="form-col">
+                            <label class="form-label" for="inp-fecha-sintomas">¿En qué fecha iniciaron los síntomas? *</label>
+                            <input type="date" id="inp-fecha-sintomas" class="form-input" required>
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="sel-intervalo-tiempo">Tiempo transcurrido desde la inyección *</label>
+                            <select id="sel-intervalo-tiempo" class="form-select" required>
+                                <option value="Inmediato (< 30 minutos)">Inmediato (< 30 minutos)</option>
+                                <option value="1 a 6 horas post-vacunación" selected>1 a 6 horas post-vacunación</option>
+                                <option value="6 a 24 horas post-vacunación">6 a 24 horas post-vacunación</option>
+                                <option value="24 a 48 horas post-vacunación">24 a 48 horas post-vacunación</option>
+                                <option value="3 a 7 días post-vacunación">3 a 7 días post-vacunación</option>
+                                <option value="Más de 7 días">Más de 7 días</option>
+                            </select>
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="sel-nivel-gravedad">Nivel de Gravedad Clínico *</label>
+                            <select id="sel-nivel-gravedad" class="form-select" required style="font-weight: 700;">
+                                <option value="Leve" style="color: #15803d;">🟢 Leve (Manejo domiciliario / sintomático)</option>
+                                <option value="Moderado" style="color: #b45309;" selected>🟡 Moderado (Requirió consulta / medicación)</option>
+                                <option value="Grave" style="color: #b91c1c;">🔴 Grave / Urgente (Hospitalización / Anafilaxia)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- SELECCIÓN RÁPIDA DE SIGNOS Y SÍNTOMAS COMUNES -->
+                    <div style="margin-bottom: 16px;">
+                        <label class="form-label">Signos y síntomas referidos por el paciente (Marque los aplicables):</label>
+                        <div class="symptom-tag-cloud">
+                            <label class="symptom-checkbox-chip">
+                                <input type="checkbox" name="sintoma" value="Fiebre alta (> 38.5°C)">
+                                <span>🌡️ Fiebre alta (&gt; 38.5°C)</span>
+                            </label>
+                            <label class="symptom-checkbox-chip">
+                                <input type="checkbox" name="sintoma" value="Reacción local severa (Edema/Induración > 5cm)">
+                                <span>💉 Reacción local severa / Dolor intenso</span>
+                            </label>
+                            <label class="symptom-checkbox-chip">
+                                <input type="checkbox" name="sintoma" value="Absceso o infección en sitio de punción">
+                                <span>⚠️ Absceso / Infección en punción</span>
+                            </label>
+                            <label class="symptom-checkbox-chip">
+                                <input type="checkbox" name="sintoma" value="Reacción alérgica / Urticaria generalizada">
+                                <span>🔴 Erupción cutánea / Urticaria</span>
+                            </label>
+                            <label class="symptom-checkbox-chip">
+                                <input type="checkbox" name="sintoma" value="Dificultad respiratoria / Broncoespasmo">
+                                <span>🫁 Dificultad respiratoria</span>
+                            </label>
+                            <label class="symptom-checkbox-chip">
+                                <input type="checkbox" name="sintoma" value="Convulsión febril">
+                                <span>⚡ Convulsión febril</span>
+                            </label>
+                            <label class="symptom-checkbox-chip">
+                                <input type="checkbox" name="sintoma" value="Cefalea intensa / Vómitos persistentes">
+                                <span>🤢 Cefalea intensa / Vómitos</span>
+                            </label>
+                            <label class="symptom-checkbox-chip">
+                                <input type="checkbox" name="sintoma" value="Llanto persistente e inconsolable (> 3h pediátrico)">
+                                <span>👶 Llanto persistente (&gt; 3h pediátrico)</span>
+                            </label>
+                            <label class="symptom-checkbox-chip">
+                                <input type="checkbox" name="sintoma" value="Mialgias / Artralgias severas">
+                                <span>🦴 Dolor muscular / articular severo</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- DESCRIPCIÓN CLÍNICA DETALLADA -->
+                    <div style="margin-bottom: 16px;">
+                        <label class="form-label" for="inp-descripcion-reaccion">Descripción detallada del cuadro clínico del paciente *</label>
+                        <textarea id="inp-descripcion-reaccion" class="form-input" rows="3"
+                            placeholder="Describa el relato del paciente, características de las lesiones o manifestaciones observadas por el personal..." required></textarea>
+                    </div>
+
+                    <!-- JURISDICCIÓN DEL CENTRO Y ENFERMERO NOTIFICANTE -->
+                    <div class="form-grid-3" style="margin-bottom: 20px;">
+                        <div class="form-col">
+                            <label class="form-label">Centro de Salud Emisor</label>
+                            <input type="text" class="form-input" value="Hospital Dr. Israel Ranuárez Balza" readonly style="background: #f8fafc; font-weight: 600;">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label">Ubicación Territorial</label>
+                            <input type="text" class="form-input" value="Edo. Guárico, Mcpio. Juan Germán Roscio, Pquia. San Juan" readonly style="background: #f8fafc;">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="inp-enfermero-notificante">Enfermero(a) que recibe el reporte *</label>
+                            <input type="text" id="inp-enfermero-notificante" class="form-input"
+                                value="Lic. Marlene Requena" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2" style="margin-bottom: 24px;">
+                        <div class="form-col">
+                            <label class="form-label" for="inp-conducta-medica">Conducta médica o tratamiento administrado</label>
+                            <input type="text" id="inp-conducta-medica" class="form-input"
+                                placeholder="Ej: Tratamiento sintomático con antipirético, observación durante 2h...">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label">Estado de Transmisión</label>
+                            <input type="text" class="form-input" value="● Registrado localmente / Notificado a la Subregión Guárico" readonly style="background: #eff6ff; color: #1e40af; font-weight: 600;">
+                        </div>
+                    </div>
+
+                    <!-- BOTONES DE ACCIÓN DEL FORMULARIO -->
+                    <div style="display: flex; justify-content: flex-end; gap: 12px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+                        <button type="button" class="btn-health btn-health-outline" id="btn-cancelar-reporte">
+                            <span>Cancelar</span>
+                        </button>
+                        <button type="submit" class="btn-health btn-health-primary" id="btn-guardar-reporte-final">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                <polyline points="7 3 7 8 15 8"></polyline>
+                            </svg>
+                            <span>Guardar Reporte y Enviar a la Subregión</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- TABLA CENTRAL: REGISTRO HISTÓRICO DE REPORTES DE ESTE CENTRO -->
+            <section class="health-table-panel" id="seccion-tabla-reportes">
+                <div class="health-panel-header">
+                    <div class="panel-title-with-icon">
+                        <div>
+                            <h2 class="panel-heading">Reportes de Vacunas Emitidos por este Centro de Salud</h2>
+                            <p class="panel-subheading">Registros clínicos de eventos adversos notificados desde este centro para la Subregión Guárico</p>
+                        </div>
+                    </div>
+
+                    <div class="table-filter-bar">
+                        <input type="text" id="filtro-busqueda-tabla" class="patient-search-input"
+                            placeholder="Buscar por cédula, paciente, vacuna o lote..." style="max-width: 280px; padding: 7px 12px; font-size: 0.8rem;">
+                        <select id="filtro-gravedad-tabla" class="form-select-sm" style="padding: 7px 10px; font-size: 0.8rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                            <option value="todas">Todas las Gravedades</option>
+                            <option value="Grave">Solo Graves</option>
+                            <option value="Moderado">Solo Moderados</option>
+                            <option value="Leve">Solo Leves</option>
+                        </select>
+                        <button class="btn-health btn-health-outline" id="btn-exportar-reportes" type="button" style="font-size: 0.8rem; padding: 7px 12px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span>Exportar Planilla</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contenedor con scroll horizontal -->
+                <div class="health-table-container">
+                    <table class="health-table" id="tabla-reportes-esavi">
+                        <thead>
+                            <tr>
+                                <th>CÓDIGO DE REPORTE</th>
+                                <th>FECHA NOTIFICACIÓN</th>
+                                <th>PACIENTE / IDENTIFICACIÓN</th>
+                                <th>VACUNA IMPLICADA</th>
+                                <th>LOTE</th>
+                                <th>FECHA APLICACIÓN vs INICIO</th>
+                                <th>GRAVEDAD</th>
+                                <th>ESTADO DE TRANSMISIÓN</th>
+                                <th class="text-right">ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpo-tabla-reportes">
+                            <tr>
+                                <td>
+                                    <div class="font-mono font-semibold" style="color: var(--color-primario-oscuro);">#REP-GUA-2026-001</div>
+                                    <small style="color: var(--color-texto-muted);">Registro Local</small>
+                                </td>
+                                <td>
+                                    <div>2026-03-12</div>
+                                    <small style="color: var(--color-texto-muted);">14:30 hrs</small>
+                                </td>
+                                <td>
+                                    <strong>Carlos Eduardo Mendoza Peña</strong>
+                                    <div style="font-size: 0.75rem; color: var(--color-texto-secundario);">C.I. V-28.452.190 (28 años)</div>
+                                </td>
+                                <td>
+                                    <strong>Fiebre Amarilla</strong>
+                                    <div style="font-size: 0.75rem; color: var(--color-texto-muted);">Dosis Adulto (0.5ml)</div>
+                                </td>
+                                <td><span class="font-mono text-primary font-semibold">FA-VEN-2026-G1</span></td>
+                                <td>
+                                    <div style="font-size: 0.78rem;">Aplic: <strong>2026-03-12</strong></div>
+                                    <div style="font-size: 0.78rem; color: #b45309;">Sint: <strong>2026-03-12</strong> (+4h)</div>
+                                </td>
+                                <td>
+                                    <span class="esavi-severity-pill pill-moderado">🟡 Moderado</span>
+                                </td>
+                                <td>
+                                    <span class="health-status-chip chip-verified" style="font-size: 0.75rem;">● Subregión Guárico (Pendiente Consolidación)</span>
+                                </td>
+                                <td class="text-right">
+                                    <button class="btn-health btn-health-sm btn-health-outline" type="button" style="padding: 4px 10px; font-size: 0.75rem;">
+                                        Ver Ficha
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="font-mono font-semibold" style="color: var(--color-primario-oscuro);">#REP-GUA-2026-002</div>
+                                    <small style="color: var(--color-texto-muted);">Registro Local</small>
+                                </td>
+                                <td>
+                                    <div>2026-02-16</div>
+                                    <small style="color: var(--color-texto-muted);">09:15 hrs</small>
+                                </td>
+                                <td>
+                                    <strong>Mateo Alejandro Rojas Silva</strong>
+                                    <div style="font-size: 0.75rem; color: var(--color-texto-secundario);">Menor • Rep: Ana Rojas (V-24.119.504)</div>
+                                </td>
+                                <td>
+                                    <strong>Pentavalente (DTP-HB-Hib)</strong>
+                                    <div style="font-size: 0.75rem; color: var(--color-texto-muted);">3ra Dosis Refuerzo</div>
+                                </td>
+                                <td><span class="font-mono text-primary font-semibold">PTA-VEN-99</span></td>
+                                <td>
+                                    <div style="font-size: 0.78rem;">Aplic: <strong>2026-02-15</strong></div>
+                                    <div style="font-size: 0.78rem; color: #15803d;">Sint: <strong>2026-02-16</strong> (+18h)</div>
+                                </td>
+                                <td>
+                                    <span class="esavi-severity-pill pill-leve">🟢 Leve</span>
+                                </td>
+                                <td>
+                                    <span class="health-status-chip chip-verified" style="font-size: 0.75rem;">● Subregión Guárico (Pendiente Consolidación)</span>
+                                </td>
+                                <td class="text-right">
+                                    <button class="btn-health btn-health-sm btn-health-outline" type="button" style="padding: 4px 10px; font-size: 0.75rem;">
+                                        Ver Ficha
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="health-table-footer">
+                    <span id="txt-contador-tabla-reportes">Total: 2 reportes registrados en este centro (Destino Subregión Guárico)</span>
+                </div>
+            </section>
+
+            <!-- MODAL / VISTA DE DETALLE DE LA FICHA EPIDEMIOLÓGICA -->
+            <div id="modal-detalle-reporte" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); z-index: 999; display: none; align-items: center; justify-content: center; padding: 20px;">
+                <div style="background: #ffffff; border-radius: var(--radius-lg); max-width: 680px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 28px; box-shadow: var(--shadow-lg); position: relative;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-color); padding-bottom: 14px; margin-bottom: 18px;">
+                        <div>
+                            <div style="font-size: 0.72rem; font-weight: 700; color: var(--color-primario); text-transform: uppercase;">
+                                MPPS // Hospital Dr. Israel Ranuárez Balza • Subregión Guárico
+                            </div>
+                            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--color-texto); margin-top: 2px;" id="modal-titulo-ficha">
+                                Ficha de Notificación ESAVI #REP-000
+                            </h3>
+                        </div>
+                        <button type="button" id="btn-cerrar-modal" style="background: none; border: none; font-size: 1.5rem; line-height: 1; cursor: pointer; color: var(--color-texto-muted);">&times;</button>
+                    </div>
+
+                    <div id="modal-contenido-ficha" style="font-size: 0.88rem; color: var(--color-texto); line-height: 1.6;">
+                        <!-- Contenido inyectado dinámicamente -->
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+                        <button type="button" class="btn-health btn-health-outline" id="btn-imprimir-ficha-modal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                                <rect x="6" y="14" width="12" height="8"></rect>
+                            </svg>
+                            <span>Imprimir Ficha Oficial</span>
+                        </button>
+                        <button type="button" class="btn-health btn-health-primary" id="btn-cerrar-modal-sec">
+                            <span>Aceptar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PIE DE PÁGINA INSTITUCIONAL -->
+            <footer class="health-footer" style="margin-top: 36px;">
+                <div class="footer-health-brand">
+                    <svg class="icon-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 4v16m-8-8h16"></path>
+                    </svg>
+                    <span>MINISTERIO DEL PODER POPULAR PARA LA SALUD // REPÚBLICA BOLIVARIANA DE VENEZUELA</span>
+                </div>
+                <div class="footer-meta-info">
+                    <span>HOSPITAL DR. ISRAEL RANUÁREZ BALZA</span>
+                    <span>•</span>
+                    <span>SUBREGIÓN GUÁRICO</span>
+                    <span>•</span>
+                    <span class="font-mono">VERSIÓN 2.5 SALUD</span>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+</body>
+</html>
