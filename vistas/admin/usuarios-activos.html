@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Registro de usuarios activos de la plataforma SIV-Guárico: control de cuentas por rol, sede de adscripción y estado de acceso.">
+
+    <title>SIV-GUÁRICO // Usuarios Activos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/centro.css">
+</head>
+
+<body>
+
+    <div class="health-layout">
+
+        <!-- ==========================================================
+             BARRA LATERAL ADMINISTRATIVA (USUARIO TIPO 1)
+             ========================================================== -->
+        <aside class="health-sidebar" id="health-sidebar">
+            <div class="health-sidebar-inner">
+
+                <div class="sidebar-brand">
+                    <div class="brand-cross-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M12 4v16m-8-8h16"></path>
+                        </svg>
+                    </div>
+                    <div class="brand-text-block">
+                        <span class="brand-title">PUYASO-GUÁRICO</span>
+                        <span class="brand-subtitle">Administración General</span>
+                    </div>
+                </div>
+
+                <nav class="health-nav" aria-label="Navegación administrativa">
+
+                    <span class="nav-group-label">Gestión Institucional</span>
+                    <ul class="health-nav-list">
+                        <li class="health-nav-item">
+                            <a href="index.html" class="health-nav-link" id="nav-panel-admin">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                <span>Panel General</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="usuarios-nuevos.html" class="health-nav-link" id="nav-crear-usuario">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <line x1="19" y1="8" x2="19" y2="14"></line>
+                                    <line x1="22" y1="11" x2="16" y2="11"></line>
+                                </svg>
+                                <span>Crear Usuario</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item active">
+                            <a href="usuarios-activos.html" class="health-nav-link" id="nav-usuarios-activos">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span>Usuarios Activos</span>
+                                <span class="nav-tag-badge tag-info">24</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <span class="nav-group-label">Auditoría y Logística</span>
+                    <ul class="health-nav-list">
+                        <li class="health-nav-item">
+                            <a href="auditoria.html" class="health-nav-link" id="nav-auditoria">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                </svg>
+                                <span>Bitácora de Acciones</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="lotes-entrega.html" class="health-nav-link" id="nav-lotes">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m7.5 4.27 9 5.15"></path>
+                                    <path
+                                        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z">
+                                    </path>
+                                    <path d="m3.3 7 8.7 5 8.7-5"></path>
+                                    <path d="M12 22V12"></path>
+                                </svg>
+                                <span>Entrega de Lotes</span>
+                                <span class="nav-tag-badge tag-alert">3</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <span class="nav-group-label">Módulos Operativos</span>
+                    <ul class="health-nav-list">
+                        <li class="health-nav-item">
+                            <a href="../centro.html" class="health-nav-link" id="nav-sala-situacional">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    <path d="m9 12 2 2 4-4"></path>
+                                </svg>
+                                <span>Sala Situacional</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="../inventario.html" class="health-nav-link" id="nav-inventario">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m7.5 4.27 9 5.15"></path>
+                                    <path
+                                        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z">
+                                    </path>
+                                    <path d="m3.3 7 8.7 5 8.7-5"></path>
+                                    <path d="M12 22V12"></path>
+                                </svg>
+                                <span>Inventario</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="../personal.html" class="health-nav-link" id="nav-personal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span>Personal</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-center-perfil">
+                    <div class="center-perfil-card">
+                        <div class="center-avatar-circle">EC</div>
+                        <div class="center-info-text">
+                            <span class="center-name">Dra. Elena Cordero</span>
+                            <span class="center-role">Administrador General</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ==========================================================
+             CONTENIDO PRINCIPAL
+             ========================================================== -->
+        <main class="health-main-viewport">
+
+            <header class="health-header">
+                <div class="header-left-col">
+                    <div class="health-breadcrumbs">
+                        <span>SIV-GUÁRICO</span>
+                        <span>/</span>
+                        <span>Administración General</span>
+                        <span>/</span>
+                        <span class="text-primary">Usuarios Activos</span>
+                    </div>
+                    <h1 class="health-main-heading">Registro de Usuarios Activos</h1>
+                </div>
+
+                <div class="header-right-tools">
+                    <div class="header-btn-group">
+                        <button class="btn-health btn-health-outline" type="button" id="btn-exportar-usuarios">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span>Exportar planilla</span>
+                        </button>
+                        <a href="usuarios-nuevos.html" class="btn-health btn-health-primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            <span>Crear usuario</span>
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ==========================================================
+                 INDICADORES DE CUENTAS
+                 ========================================================== -->
+            <section class="health-kpi-grid" aria-label="Indicadores de cuentas de acceso">
+
+                <article class="kpi-health-card">
+                    <div class="kpi-card-top">
+                        <div>
+                            <span class="kpi-category-badge kpi-badge-purple">TOTAL DE CUENTAS</span>
+                            <h3 class="kpi-card-title">Usuarios Activos</h3>
+                        </div>
+                        <div class="kpi-icon-pill icon-purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-metric-row">
+                        <span class="kpi-metric-number">24</span>
+                        <span class="kpi-metric-unit">cuentas habilitadas</span>
+                    </div>
+                    <div class="kpi-health-progress">
+                        <div class="kpi-progress-bar bar-purple" style="width: 82%;"></div>
+                    </div>
+                    <div class="kpi-card-footer">
+                        <span class="text-muted">3 cuentas en estado inactivo</span>
+                        <span class="badge-health-pill badge-stable">82% del cupo</span>
+                    </div>
+                </article>
+
+                <article class="kpi-health-card">
+                    <div class="kpi-card-top">
+                        <div>
+                            <span class="kpi-category-badge kpi-badge-blue">CONTROL DE VACUNACIÓN</span>
+                            <h3 class="kpi-card-title">Usuarios Tipo 2</h3>
+                        </div>
+                        <div class="kpi-icon-pill icon-blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m18 2 4 4"></path>
+                                <path d="m17 7 3-3"></path>
+                                <path d="M19 9 8.7 19.3c-.4.4-1 .6-1.6.6H3v-4.1c0-.6.2-1.2.6-1.6L13.9 3.9"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-metric-row">
+                        <span class="kpi-metric-number">18</span>
+                        <span class="kpi-metric-unit">sedes operativas</span>
+                    </div>
+                    <div class="kpi-health-progress">
+                        <div class="kpi-progress-bar bar-blue" style="width: 72%;"></div>
+                    </div>
+                    <div class="kpi-card-footer">
+                        <span class="trend-badge trend-up">+2 este mes</span>
+                        <span class="badge-health-pill badge-optimal">72% del cupo</span>
+                    </div>
+                </article>
+
+                <article class="kpi-health-card">
+                    <div class="kpi-card-top">
+                        <div>
+                            <span class="kpi-category-badge kpi-badge-green">CONTROL DE SALUD</span>
+                            <h3 class="kpi-card-title">Usuarios Tipo 3</h3>
+                        </div>
+                        <div class="kpi-icon-pill icon-green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="m9 12 2 2 4-4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-metric-row">
+                        <span class="kpi-metric-number">5</span>
+                        <span class="kpi-metric-unit">cuentas de vigilancia</span>
+                    </div>
+                    <div class="kpi-health-progress">
+                        <div class="kpi-progress-bar bar-green" style="width: 45%;"></div>
+                    </div>
+                    <div class="kpi-card-footer">
+                        <span class="text-muted">1 cuenta inactiva</span>
+                        <span class="badge-health-pill badge-optimal">Operativo</span>
+                    </div>
+                </article>
+
+                <article class="kpi-health-card">
+                    <div class="kpi-card-top">
+                        <div>
+                            <span class="kpi-category-badge kpi-badge-red">SEGURIDAD</span>
+                            <h3 class="kpi-card-title">Cuentas con Clave Expirada</h3>
+                        </div>
+                        <div class="kpi-icon-pill icon-red">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-metric-row">
+                        <span class="kpi-metric-number text-danger">2</span>
+                        <span class="kpi-metric-unit">requieren renovación</span>
+                    </div>
+                    <div class="kpi-health-progress">
+                        <div class="kpi-progress-bar" style="width: 18%; background: linear-gradient(90deg,#fb923c,#e11d48);"></div>
+                    </div>
+                    <div class="kpi-card-footer">
+                        <span class="trend-badge trend-alert">Acción requerida</span>
+                        <span class="badge-health-pill badge-danger">Prioridad</span>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ==========================================================
+                 TABLA DE USUARIOS ACTIVOS
+                 ========================================================== -->
+            <section class="health-table-panel">
+
+                <div class="health-panel-header">
+                    <div class="panel-title-with-icon">
+                        <svg class="icon-22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <div>
+                            <h2 class="panel-heading">Directorio de Cuentas Habilitadas</h2>
+                            <p class="panel-subheading">Estado de acceso, adscripción territorial y última
+                                actividad registrada</p>
+                        </div>
+                    </div>
+
+                    <div class="table-filter-bar">
+                        <div class="health-search-box">
+                            <svg class="icon-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <input type="text" id="buscar-usuario" placeholder="Buscar por nombre, cédula o sede...">
+                        </div>
+
+                        <select class="admin-select" id="filtro-rol">
+                            <option value="">Todos los roles</option>
+                            <option value="1">Tipo 1 — Administración</option>
+                            <option value="2">Tipo 2 — Vacunación</option>
+                            <option value="3">Tipo 3 — Salud</option>
+                        </select>
+
+                        <select class="admin-select" id="filtro-estado">
+                            <option value="">Todos los estados</option>
+                            <option value="activo">Activos</option>
+                            <option value="inactivo">Inactivos</option>
+                            <option value="expirado">Clave expirada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="health-table-container">
+                    <table class="health-table" id="tabla-usuarios">
+                        <thead>
+                            <tr>
+                                <th>ID DE CUENTA</th>
+                                <th>USUARIO / CORREO</th>
+                                <th>ROL</th>
+                                <th>SEDE DE ADSCRIPCIÓN</th>
+                                <th>MUNICIPIO</th>
+                                <th>ÚLTIMO ACCESO</th>
+                                <th>ESTADO</th>
+                                <th class="text-right">ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-usuarios">
+
+                            <tr data-rol="1" data-estado="activo" data-buscar="dra elena cordero admin general dirección regional">
+                                <td class="font-mono text-muted">USR-ADM-001</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">Dra. Elena Cordero</span>
+                                        <span class="patient-id">admin.general@sivguarico.ve</span>
+                                    </div>
+                                </td>
+                                <td><span class="role-chip role-chip-admin">TIPO 1</span></td>
+                                <td>Sede Física Administradora</td>
+                                <td>Juan Germán Roscio</td>
+                                <td class="font-mono text-primary">Hoy, 18:21</td>
+                                <td><span class="badge-health-pill badge-optimal">Activo</span></td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Editar cuenta">
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M12 20h9"></path>
+                                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr data-rol="2" data-estado="activo" data-buscar="lic marlene requena ambulatorio calabozo">
+                                <td class="font-mono text-muted">USR-CAL-041</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">Lic. Marlene Requena</span>
+                                        <span class="patient-id">m.requena@sivguarico.ve</span>
+                                    </div>
+                                </td>
+                                <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
+                                <td>Ambulatorio Tipo II Calabozo Centro</td>
+                                <td>Francisco de Miranda</td>
+                                <td class="font-mono text-primary">Hoy, 18:42</td>
+                                <td><span class="badge-health-pill badge-optimal">Activo</span></td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Editar cuenta">
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M12 20h9"></path>
+                                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr data-rol="2" data-estado="activo" data-buscar="enf jonathan silva puesto de salud tucupido">
+                                <td class="font-mono text-muted">USR-TUC-017</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">Enf. Jonathan Silva</span>
+                                        <span class="patient-id">j.silva@sivguarico.ve</span>
+                                    </div>
+                                </td>
+                                <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
+                                <td>Puesto de Salud Tucupido</td>
+                                <td>José Félix Ribas</td>
+                                <td class="font-mono text-primary">Hoy, 18:36</td>
+                                <td><span class="badge-health-pill badge-optimal">Activo</span></td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Editar cuenta">
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M12 20h9"></path>
+                                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr data-rol="2" data-estado="expirado" data-buscar="lic yaritza pantoja cdi simón bolívar valle de la pascua">
+                                <td class="font-mono text-muted">USR-VLP-008</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">Lic. Yaritza Pantoja</span>
+                                        <span class="patient-id">y.pantoja@sivguarico.ve</span>
+                                    </div>
+                                </td>
+                                <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
+                                <td>CDI Simón Bolívar</td>
+                                <td>Leonardo Infante</td>
+                                <td class="font-mono text-warning">Ayer, 16:40</td>
+                                <td><span class="badge-health-pill badge-warning">Clave expirada</span></td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Renovar clave">
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr data-rol="2" data-estado="activo" data-buscar="enf carlos guache hospital ranuárez balza roscio">
+                                <td class="font-mono text-muted">USR-ROS-012</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">Enf. Carlos Guache</span>
+                                        <span class="patient-id">c.guache@sivguarico.ve</span>
+                                    </div>
+                                </td>
+                                <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
+                                <td>Hospital Dr. Israel Ranuárez Balza</td>
+                                <td>Juan Germán Roscio</td>
+                                <td class="font-mono text-primary">Hoy, 18:10</td>
+                                <td><span class="badge-health-pill badge-optimal">Activo</span></td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Editar cuenta">
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M12 20h9"></path>
+                                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr data-rol="3" data-estado="activo" data-buscar="dr ángel marcano vigilancia epidemiológica roscio">
+                                <td class="font-mono text-muted">USR-SAL-003</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">Dr. Ángel Marcano</span>
+                                        <span class="patient-id">a.marcano@sivguarico.ve</span>
+                                    </div>
+                                </td>
+                                <td><span class="role-chip role-chip-salud">TIPO 3</span></td>
+                                <td>Oficina de Vigilancia Epidemiológica</td>
+                                <td>Juan Germán Roscio</td>
+                                <td class="font-mono text-primary">Hoy, 17:58</td>
+                                <td><span class="badge-health-pill badge-optimal">Activo</span></td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Editar cuenta">
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M12 20h9"></path>
+                                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr data-rol="3" data-estado="inactivo" data-buscar="lic rosa morales programa ampliado inmunizaciones">
+                                <td class="font-mono text-muted">USR-SAL-009</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">Lic. Rosa Morales</span>
+                                        <span class="patient-id">r.morales@sivguarico.ve</span>
+                                    </div>
+                                </td>
+                                <td><span class="role-chip role-chip-salud">TIPO 3</span></td>
+                                <td>Coordinación Regional del PAI</td>
+                                <td>Juan Germán Roscio</td>
+                                <td class="font-mono text-muted">12/08/2026</td>
+                                <td><span class="badge-health-pill badge-stable">Inactivo</span></td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Reactivar cuenta">
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr data-rol="2" data-estado="expirado" data-buscar="lic maritza colmenares ambulatorio calabozo">
+                                <td class="font-mono text-muted">USR-CAL-039</td>
+                                <td>
+                                    <div class="patient-cell">
+                                        <span class="patient-name">Lic. Maritza Colmenares</span>
+                                        <span class="patient-id">m.colmenares@sivguarico.ve</span>
+                                    </div>
+                                </td>
+                                <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
+                                <td>Ambulatorio Tipo II Calabozo Centro</td>
+                                <td>Francisco de Miranda</td>
+                                <td class="font-mono text-warning">05/10/2026</td>
+                                <td><span class="badge-health-pill badge-warning">Clave expirada</span></td>
+                                <td class="text-right">
+                                    <button class="btn-table-action" type="button" title="Renovar clave">
+                                        <svg class="icon-14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="health-table-footer">
+                    <span>Mostrando <strong id="conteo-usuarios">8</strong> de <strong>24</strong> cuentas registradas en la
+                        plataforma</span>
+                    <div class="pagination-controls">
+                        <button class="pagination-btn" type="button" disabled>&laquo; Anterior</button>
+                        <button class="pagination-btn active" type="button">1</button>
+                        <button class="pagination-btn" type="button">2</button>
+                        <button class="pagination-btn" type="button">3</button>
+                        <button class="pagination-btn" type="button">Siguiente &raquo;</button>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="health-footer">
+                <div class="footer-health-brand">
+                    <svg class="icon-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 4v16m-8-8h16"></path>
+                    </svg>
+                    <span>MINISTERIO DEL PODER POPULAR PARA LA SALUD // SUBREGIÓN GUÁRICO</span>
+                </div>
+                <div class="footer-meta-info">
+                    <span>REGISTRO DE USUARIOS ACTIVOS</span>
+                    <span>•</span>
+                    <span class="font-mono">VERSIÓN 2.5 SALUD</span>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <script src="../js/ui.js"></script>
+    <script>
+        /* ==============================================================
+           FILTROS Y ACCIONES DEL DIRECTORIO (SOLO INTERFAZ)
+           ============================================================== */
+        (function () {
+            'use strict';
+
+            var buscador = document.getElementById('buscar-usuario');
+            var filtroRol = document.getElementById('filtro-rol');
+            var filtroEstado = document.getElementById('filtro-estado');
+            var cuerpo = document.getElementById('tbody-usuarios');
+            var conteo = document.getElementById('conteo-usuarios');
+            var filas = Array.prototype.slice.call(cuerpo.querySelectorAll('tr'));
+
+            function aplicarFiltros() {
+                var texto = (buscador.value || '').toLowerCase().trim();
+                var rol = filtroRol.value;
+                var estado = filtroEstado.value;
+                var visibles = 0;
+
+                filas.forEach(function (fila) {
+                    var coincideTexto = !texto || (fila.getAttribute('data-buscar') || '').indexOf(texto) !== -1;
+                    var coincideRol = !rol || fila.getAttribute('data-rol') === rol;
+                    var coincideEstado = !estado || fila.getAttribute('data-estado') === estado;
+
+                    if (coincideTexto && coincideRol && coincideEstado) {
+                        fila.style.display = '';
+                        visibles++;
+                    } else {
+                        fila.style.display = 'none';
+                    }
+                });
+
+                conteo.textContent = visibles;
+            }
+
+            buscador.addEventListener('input', aplicarFiltros);
+            filtroRol.addEventListener('change', aplicarFiltros);
+            filtroEstado.addEventListener('change', aplicarFiltros);
+
+            document.getElementById('btn-exportar-usuarios').addEventListener('click', function () {
+                SIV.toast('La exportación de la planilla de usuarios se habilitará con la integración de la base de datos.', 'info');
+            });
+
+            /* --- Acciones por fila (placeholder de UI) --- */
+            Array.prototype.forEach.call(cuerpo.querySelectorAll('.btn-table-action'), function (boton) {
+                boton.addEventListener('click', function () {
+                    var fila = boton.closest('tr');
+                    var usuario = fila.querySelector('.patient-name');
+                    SIV.toast('Acción sobre la cuenta de ' + (usuario ? usuario.textContent : 'usuario') +
+                        ' — disponible cuando el Controlador (C) esté conectado.', 'info');
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,12 +1,12 @@
-/* --- 1. Variables Globales y Paleta Sanitaria / Salud Pública --- */
+/* --- 1. Variables Globales y Paleta Sanitaria / Salud PÃºblica --- */
 :root {
-    /* Identidad Médica Primaria */
+    /* Identidad MÃ©dica Primaria */
     --color-primario: #0284c7;
-    /* Azul Clínico / Salud Pública */
+    /* Azul ClÃ­nico / Salud PÃºblica */
     --color-primario-oscuro: #0369a1;
     /* Azul Hospitalario Profundo */
     --color-primario-claro: #e0f2fe;
-    /* Celeste Clínico Muy Suave */
+    /* Celeste ClÃ­nico Muy Suave */
     --color-primario-subtle: #f0f9ff;
     /* Blanco con tinte de salud */
 
@@ -17,15 +17,15 @@
     --color-texto: #1e293b;
     /* Gris pizarra oscuro de alta legibilidad */
     --color-texto-secundario: #64748b;
-    /* Gris médico informativo */
+    /* Gris mÃ©dico informativo */
     --color-texto-muted: #94a3b8;
-    /* Gris tenue para leyendas y códigos */
+    /* Gris tenue para leyendas y cÃ³digos */
     --color-sombra: rgba(15, 23, 42, 0.06);
     /* Sombra limpia y suave */
 
-    /* Estados Clínicos y Epidemiológicos */
+    /* Estados ClÃ­nicos y EpidemiolÃ³gicos */
     --salud-verde: #0d9488;
-    /* Verde Sanitario / Esquema Óptimo */
+    /* Verde Sanitario / Esquema Ã“ptimo */
     --salud-verde-claro: #ccfbf1;
     --salud-verde-texto: #0f766e;
 
@@ -35,37 +35,37 @@
     --salud-azul-texto: #1d4ed8;
 
     --salud-rojo: #e11d48;
-    /* Alerta Médica / Stock Crítico / Caducidad */
+    /* Alerta MÃ©dica / Stock CrÃ­tico / Caducidad */
     --salud-rojo-claro: #ffe4e6;
     --salud-rojo-texto: #be123c;
 
     --salud-ambar: #d97706;
-    /* Precaución Sanitaria / Cadena de Frío */
+    /* PrecauciÃ³n Sanitaria / Cadena de FrÃ­o */
     --salud-ambar-claro: #fef3c7;
     --salud-ambar-texto: #b45309;
 
     --salud-morado: #7c3aed;
-    /* Logística / Brigadas de Inmunización */
+    /* LogÃ­stica / Brigadas de InmunizaciÃ³n */
     --salud-morado-claro: #ede9fe;
     --salud-morado-texto: #6d28d9;
 
-    /* Superficies y Bordes Clínicos */
+    /* Superficies y Bordes ClÃ­nicos */
     --bg-app: #f8fafc;
-    /* Fondo general limpio y estéril */
+    /* Fondo general limpio y estÃ©ril */
     --bg-card: #ffffff;
     /* Blanco puro de consultorio */
     --bg-card-hover: #f1f5f9;
     --border-color: #e2e8f0;
-    /* Borde sutil estéril */
+    /* Borde sutil estÃ©ril */
     --border-color-focus: #38bdf8;
 
-    /* Sombras y Elevaciones Médicas */
+    /* Sombras y Elevaciones MÃ©dicas */
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
     --shadow-lg: 0 10px 15px -3px rgba(2, 132, 199, 0.06), 0 4px 6px -4px rgba(2, 132, 199, 0.04);
     --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.05), 0 10px 24px -6px rgba(2, 132, 199, 0.05);
 
-    /* Tipografías y Radios */
+    /* TipografÃ­as y Radios */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-mono: 'JetBrains Mono', Consolas, Menlo, monospace;
     --radius-sm: 6px;
@@ -78,7 +78,7 @@
     --trans-smooth: 0.25s ease-in-out;
 }
 
-/* --- 2. Reset y Configuración General --- */
+/* --- 2. Reset y ConfiguraciÃ³n General --- */
 *,
 *::before,
 *::after {
@@ -154,7 +154,7 @@ body {
     width: 100%;
 }
 
-/* --- 4. Barra Lateral Médica (Clinical Sidebar) --- */
+/* --- 4. Barra Lateral MÃ©dica (Clinical Sidebar) --- */
 .health-sidebar {
     width: 260px;
     flex-shrink: 0;
@@ -171,7 +171,7 @@ body {
     box-shadow: 2px 0 10px rgba(15, 23, 42, 0.02);
 }
 
-/* Identidad Médica en la Cabecera */
+/* Identidad MÃ©dica en la Cabecera */
 .sidebar-brand {
     display: flex;
     align-items: center;
@@ -241,7 +241,7 @@ body {
     animation: health-pulse 2s infinite;
 }
 
-/* Navegación Médica */
+/* NavegaciÃ³n MÃ©dica */
 .health-nav {
     flex: 1;
     overflow-y: auto;
@@ -367,8 +367,16 @@ body {
     text-overflow: ellipsis;
 }
 
+.center-role {
+    font-size: 0.68rem;
+    color: var(--color-texto-muted);
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
-/* --- 5. Área de Trabajo Principal (Main Viewport) --- */
+
+/* --- 5. Ãrea de Trabajo Principal (Main Viewport) --- */
 .health-main-viewport {
     flex: 1;
     display: flex;
@@ -378,7 +386,7 @@ body {
     gap: 24px;
 }
 
-/* Cabecera Médica Superior */
+/* Cabecera MÃ©dica Superior */
 .health-header {
     display: flex;
     justify-content: space-between;
@@ -450,7 +458,7 @@ body {
     gap: 8px;
 }
 
-/* Botones con Estética Médica */
+/* Botones con EstÃ©tica MÃ©dica */
 .btn-health {
     display: inline-flex;
     align-items: center;
@@ -568,6 +576,11 @@ body {
     color: var(--salud-morado-texto);
 }
 
+.kpi-badge-amber {
+    background: var(--salud-ambar-claro);
+    color: var(--salud-ambar-texto);
+}
+
 .kpi-card-title {
     font-size: 0.88rem;
     font-weight: 600;
@@ -625,7 +638,7 @@ body {
 }
 
 
-/* Barras de Progreso Médicas Suaves */
+/* Barras de Progreso MÃ©dicas Suaves */
 .kpi-health-progress {
     width: 100%;
     height: 6px;
@@ -679,11 +692,17 @@ body {
     color: var(--salud-rojo-texto);
 }
 
-/* --- 7. Rejilla Central Sanitaria (Mapa Epidemiológico + Panel Frío/Stock) --- */
+/* --- 7. Rejilla Central Sanitaria (Mapa EpidemiolÃ³gico + Panel FrÃ­o/Stock) --- */
 .health-dashboard-grid {
     display: grid;
     grid-template-columns: 1.75fr 1fr;
     gap: 20px;
+}
+
+/* Impide que una tabla ancha (nowrap) ensanche la columna de la rejilla.
+   El scroll horizontal queda a cargo de .health-table-container. */
+.health-dashboard-grid > * {
+    min-width: 0;
 }
 
 /* Tarjetas Principales de Panel */
@@ -701,6 +720,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
+    row-gap: 14px;
     padding-bottom: 16px;
     margin-bottom: 18px;
     border-bottom: 1px solid var(--border-color);
@@ -727,7 +748,7 @@ body {
     color: var(--color-texto-secundario);
 }
 
-/* Panel Geográfico Epidemiológico */
+/* Panel GeogrÃ¡fico EpidemiolÃ³gico */
 .geo-filter-pills {
     display: flex;
     background: #f1f5f9;
@@ -779,7 +800,7 @@ body {
     background-size: 22px 22px;
 }
 
-/* Escenario Cartográfico de Guárico con la imagen oficial */
+/* Escenario CartogrÃ¡fico de GuÃ¡rico con la imagen oficial */
 .guarico-map-stage {
     position: relative;
     width: 100%;
@@ -856,7 +877,7 @@ body {
     z-index: 8;
 }
 
-/* Sección de desglose de parroquias de Juan Germán Roscio */
+/* SecciÃ³n de desglose de parroquias de Juan GermÃ¡n Roscio */
 .roscio-parroquias-section {
     background: #f8fafc;
     border: 1px solid var(--border-color);
@@ -1074,7 +1095,7 @@ body {
     background: var(--salud-rojo);
 }
 
-/* Lista de Municipios y Avance de Vacunación */
+/* Lista de Municipios y Avance de VacunaciÃ³n */
 .municipality-cards-list {
     display: flex;
     flex-direction: column;
@@ -1182,7 +1203,7 @@ body {
     color: var(--color-texto);
 }
 
-/* --- 8. Panel Lateral Derecho: Cadena de Frío y Lotes de Vacunas --- */
+/* --- 8. Panel Lateral Derecho: Cadena de FrÃ­o y Lotes de Vacunas --- */
 .cold-chain-monitor-box {
     background: #f8fafc;
     border: 1px solid var(--border-color);
@@ -1247,7 +1268,7 @@ body {
     color: var(--color-texto-muted);
 }
 
-/* Feed de Alertas de Biológicos y Caducidad */
+/* Feed de Alertas de BiolÃ³gicos y Caducidad */
 .vaccine-batch-alerts-feed {
     display: flex;
     flex-direction: column;
@@ -1388,7 +1409,7 @@ body {
     color: var(--color-texto);
 }
 
-/* --- 9. Tabla Clínica de Registros de Inmunización --- */
+/* --- 9. Tabla ClÃ­nica de Registros de InmunizaciÃ³n --- */
 .health-table-panel {
     background: #ffffff;
     border: 1px solid var(--border-color);
@@ -1605,7 +1626,7 @@ body {
     gap: 12px;
 }
 
-/* --- 11. Animaciones Médicas --- */
+/* --- 11. Animaciones MÃ©dicas --- */
 @keyframes health-pulse {
     0% {
         box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.4);
@@ -1758,7 +1779,7 @@ body {
 }
 
 /* ==========================================================================
-   DIRECTORIO DE PERSONAL Y BRIGADAS MÉDICAS (VACUNADORES)
+   DIRECTORIO DE PERSONAL Y BRIGADAS MÃ‰DICAS (VACUNADORES)
    ========================================================================== */
 .staff-grid {
     display: grid;
@@ -1843,4 +1864,1324 @@ body {
     align-items: center;
     border-top: 1px solid var(--border-color);
     padding-top: 12px;
+}
+
+/* ==========================================================================
+   14. UTILIDADES COMPARTIDAS Y MICRO-COMPONENTES
+   ========================================================================== */
+
+/* Contenedor interno de la barra lateral (permite empujar el pie de perfil) */
+.health-sidebar-inner {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+/* Alineaciones y pesos tipogrÃ¡ficos */
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+/* TamaÃ±os de iconos SVG usados en todo el sistema */
+.icon-14 {
+    width: 14px;
+    height: 14px;
+}
+
+.icon-16 {
+    width: 16px;
+    height: 16px;
+}
+
+.icon-22 {
+    width: 22px;
+    height: 22px;
+}
+
+/* Buscador embebido en barras de filtros */
+.health-search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 0 12px;
+    min-width: 280px;
+    transition: border-color var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.health-search-box:focus-within {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.health-search-box svg {
+    color: var(--color-texto-muted);
+    flex-shrink: 0;
+}
+
+.health-search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 9px 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.85rem;
+    color: var(--color-texto);
+}
+
+.health-search-box input::placeholder {
+    color: var(--color-texto-muted);
+}
+
+/* Unidades y enlacesPie de tarjeta KPI */
+.kpi-metric-unit {
+    font-size: 0.76rem;
+    color: var(--color-texto-secundario);
+}
+
+.kpi-footer-link {
+    margin-left: auto;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--color-primario);
+    text-decoration: none;
+}
+
+.kpi-footer-link:hover {
+    text-decoration: underline;
+}
+
+/* BotÃ³n de ancho completo al pie de un panel */
+.btn-health-block {
+    display: flex;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* PÃ­ldora de rol institucional (1 = AdministraciÃ³n, 2 = VacunaciÃ³n, 3 = Salud) */
+.role-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 12px;
+    background: var(--salud-azul-claro);
+    color: var(--salud-azul-texto);
+    white-space: nowrap;
+}
+
+.role-chip-admin {
+    background: var(--salud-morado-claro);
+    color: var(--salud-morado-texto);
+}
+
+.role-chip-vacunacion {
+    background: var(--salud-azul-claro);
+    color: var(--salud-azul-texto);
+}
+
+.role-chip-salud {
+    background: var(--salud-verde-claro);
+    color: var(--salud-verde-texto);
+}
+
+/* ==========================================================================
+   15. ACCESO INSTITUCIONAL // PANTALLA DE LOGIN
+   ========================================================================== */
+.auth-shell {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    background: var(--bg-app);
+}
+
+/* --- Panel izquierdo institucional --- */
+.auth-aside {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 44px 48px;
+    color: #ffffff;
+    background: linear-gradient(155deg, #075985 0%, #0284c7 52%, #0ea5e9 100%);
+}
+
+.auth-aside::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.16), transparent 42%),
+        radial-gradient(circle at 12% 82%, rgba(255, 255, 255, 0.12), transparent 46%);
+    pointer-events: none;
+}
+
+.auth-aside::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 26px 26px;
+    pointer-events: none;
+}
+
+.auth-aside > * {
+    position: relative;
+    z-index: 2;
+}
+
+.auth-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.auth-cross-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.auth-cross-icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+.auth-brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-brand-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.auth-brand-subtitle {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.85;
+}
+
+.auth-hero-title {
+    font-size: 1.95rem;
+    line-height: 1.22;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+}
+
+.auth-hero-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    opacity: 0.88;
+    max-width: 46ch;
+}
+
+.auth-feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.auth-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+}
+
+.auth-feature-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.auth-feature-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.auth-feature-text strong {
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.auth-feature-text span {
+    font-size: 0.76rem;
+    opacity: 0.8;
+    line-height: 1.45;
+}
+
+.auth-aside-footer {
+    font-size: 0.7rem;
+    line-height: 1.6;
+    opacity: 0.78;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    padding-top: 16px;
+}
+
+/* --- Panel derecho: formulario de acceso --- */
+.auth-main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 44px 40px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+}
+
+.auth-card-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-texto);
+}
+
+.auth-card-subtitle {
+    font-size: 0.85rem;
+    color: var(--color-texto-secundario);
+    margin-top: 5px;
+    line-height: 1.5;
+}
+
+/* Selector triple de tipo de usuario */
+.role-switch {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    padding: 4px;
+    background: #f1f5f9;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin: 22px 0 18px;
+}
+
+.role-switch-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 9px 6px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+    color: var(--color-texto-secundario);
+    transition: all var(--trans-fast);
+}
+
+.role-switch-code {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--color-texto-muted);
+    letter-spacing: 0.04em;
+}
+
+.role-switch-btn:hover:not(.active) {
+    color: var(--color-primario);
+}
+
+.role-switch-btn.active {
+    background: #ffffff;
+    color: var(--color-primario-oscuro);
+    box-shadow: var(--shadow-sm);
+}
+
+.role-switch-btn.active .role-switch-code {
+    color: var(--color-primario);
+}
+
+/* Tarjeta del perfil seleccionado */
+.auth-profile-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    background: var(--color-primario-subtle);
+    border: 1px solid var(--color-primario-claro);
+    border-radius: var(--radius-md);
+}
+
+.auth-profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-primario);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+}
+
+.auth-profile-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.auth-profile-name {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.auth-profile-desc {
+    font-size: 0.72rem;
+    color: var(--color-texto-secundario);
+}
+
+/* Campos del formulario */
+.auth-field {
+    margin-bottom: 16px;
+}
+
+.auth-field label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-texto);
+    margin-bottom: 6px;
+}
+
+.auth-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.auth-input-wrap > svg {
+    position: absolute;
+    left: 13px;
+    width: 17px;
+    height: 17px;
+    color: var(--color-texto-muted);
+    pointer-events: none;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 11px 14px 11px 40px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 0.92rem;
+    color: var(--color-texto);
+    transition: border-color var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.auth-input::placeholder {
+    color: var(--color-texto-muted);
+}
+
+.auth-input:focus {
+    border-color: var(--color-primario);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.auth-toggle-btn {
+    position: absolute;
+    right: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    color: var(--color-texto-muted);
+    cursor: pointer;
+    transition: all var(--trans-fast);
+}
+
+.auth-toggle-btn:hover {
+    color: var(--color-primario);
+    background: var(--color-primario-subtle);
+}
+
+.auth-toggle-btn svg {
+    width: 17px;
+    height: 17px;
+}
+
+.auth-field-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 4px 0 20px;
+}
+
+.auth-check-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: var(--color-texto-secundario);
+    cursor: pointer;
+}
+
+.auth-check-inline input {
+    accent-color: var(--color-primario);
+    width: 15px;
+    height: 15px;
+}
+
+.auth-link-soft {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-primario);
+    text-decoration: none;
+}
+
+.auth-link-soft:hover {
+    text-decoration: underline;
+}
+
+.btn-auth-submit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 13px;
+    background: var(--color-primario);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28);
+    transition: all var(--trans-fast);
+}
+
+.btn-auth-submit svg {
+    width: 17px;
+    height: 17px;
+}
+
+.btn-auth-submit:hover {
+    background: var(--color-primario-oscuro);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35);
+}
+
+.auth-legal {
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--color-texto-muted);
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+/* --- Tarjeta de credenciales de demostraciÃ³n (esquina inferior derecha) --- */
+.demo-credentials {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 336px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    z-index: 60;
+}
+
+.demo-cred-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 14px;
+    background: var(--color-primario-subtle);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.demo-cred-title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-primario-oscuro);
+}
+
+.demo-cred-title svg {
+    width: 14px;
+    height: 14px;
+}
+
+.demo-cred-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.66rem;
+    font-weight: 700;
+    color: var(--color-primario);
+}
+
+.demo-cred-toggle svg {
+    width: 14px;
+    height: 14px;
+    transition: transform var(--trans-fast);
+}
+
+.demo-cred-toggle.is-collapsed svg {
+    transform: rotate(180deg);
+}
+
+.demo-cred-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.demo-cred-list.is-collapsed {
+    display: none;
+}
+
+.demo-cred-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+    padding: 10px 14px;
+    background: #ffffff;
+    border: none;
+    border-bottom: 1px solid #f1f5f9;
+    border-left: 3px solid transparent;
+    text-align: left;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background var(--trans-fast), border-color var(--trans-fast);
+}
+
+.demo-cred-item:hover {
+    background: var(--color-primario-subtle);
+    border-left-color: var(--color-primario);
+}
+
+.demo-cred-role {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.demo-cred-code {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    background: var(--color-primario-claro);
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+
+.demo-cred-line {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--color-texto-secundario);
+}
+
+.demo-cred-hint {
+    padding: 8px 14px;
+    background: #f8fafc;
+    font-size: 0.66rem;
+    color: var(--color-texto-muted);
+}
+
+/* ==========================================================================
+   16. NOTIFICACIONES FLOTANTES (TOASTS)
+   ========================================================================== */
+.toast-stack {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 380px;
+}
+
+.toast-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 14px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--salud-rojo);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    animation: toast-in 0.28s ease-out;
+}
+
+.toast-item.toast-success {
+    border-left-color: var(--salud-verde);
+}
+
+.toast-item.toast-info {
+    border-left-color: var(--salud-azul);
+}
+
+.toast-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--salud-rojo-claro);
+    color: var(--salud-rojo-texto);
+}
+
+.toast-icon svg {
+    width: 15px;
+    height: 15px;
+}
+
+.toast-success .toast-icon {
+    background: var(--salud-verde-claro);
+    color: var(--salud-verde-texto);
+}
+
+.toast-info .toast-icon {
+    background: var(--salud-azul-claro);
+    color: var(--salud-azul-texto);
+}
+
+.toast-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.toast-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.toast-message {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--color-texto-secundario);
+}
+
+.toast-close {
+    background: transparent;
+    border: none;
+    padding: 2px;
+    cursor: pointer;
+    color: var(--color-texto-muted);
+    flex-shrink: 0;
+    transition: color var(--trans-fast);
+}
+
+.toast-close:hover {
+    color: var(--color-texto);
+}
+
+.toast-close svg {
+    width: 15px;
+    height: 15px;
+}
+
+.toast-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: var(--salud-rojo);
+    transform-origin: left;
+    animation-name: toast-progress;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.toast-success .toast-progress {
+    background: var(--salud-verde);
+}
+
+.toast-info .toast-progress {
+    background: var(--salud-azul);
+}
+
+.toast-item.is-leaving {
+    animation: toast-out 0.24s ease-in forwards;
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateX(26px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes toast-out {
+    to {
+        opacity: 0;
+        transform: translateX(26px);
+    }
+}
+
+@keyframes toast-progress {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0;
+    }
+}
+
+/* ==========================================================================
+   17. MÃ“DULOS DEL ADMINISTRADOR GENERAL (USUARIO TIPO 1)
+   ========================================================================== */
+
+/* Banner de contexto de la sede fÃ­sica administradora */
+.admin-context-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: linear-gradient(90deg, var(--color-primario-claro), var(--color-primario-subtle));
+    border: 1px solid var(--color-primario-claro);
+    border-radius: var(--radius-lg);
+}
+
+.admin-context-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-md);
+    background: #ffffff;
+    border: 1px solid var(--color-primario-claro);
+    color: var(--color-primario);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.admin-context-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.admin-context-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.admin-context-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.admin-context-desc {
+    font-size: 0.76rem;
+    color: var(--color-texto-secundario);
+}
+
+/* Rejilla de formularios administrativos */
+.admin-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 18px;
+}
+
+.admin-form-field {
+    margin-bottom: 16px;
+}
+
+.admin-form-field.full {
+    grid-column: 1 / -1;
+}
+
+.admin-form-field label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-texto);
+    margin-bottom: 6px;
+}
+
+.required-mark {
+    color: var(--salud-rojo);
+}
+
+.admin-input,
+.admin-select,
+.admin-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: var(--color-texto);
+    transition: border-color var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.admin-input::placeholder,
+.admin-textarea::placeholder {
+    color: var(--color-texto-muted);
+}
+
+.admin-input:focus,
+.admin-select:focus,
+.admin-textarea:focus {
+    border-color: var(--color-primario);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.admin-select {
+    appearance: none;
+    padding-right: 36px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 15px;
+}
+
+.admin-textarea {
+    resize: vertical;
+    min-height: 84px;
+    line-height: 1.5;
+}
+
+.admin-hint {
+    font-size: 0.7rem;
+    color: var(--color-texto-muted);
+    margin-top: 5px;
+    line-height: 1.45;
+}
+
+.admin-fieldset-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-primario-oscuro);
+    padding-bottom: 10px;
+    margin: 6px 0 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.admin-fieldset-title svg {
+    width: 16px;
+    height: 16px;
+    color: var(--color-primario);
+}
+
+/* Casillas de permisos / alcance */
+.admin-check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+}
+
+.admin-check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 11px 12px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: all var(--trans-fast);
+    cursor: pointer;
+}
+
+.admin-check-item:hover {
+    border-color: #93c5fd;
+    background: var(--color-primario-subtle);
+}
+
+.admin-check-item input {
+    margin-top: 2px;
+    accent-color: var(--color-primario);
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+.admin-check-item span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+.admin-check-item small {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 400;
+    color: var(--color-texto-muted);
+    margin-top: 2px;
+}
+
+/* Barra de acciones del formulario */
+.admin-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    margin-top: 6px;
+    border-top: 1px solid var(--border-color);
+}
+
+.admin-form-actions .btn-health {
+    padding: 10px 18px;
+}
+
+/* Bits de auditorÃ­a (creaciÃ³n / modificaciÃ³n / eliminaciÃ³n) */
+.audit-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.audit-action svg {
+    width: 12px;
+    height: 12px;
+}
+
+.audit-create {
+    background: var(--salud-verde-claro);
+    color: var(--salud-verde-texto);
+}
+
+.audit-update {
+    background: var(--salud-ambar-claro);
+    color: var(--salud-ambar-texto);
+}
+
+.audit-delete {
+    background: var(--salud-rojo-claro);
+    color: var(--salud-rojo-texto);
+}
+
+.audit-read {
+    background: #f1f5f9;
+    color: var(--color-texto-secundario);
+}
+
+/* LÃ­nea de tiempo de auditorÃ­a */
+.audit-timeline {
+    display: flex;
+    flex-direction: column;
+}
+
+.audit-timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 14px;
+    padding-bottom: 18px;
+}
+
+.audit-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 28px;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-color);
+}
+
+.audit-timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.audit-timeline-item:last-child::before {
+    display: none;
+}
+
+.audit-timeline-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primario-claro);
+    color: var(--color-primario);
+    border: 2px solid #ffffff;
+    box-shadow: var(--shadow-sm);
+    z-index: 1;
+}
+
+.audit-timeline-dot svg {
+    width: 13px;
+    height: 13px;
+}
+
+.audit-timeline-card {
+    background: var(--bg-app);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 11px 13px;
+}
+
+.audit-timeline-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.audit-timeline-title {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+.audit-timeline-time {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--color-texto-muted);
+}
+
+.audit-timeline-desc {
+    font-size: 0.74rem;
+    color: var(--color-texto-secundario);
+    line-height: 1.5;
+}
+
+/* Flujo de entrega de lotes (origen -> destino) */
+.delivery-flow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.delivery-node {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    color: var(--color-texto);
+}
+
+.delivery-node svg {
+    width: 15px;
+    height: 15px;
+    color: var(--color-primario);
+    flex-shrink: 0;
+}
+
+.delivery-arrow {
+    color: var(--color-texto-muted);
+    flex-shrink: 0;
+}
+
+.delivery-arrow svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ==========================================================================
+   18. RESPONSIVIDAD DE LOS NUEVOS MÃ“DULOS
+   ========================================================================== */
+@media (max-width: 1080px) {
+    .auth-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-aside {
+        padding: 32px 28px;
+        gap: 24px;
+    }
+
+    .auth-hero-title {
+        font-size: 1.6rem;
+    }
+
+    .auth-feature-list {
+        display: none;
+    }
+
+    .auth-main {
+        padding: 32px 24px 140px;
+    }
+}
+
+@media (max-width: 760px) {
+    .admin-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .demo-credentials {
+        left: 16px;
+        right: 16px;
+        width: auto;
+        bottom: 16px;
+    }
+
+    .toast-stack {
+        left: 16px;
+        right: 16px;
+        top: 16px;
+        max-width: none;
+    }
+}
+
+/* ==========================================================================
+   18.1 BARRAS DE FILTRO Y PÃLDORAS RESPONSIVAS
+   Las barras de filtro son una fila flexible: al estrechar el panel, sus
+   controles deben pasar a la lÃ­nea siguiente en vez de empujar el panel.
+   ========================================================================== */
+.table-filter-bar {
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+
+/* El buscador cede espacio y nunca empuja la barra fuera del panel.
+   flex-basis:auto conserva el ancho natural del campo (una sola lÃ­nea en
+   escritorio); min-width permite que se estreche al envolver la barra. */
+.table-filter-bar > .health-search-box {
+    flex: 1 1 auto;
+    min-width: 250px;
+}
+
+/* Los <select> de filtro se dimensionan por su contenido, no al 100% del panel. */
+.table-filter-bar > .admin-select {
+    width: auto;
+    flex: 0 1 auto;
+    min-width: 150px;
+    max-width: 100%;
+}
+
+/* Anchos de referencia de cada filtro (evitan estilos en lÃ­nea en el HTML). */
+#filtro-rol {
+    min-width: 190px;
+}
+
+#filtro-estado {
+    min-width: 170px;
+}
+
+#filtro-estado-entrega {
+    min-width: 190px;
+}
+
+/* Las pÃ­ldoras geogrÃ¡ficas / de acciÃ³n saltan de lÃ­nea si no caben. */
+.geo-filter-pills {
+    flex-wrap: wrap;
+    row-gap: 4px;
+    max-width: 100%;
+}
+
+.geo-filter-btn {
+    white-space: nowrap;
+}
+
+/* En columna (â‰¤640px) el eje principal de la barra pasa a ser vertical:
+   se anula la base flexible del buscador para que no crezca en altura. */
+@media (max-width: 640px) {
+    .table-filter-bar > .health-search-box {
+        flex: 0 0 auto;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .table-filter-bar > .admin-select {
+        flex: 0 0 auto;
+        width: 100%;
+    }
 }

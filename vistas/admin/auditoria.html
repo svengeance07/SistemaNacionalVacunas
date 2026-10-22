@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Bitácora de acciones del SIV-Guárico: registro de creación, modificación y eliminación sobre los registros de la base de datos de la plataforma.">
+
+    <title>SIV-GUÁRICO // Bitácora de Acciones</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/centro.css">
+</head>
+
+<body>
+
+    <div class="health-layout">
+
+        <!-- ==========================================================
+             BARRA LATERAL ADMINISTRATIVA (USUARIO TIPO 1)
+             ========================================================== -->
+        <aside class="health-sidebar" id="health-sidebar">
+            <div class="health-sidebar-inner">
+
+                <div class="sidebar-brand">
+                    <div class="brand-cross-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M12 4v16m-8-8h16"></path>
+                        </svg>
+                    </div>
+                    <div class="brand-text-block">
+                        <span class="brand-title">PUYASO-GUÁRICO</span>
+                        <span class="brand-subtitle">Administración General</span>
+                    </div>
+                </div>
+
+                <nav class="health-nav" aria-label="Navegación administrativa">
+
+                    <span class="nav-group-label">Gestión Institucional</span>
+                    <ul class="health-nav-list">
+                        <li class="health-nav-item">
+                            <a href="index.html" class="health-nav-link" id="nav-panel-admin">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                <span>Panel General</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="usuarios-nuevos.html" class="health-nav-link" id="nav-crear-usuario">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <line x1="19" y1="8" x2="19" y2="14"></line>
+                                    <line x1="22" y1="11" x2="16" y2="11"></line>
+                                </svg>
+                                <span>Crear Usuario</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="usuarios-activos.html" class="health-nav-link" id="nav-usuarios-activos">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span>Usuarios Activos</span>
+                                <span class="nav-tag-badge tag-info">24</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <span class="nav-group-label">Auditoría y Logística</span>
+                    <ul class="health-nav-list">
+                        <li class="health-nav-item active">
+                            <a href="auditoria.html" class="health-nav-link" id="nav-auditoria">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                </svg>
+                                <span>Bitácora de Acciones</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="lotes-entrega.html" class="health-nav-link" id="nav-lotes">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m7.5 4.27 9 5.15"></path>
+                                    <path
+                                        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z">
+                                    </path>
+                                    <path d="m3.3 7 8.7 5 8.7-5"></path>
+                                    <path d="M12 22V12"></path>
+                                </svg>
+                                <span>Entrega de Lotes</span>
+                                <span class="nav-tag-badge tag-alert">3</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <span class="nav-group-label">Módulos Operativos</span>
+                    <ul class="health-nav-list">
+                        <li class="health-nav-item">
+                            <a href="../centro.html" class="health-nav-link" id="nav-sala-situacional">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    <path d="m9 12 2 2 4-4"></path>
+                                </svg>
+                                <span>Sala Situacional</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="../inventario.html" class="health-nav-link" id="nav-inventario">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m7.5 4.27 9 5.15"></path>
+                                    <path
+                                        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z">
+                                    </path>
+                                    <path d="m3.3 7 8.7 5 8.7-5"></path>
+                                    <path d="M12 22V12"></path>
+                                </svg>
+                                <span>Inventario</span>
+                            </a>
+                        </li>
+                        <li class="health-nav-item">
+                            <a href="../personal.html" class="health-nav-link" id="nav-personal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span>Personal</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-center-perfil">
+                    <div class="center-perfil-card">
+                        <div class="center-avatar-circle">EC</div>
+                        <div class="center-info-text">
+                            <span class="center-name">Dra. Elena Cordero</span>
+                            <span class="center-role">Administrador General</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ==========================================================
+             CONTENIDO PRINCIPAL
+             ========================================================== -->
+        <main class="health-main-viewport">
+
+            <header class="health-header">
+                <div class="header-left-col">
+                    <div class="health-breadcrumbs">
+                        <span>SIV-GUÁRICO</span>
+                        <span>/</span>
+                        <span>Administración General</span>
+                        <span>/</span>
+                        <span class="text-primary">Bitácora de Acciones</span>
+                    </div>
+                    <h1 class="health-main-heading">Registro de Cambios sobre los Registros del Sistema</h1>
+                </div>
+
+                <div class="header-right-tools">
+                    <div class="header-btn-group">
+                        <button class="btn-health btn-health-outline" type="button" id="btn-exportar-bitacora">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span>Exportar bitácora</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ==========================================================
+                 INDICADORES DE LA BITÁCORA
+                 ========================================================== -->
+            <section class="health-kpi-grid" aria-label="Indicadores de la bitácora de acciones">
+
+                <article class="kpi-health-card">
+                    <div class="kpi-card-top">
+                        <div>
+                            <span class="kpi-category-badge kpi-badge-green">OPERACIONES</span>
+                            <h3 class="kpi-card-title">Creaciones de Registro</h3>
+                        </div>
+                        <div class="kpi-icon-pill icon-green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-metric-row">
+                        <span class="kpi-metric-number text-success">742</span>
+                        <span class="kpi-metric-unit">registros creados</span>
+                    </div>
+                    <div class="kpi-health-progress">
+                        <div class="kpi-progress-bar bar-green" style="width: 58%;"></div>
+                    </div>
+                    <div class="kpi-card-footer">
+                        <span class="text-muted">Principalmente fichas de pacientes</span>
+                        <span class="badge-health-pill badge-optimal">58% del total</span>
+                    </div>
+                </article>
+
+                <article class="kpi-health-card">
+                    <div class="kpi-card-top">
+                        <div>
+                            <span class="kpi-category-badge kpi-badge-blue">EDICIONES</span>
+                            <h3 class="kpi-card-title">Modificaciones de Registro</h3>
+                        </div>
+                        <div class="kpi-icon-pill icon-blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 20h9"></path>
+                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-metric-row">
+                        <span class="kpi-metric-number">508</span>
+                        <span class="kpi-metric-unit">registros editados</span>
+                    </div>
+                    <div class="kpi-health-progress">
+                        <div class="kpi-progress-bar bar-blue" style="width: 40%;"></div>
+                    </div>
+                    <div class="kpi-card-footer">
+                        <span class="text-muted">Correcciones de lotes y dosis</span>
+                        <span class="badge-health-pill badge-stable">40% del total</span>
+                    </div>
+                </article>
+
+                <article class="kpi-health-card">
+                    <div class="kpi-card-top">
+                        <div>
+                            <span class="kpi-category-badge kpi-badge-red">DEPURACIONES</span>
+                            <h3 class="kpi-card-title">Eliminaciones de Registro</h3>
+                        </div>
+                        <div class="kpi-icon-pill icon-red">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-metric-row">
+                        <span class="kpi-metric-number text-danger">34</span>
+                        <span class="kpi-metric-unit">registros eliminados</span>
+                    </div>
+                    <div class="kpi-health-progress">
+                        <div class="kpi-progress-bar" style="width: 12%; background: linear-gradient(90deg,#fb923c,#e11d48);"></div>
+                    </div>
+                    <div class="kpi-card-footer">
+                        <span class="trend-badge trend-alert">2 requieren revisión</span>
+                        <span class="badge-health-pill badge-danger">Crítico</span>
+                    </div>
+                </article>
+
+                <article class="kpi-health-card">
+                    <div class="kpi-card-top">
+                        <div>
+                            <span class="kpi-category-badge kpi-badge-purple">TRAZABILIDAD</span>
+                            <h3 class="kpi-card-title">Acciones con Autor Identificada</h3>
+                        </div>
+                        <div class="kpi-icon-pill icon-purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="m9 12 2 2 4-4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-metric-row">
+                        <span class="kpi-metric-number">100</span>
+                        <span class="kpi-metric-unit">% con trazabilidad</span>
+                    </div>
+                    <div class="kpi-health-progress">
+                        <div class="kpi-progress-bar bar-purple" style="width: 100%;"></div>
+                    </div>
+                    <div class="kpi-card-footer">
+                        <span class="text-muted">IP, fecha y rol del actor</span>
+                        <span class="badge-health-pill badge-optimal">Íntegro</span>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ==========================================================
+                 TABLA DE BITÁCORA + LÍNEA DE TIEMPO
+                 ========================================================== -->
+            <div class="health-dashboard-grid">
+
+                <section class="health-table-panel" style="grid-column: 1 / 2;">
+                    <div class="health-panel-header">
+                        <div class="panel-title-with-icon">
+                            <svg class="icon-22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                            <div>
+                                <h2 class="panel-heading">Bitácora de Operaciones</h2>
+                                <p class="panel-subheading">Creación, modificación y eliminación de registros</p>
+                            </div>
+                        </div>
+
+                        <div class="table-filter-bar">
+                            <div class="geo-filter-pills" id="filtros-accion">
+                                <button class="geo-filter-btn active" type="button" data-accion="todas">Todas</button>
+                                <button class="geo-filter-btn" type="button" data-accion="creacion">Creaciones</button>
+                                <button class="geo-filter-btn" type="button" data-accion="modificacion">Modificaciones</button>
+                                <button class="geo-filter-btn" type="button" data-accion="eliminacion">Eliminaciones</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="health-table-container">
+                        <table class="health-table" id="tabla-bitacora">
+                            <thead>
+                                <tr>
+                                    <th>FECHA / HORA</th>
+                                    <th>ACTOR</th>
+                                    <th>ROL</th>
+                                    <th>ACCIÓN</th>
+                                    <th>ENTIDAD</th>
+                                    <th>REGISTRO</th>
+                                    <th>IP</th>
+                                    <th class="text-right">RESULTADO</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-bitacora">
+
+                                <tr data-accion="creacion">
+                                    <td class="font-mono text-primary">21/10 18:42:07</td>
+                                    <td>
+                                        <div class="patient-cell">
+                                            <span class="patient-name">Lic. Marlene Requena</span>
+                                            <span class="patient-id">USR-CAL-041</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
+                                    <td><span class="audit-action audit-create">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                                stroke-linecap="round">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                            Creación
+                                        </span></td>
+                                    <td class="font-mono text-muted">PACIENTES</td>
+                                    <td class="font-mono text-muted">VAC-GUA-98421</td>
+                                    <td class="font-mono text-muted">10.20.4.18</td>
+                                    <td class="text-right"><span class="badge-health-pill badge-optimal">Confirmado</span></td>
+                                </tr>
+
+                                <tr data-accion="modificacion">
+                                    <td class="font-mono text-primary">21/10 18:36:55</td>
+                                    <td>
+                                        <div class="patient-cell">
+                                            <span class="patient-name">Enf. Jonathan Silva</span>
+                                            <span class="patient-id">USR-TUC-017</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
+                                    <td><span class="audit-action audit-update">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                                stroke-linecap="round">
+                                                <path d="M12 20h9"></path>
+                                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                            </svg>
+                                            Modificación
+                                        </span></td>
+                                    <td class="font-mono text-muted">LOTES</td>
+                                    <td class="font-mono text-muted">LOTE-VPH-442</td>
+                                    <td class="font-mono text-muted">10.20.7.42</td>
+                                    <td class="text-right"><span class="badge-health-pill badge-stable">Sincronizado</span></td>
+                                </tr>
+
+                                <tr data-accion="eliminacion">
+                                    <td class="font-mono text-warning">21/10 18:29:12</td>
+                                    <td>
+                                        <div class="patient-cell">
+                                            <span class="patient-name">Lic. Yaritza Pantoja</span>
+                                            <span class="patient-id">USR-VLP-008</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
+                                    <td><span class="audit-action audit-delete">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                                stroke-linecap="round">
+                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                                            </svg>
+                                            Eliminación
+                                        </span></td>
+                                    <td class="font-mono text-muted">PACIENTES</td>
+                                    <td class="font-mono text-muted">REG-DUPLICADO-118</td>
+                                    <td class="font-mono text-muted">10.20.9.05</td>
+                                    <td class="text-right"><span class="badge-health-pill badge-warning">En revisión</span></td>
+                                </tr>
+
+                                <tr data-accion="modificacion">
+                                    <td class="font-mono text-primary">21/10 18:21:40</td>
+                                    <td>
+                                        <div class="patient-cell">
+                                            <span class="patient-name">Dra. Elena Cordero</span>
+                                            <span class="patient-id">USR-ADM-001</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role-chip role-chip-admin">TIPO 1</span></td>
+                                    <td><span class="audit-action audit-update">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                                stroke-linecap="round">
+                                                <path d="M12 20h9"></path>
+                                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                            </svg>
+                                            Modificación
+                                        </span></td>
+                                    <td class="font-mono text-muted">USUARIOS</td>
+                                    <td class="font-mono text-muted">USR-CALABOZO-02</td>
+                                    <td class="font-mono text-muted">10.20.0.1</td>
+                                    <td class="text-right"><span class="badge-health-pill badge-optimal">Confirmado</span></td>
+                                </tr>
+
+                                <tr data-accion="creacion">
+                                    <td class="font-mono text-primary">21/10 18:10:03</td>
+                                    <td>
+                                        <div class="patient-cell">
+                                            <span class="patient-name">Enf. Carlos Guache</span>
+                                            <span class="patient-id">USR-ROS-012</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role-chip role-chip-vacunacion">TIPO 2</span></td>
+                                    <td><span class="audit-action audit-create">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                                stroke-linecap="round">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                            Creación
+                                        </span></td>
+                                    <td class="font-mono text-muted">PACIENTES</td>
+                                    <td class="font-mono text-muted">VAC-GUA-98420</td>
+                                    <td class="font-mono text-muted">10.20.2.33</td>
+                                    <td class="text-right"><span class="badge-health-pill badge-optimal">Confirmado</span></td>
+                                </tr>
+
+                                <tr data-accion="modificacion">
+                                    <td class="font-mono text-primary">21/10 17:55:31</td>
+                                    <td>
+                                        <div class="patient-cell">
+                                            <span class="patient-name">Dr. Ángel Marcano</span>
+                                            <span class="patient-id">USR-SAL-003</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role-chip role-chip-salud">TIPO 3</span></td>
+                                    <td><span class="audit-action audit-update">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                                stroke-linecap="round">
+                                                <path d="M12 20h9"></path>
+                                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                            </svg>
+                                            Modificación
+                                        </span></td>
+                                    <td class="font-mono text-muted">COBERTURA</td>
+                                    <td class="font-mono text-muted">COB-ROS-2026-10</td>
+                                    <td class="font-mono text-muted">10.20.1.11</td>
+                                    <td class="text-right"><span class="badge-health-pill badge-stable">Sincronizado</span></td>
+                                </tr>
+
+                                <tr data-accion="eliminacion">
+                                    <td class="font-mono text-danger">21/10 17:38:22</td>
+                                    <td>
+                                        <div class="patient-cell">
+                                            <span class="patient-name">Dra. Elena Cordero</span>
+                                            <span class="patient-id">USR-ADM-001</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role-chip role-chip-admin">TIPO 1</span></td>
+                                    <td><span class="audit-action audit-delete">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                                stroke-linecap="round">
+                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                                            </svg>
+                                            Eliminación
+                                        </span></td>
+                                    <td class="font-mono text-muted">LOTES</td>
+                                    <td class="font-mono text-muted">LOTE-FA-2026-Z1</td>
+                                    <td class="font-mono text-muted">10.20.0.1</td>
+                                    <td class="text-right"><span class="badge-health-pill badge-danger">Rechazado</span></td>
+                                </tr>
+
+                                <tr data-accion="creacion">
+                                    <td class="font-mono text-primary">21/10 17:12:05</td>
+                                    <td>
+                                        <div class="patient-cell">
+                                            <span class="patient-name">Lic. Rosa Morales</span>
+                                            <span class="patient-id">USR-SAL-009</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role-chip role-chip-salud">TIPO 3</span></td>
+                                    <td><span class="audit-action audit-create">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                                stroke-linecap="round">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                            Creación
+                                        </span></td>
+                                    <td class="font-mono text-muted">COBERTURA</td>
+                                    <td class="font-mono text-muted">COB-MIR-2026-10</td>
+                                    <td class="font-mono text-muted">10.20.1.15</td>
+                                    <td class="text-right"><span class="badge-health-pill badge-optimal">Confirmado</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="health-table-footer">
+                        <span>Mostrando <strong id="conteo-bitacora">8</strong> de <strong>1.284</strong> acciones
+                            registradas</span>
+                        <div class="pagination-controls">
+                            <button class="pagination-btn" type="button" disabled>&laquo; Anterior</button>
+                            <button class="pagination-btn active" type="button">1</button>
+                            <button class="pagination-btn" type="button">2</button>
+                            <button class="pagination-btn" type="button">3</button>
+                            <button class="pagination-btn" type="button">Siguiente &raquo;</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Línea de tiempo de los eventos críticos -->
+                <aside class="health-panel">
+                    <div class="health-panel-header">
+                        <div class="panel-title-with-icon">
+                            <svg class="icon-22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <div>
+                                <h2 class="panel-heading">Eventos Recientes</h2>
+                                <p class="panel-subheading">Línea de tiempo de la última hora</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="audit-timeline">
+
+                        <div class="audit-timeline-item">
+                            <div class="audit-timeline-dot">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="audit-timeline-card">
+                                <div class="audit-timeline-head">
+                                    <span class="audit-timeline-title">Registro de paciente creado</span>
+                                    <span class="audit-timeline-time">18:42</span>
+                                </div>
+                                <p class="audit-timeline-desc">
+                                    Ficha <strong>VAC-GUA-98421</strong> registrada por la Lic. Marlene Requena
+                                    (Ambulatorio Calabozo Centro).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="audit-timeline-item">
+                            <div class="audit-timeline-dot" style="background:var(--salud-ambar-claro); color:var(--salud-ambar-texto);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round">
+                                    <path d="M12 20h9"></path>
+                                    <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                </svg>
+                            </div>
+                            <div class="audit-timeline-card">
+                                <div class="audit-timeline-head">
+                                    <span class="audit-timeline-title">Lote VPH-442 actualizado</span>
+                                    <span class="audit-timeline-time">18:36</span>
+                                </div>
+                                <p class="audit-timeline-desc">
+                                    Se ajustó la existencia del lote (310 &rarr; 295 dosis) y la temperatura de
+                                    almacenamiento (+6.1&deg;C).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="audit-timeline-item">
+                            <div class="audit-timeline-dot" style="background:var(--salud-rojo-claro); color:var(--salud-rojo-texto);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                                </svg>
+                            </div>
+                            <div class="audit-timeline-card">
+                                <div class="audit-timeline-head">
+                                    <span class="audit-timeline-title">Eliminación en revisión</span>
+                                    <span class="audit-timeline-time">18:29</span>
+                                </div>
+                                <p class="audit-timeline-desc">
+                                    El registro <strong>REG-DUPLICADO-118</strong> fue marcado para eliminación y
+                                    requiere validación de la administración.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="audit-timeline-item">
+                            <div class="audit-timeline-dot" style="background:var(--salud-morado-claro); color:var(--salud-morado-texto);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 20h9"></path>
+                                    <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                </svg>
+                            </div>
+                            <div class="audit-timeline-card">
+                                <div class="audit-timeline-head">
+                                    <span class="audit-timeline-title">Permisos de cuenta ampliados</span>
+                                    <span class="audit-timeline-time">18:21</span>
+                                </div>
+                                <p class="audit-timeline-desc">
+                                    La cuenta <strong>USR-CALABOZO-02</strong> habilitó el módulo de control de
+                                    inventario y cadena de frío.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="audit-timeline-item">
+                            <div class="audit-timeline-dot">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="audit-timeline-card">
+                                <div class="audit-timeline-head">
+                                    <span class="audit-timeline-title">Cobertura municipal actualizada</span>
+                                    <span class="audit-timeline-time">17:55</span>
+                                </div>
+                                <p class="audit-timeline-desc">
+                                    El Dr. Ángel Marcano consolidó la cobertura del municipio Juan Germán Roscio
+                                    con el corte de la jornada.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cold-chain-monitor-box" style="margin-top:20px; margin-bottom:0;">
+                        <div class="cold-chain-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 14 14"></polyline>
+                            </svg>
+                            <span>Retención de la Bitácora</span>
+                        </div>
+                        <div class="batch-details-grid" style="margin-bottom:0;">
+                            <div class="batch-row">
+                                <span>Período de conservación:</span>
+                                <strong>5 años</strong>
+                            </div>
+                            <div class="batch-row">
+                                <span>Integridad:</span>
+                                <strong class="text-success">No alterada</strong>
+                            </div>
+                            <div class="batch-row">
+                                <span>Firma digital:</span>
+                                <span>Pendiente (capa de Controladores)</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <footer class="health-footer">
+                <div class="footer-health-brand">
+                    <svg class="icon-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 4v16m-8-8h16"></path>
+                    </svg>
+                    <span>MINISTERIO DEL PODER POPULAR PARA LA SALUD // SUBREGIÓN GUÁRICO</span>
+                </div>
+                <div class="footer-meta-info">
+                    <span>BITÁCORA DE ACCIONES</span>
+                    <span>•</span>
+                    <span class="font-mono">VERSIÓN 2.5 SALUD</span>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <script src="../js/ui.js"></script>
+    <script>
+        /* ==============================================================
+           FILTROS POR TIPO DE ACCIÓN (SOLO INTERFAZ)
+           ============================================================== */
+        (function () {
+            'use strict';
+
+            var botones = document.querySelectorAll('#filtros-accion .geo-filter-btn');
+            var cuerpo = document.getElementById('tbody-bitacora');
+            var conteo = document.getElementById('conteo-bitacora');
+            var filas = Array.prototype.slice.call(cuerpo.querySelectorAll('tr'));
+
+            Array.prototype.forEach.call(botones, function (boton) {
+                boton.addEventListener('click', function () {
+                    Array.prototype.forEach.call(botones, function (b) { b.classList.remove('active'); });
+                    boton.classList.add('active');
+
+                    var accion = boton.getAttribute('data-accion');
+                    var visibles = 0;
+
+                    filas.forEach(function (fila) {
+                        if (accion === 'todas' || fila.getAttribute('data-accion') === accion) {
+                            fila.style.display = '';
+                            visibles++;
+                        } else {
+                            fila.style.display = 'none';
+                        }
+                    });
+
+                    conteo.textContent = visibles;
+                });
+            });
+
+            document.getElementById('btn-exportar-bitacora').addEventListener('click', function () {
+                SIV.toast('La exportación de la bitácora se habilitará con la integración de la base de datos.', 'info');
+            });
+        })();
+    </script>
+</body>
+
+</html>
